@@ -1,0 +1,613 @@
+/* Testimonials Styles */
+/* ===========================================
+   TESTIMONIALS SECTION
+=========================================== */
+
+.testimonials {
+  padding: 120px 0;
+  background: #f8fbff;
+  overflow: hidden;
+  position: relative;
+}
+
+.testimonials .container {
+  width: min(1150px, 92%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section-tag {
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 50px;
+  background: rgba(37, 99, 235, 0.08);
+  color: #2563eb;
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 18px;
+}
+
+.testimonials h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 18px;
+}
+
+.section-description {
+  max-width: 620px;
+  margin: auto;
+  color: #64748b;
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+/* ===========================================
+   WRAPPER
+=========================================== */
+
+.testimonial-wrapper {
+  position: relative;
+  margin-top: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===========================================
+   CARD
+=========================================== */
+
+.testimonial-card {
+  position: absolute;
+  width: min(720px, 92%);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(30px) scale(.96);
+  transition: all .6s ease;
+
+  background: rgba(255,255,255,.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255,255,255,.6);
+
+  border-radius: 30px;
+
+  padding: 50px;
+
+  box-shadow:
+    0 25px 70px rgba(15,23,42,.08);
+}
+
+.testimonial-card.active{
+  opacity:1;
+  visibility:visible;
+  position:relative;
+  transform:translateY(0) scale(1);
+}
+
+/* ===========================================
+   QUOTE ICON
+=========================================== */
+
+.quote-icon{
+  color:#2563eb;
+  opacity:.12;
+  margin-bottom:20px;
+}
+
+/* ===========================================
+   STARS
+=========================================== */
+
+.stars{
+  display:flex;
+  justify-content:center;
+  gap:6px;
+  margin-bottom:25px;
+  color:#fbbf24;
+}
+
+.stars svg{
+  fill:currentColor;
+}
+
+/* ===========================================
+   TEXT
+=========================================== */
+
+.testimonial-text{
+
+  font-size:1.15rem;
+  line-height:2;
+
+  color:#334155;
+
+  margin-bottom:40px;
+
+  font-weight:500;
+
+}
+
+/* ===========================================
+   USER
+=========================================== */
+
+.testimonial-user{
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  gap:18px;
+
+}
+
+.testimonial-user img{
+
+  width:72px;
+  height:72px;
+
+  border-radius:50%;
+
+  object-fit:cover;
+
+  border:4px solid white;
+
+  box-shadow:
+      0 12px 35px rgba(0,0,0,.12);
+
+}
+
+.testimonial-user h4{
+
+  font-size:1.05rem;
+  color:#0f172a;
+  margin-bottom:6px;
+
+}
+
+.testimonial-user span{
+
+  display:flex;
+  align-items:center;
+  gap:6px;
+
+  color:#2563eb;
+
+  font-size:.9rem;
+  font-weight:600;
+
+}
+
+/* ===========================================
+   NAVIGATION BUTTONS
+=========================================== */
+
+.nav-btn{
+
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+
+  width:56px;
+  height:56px;
+
+  border:none;
+
+  border-radius:50%;
+
+  background:white;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  cursor:pointer;
+
+  box-shadow:
+      0 15px 40px rgba(15,23,42,.12);
+
+  transition:.35s;
+
+  z-index:5;
+
+}
+
+.nav-btn:hover{
+
+  background:#2563eb;
+  color:white;
+
+  transform:
+      translateY(-50%)
+      scale(1.08);
+
+}
+
+.prev{
+  left:-30px;
+}
+
+.next{
+  right:-30px;
+}
+
+/* ===========================================
+   FADE ANIMATION
+=========================================== */
+
+@keyframes fadeUp{
+
+  from{
+
+    opacity:0;
+    transform:
+      translateY(30px);
+
+  }
+
+  to{
+
+    opacity:1;
+    transform:
+      translateY(0);
+
+  }
+
+}
+
+.testimonial-card.active{
+
+  animation:
+    fadeUp .7s ease;
+
+}
+
+
+/* ===========================================
+   DOT INDICATORS
+=========================================== */
+
+.testimonial-dots{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    margin-top:45px;
+}
+
+.dot{
+    width:12px;
+    height:12px;
+
+    border:none;
+    border-radius:50%;
+
+    background:#cbd5e1;
+
+    cursor:pointer;
+
+    transition:all .35s ease;
+}
+
+.dot:hover{
+    background:#94a3b8;
+    transform:scale(1.15);
+}
+
+.dot.active{
+    width:38px;
+    border-radius:50px;
+    background:#2563eb;
+}
+
+/* ===========================================
+   HOVER EFFECTS
+=========================================== */
+
+.testimonial-card:hover{
+
+    transform:
+        translateY(-6px)
+        scale(1.01);
+
+    box-shadow:
+        0 35px 90px rgba(15,23,42,.12);
+
+}
+
+.testimonial-user img{
+
+    transition:transform .35s ease;
+
+}
+
+.testimonial-card:hover img{
+
+    transform:scale(1.06);
+
+}
+
+.quote-icon{
+
+    transition:all .35s ease;
+
+}
+
+.testimonial-card:hover .quote-icon{
+
+    transform:rotate(-8deg);
+    opacity:.18;
+
+}
+
+/* ===========================================
+   FLOATING EFFECT
+=========================================== */
+
+@keyframes floating{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-6px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+
+}
+
+.testimonial-card.active{
+
+    animation:
+        fadeUp .7s ease,
+        floating 6s ease-in-out infinite;
+
+}
+
+/* ===========================================
+   TABLET
+=========================================== */
+
+@media (max-width:992px){
+
+.testimonials{
+
+    padding:90px 0;
+
+}
+
+.testimonial-card{
+
+    padding:40px 35px;
+
+}
+
+.prev{
+
+    left:-12px;
+
+}
+
+.next{
+
+    right:-12px;
+
+}
+
+}
+
+/* ===========================================
+   MOBILE
+=========================================== */
+
+@media (max-width:768px){
+
+.testimonials{
+
+    padding:80px 0;
+
+}
+
+.section-description{
+
+    font-size:.95rem;
+
+}
+
+.testimonial-wrapper{
+
+    margin-top:45px;
+
+}
+
+.testimonial-card{
+
+    width:100%;
+
+    border-radius:24px;
+
+    padding:35px 25px;
+
+}
+
+.testimonial-text{
+
+    font-size:1rem;
+    line-height:1.9;
+
+}
+
+.testimonial-user{
+
+    flex-direction:column;
+    text-align:center;
+
+}
+
+.testimonial-user img{
+
+    width:64px;
+    height:64px;
+
+}
+
+.nav-btn{
+
+    width:46px;
+    height:46px;
+
+}
+
+.prev{
+
+    left:-5px;
+
+}
+
+.next{
+
+    right:-5px;
+
+}
+
+}
+
+/* ===========================================
+   SMALL MOBILE
+=========================================== */
+
+@media (max-width:480px){
+
+.section-tag{
+
+    font-size:.72rem;
+
+}
+
+.testimonials h2{
+
+    font-size:2rem;
+
+}
+
+.testimonial-card{
+
+    padding:28px 20px;
+
+}
+
+.quote-icon{
+
+    width:36px;
+    height:36px;
+
+}
+
+.stars{
+
+    gap:4px;
+
+}
+
+.stars svg{
+
+    width:16px;
+    height:16px;
+
+}
+
+.testimonial-text{
+
+    font-size:.95rem;
+
+}
+
+.nav-btn{
+
+    display:none;
+
+}
+
+.dot{
+
+    width:10px;
+    height:10px;
+
+}
+
+.dot.active{
+
+    width:30px;
+
+}
+
+}
+
+/* ===========================================
+   PREMIUM POLISH
+=========================================== */
+
+.testimonials::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:420px;
+    height:420px;
+
+    background:rgba(37,99,235,.06);
+
+    border-radius:50%;
+
+    filter:blur(90px);
+
+    top:-180px;
+    left:-120px;
+
+    z-index:0;
+
+}
+
+.testimonials::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:350px;
+    height:350px;
+
+    background:rgba(59,130,246,.05);
+
+    border-radius:50%;
+
+    filter:blur(90px);
+
+    right:-120px;
+    bottom:-150px;
+
+    z-index:0;
+
+}
+
+.container{
+
+    position:relative;
+    z-index:2;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}

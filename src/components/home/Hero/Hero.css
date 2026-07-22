@@ -1,0 +1,921 @@
+/* ======================================================
+   HERO SECTION
+====================================================== */
+
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    padding: 120px 0 220px;
+}
+
+/* ======================================================
+   BACKGROUND SLIDER
+====================================================== */
+
+.hero-slider {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 1.2s ease,
+        transform 8s linear;
+
+    transform: scale(1);
+
+    z-index: 1;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.08);
+    z-index: 2;
+}
+
+/* ======================================================
+   DARK OVERLAY
+====================================================== */
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            rgba(8,12,20,.80),
+            rgba(8,12,20,.60)
+        );
+
+    z-index: 3;
+}
+
+/* ======================================================
+   CONTENT WRAPPER
+====================================================== */
+
+.hero-content-wrapper {
+    position: relative;
+    z-index: 10;
+
+    width: 100%;
+}
+
+.hero-content {
+
+    max-width: 820px;
+
+    margin: auto;
+
+    text-align: center;
+
+}
+
+/* ======================================================
+   TRUST BADGE
+====================================================== */
+
+.hero-badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: .7rem;
+
+    padding: 14px 24px;
+
+    border-radius: 50px;
+
+    background: rgba(255,255,255,.08);
+
+    backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255,255,255,.18);
+
+    color: #fff;
+
+    font-size: .95rem;
+
+    font-weight: 600;
+
+    margin-bottom: 2rem;
+
+}
+
+.hero-badge svg{
+
+    color: var(--primary);
+
+}
+
+/* ======================================================
+   HEADING
+====================================================== */
+
+.hero-content h1 {
+
+    font-size: clamp(3.5rem, 7vw, 6.5rem);
+
+    line-height: 1.05;
+
+    color: #fff;
+
+    font-weight: 800;
+
+    margin-bottom: 1.8rem;
+
+}
+
+.hero-content h1 span {
+
+    color: var(--primary);
+
+}
+
+/* ======================================================
+   PARAGRAPH
+====================================================== */
+
+.hero-content p {
+
+    max-width: 720px;
+
+    margin: auto;
+
+    margin-bottom: 3rem;
+
+    color: rgba(255,255,255,.85);
+
+    font-size: 1.15rem;
+
+    line-height: 1.9;
+
+}
+
+/* ======================================================
+   BUTTONS
+====================================================== */
+
+.hero-buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 1.2rem;
+
+    flex-wrap: wrap;
+
+}
+
+.hero-buttons .btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: .7rem;
+
+    padding: 18px 34px;
+
+    border-radius: 999px;
+
+    font-weight: 600;
+
+    transition: .35s ease;
+
+}
+
+.btn-primary {
+
+    background: var(--primary);
+
+    color: #fff;
+
+    box-shadow: 0 15px 35px rgba(0,0,0,.18);
+
+}
+
+.btn-primary:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow: 0 25px 45px rgba(0,0,0,.25);
+
+}
+
+.btn-secondary {
+
+    background: rgba(255,255,255,.08);
+
+    color: #fff;
+
+    backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255,255,255,.15);
+
+}
+
+.btn-secondary:hover {
+
+    background: rgba(255,255,255,.15);
+
+    transform: translateY(-4px);
+
+}
+
+/* ======================================================
+   BUTTON ICON
+====================================================== */
+
+.btn svg{
+
+    transition:.3s;
+
+}
+
+.btn:hover svg{
+
+    transform:translateX(4px);
+
+}
+
+
+
+/* ======================================================
+   FLOATING SEARCH CARD
+====================================================== */
+
+.hero-search-card {
+
+    position: absolute;
+
+    left: 50%;
+    bottom: -75px;
+
+    transform: translateX(-50%);
+
+    width: min(1200px, 92%);
+
+    display: grid;
+
+    grid-template-columns: 2fr 1.5fr 1.2fr auto;
+
+    gap: 1rem;
+
+    padding: 1.5rem;
+
+    background: rgba(255,255,255,.96);
+
+    backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255,255,255,.5);
+
+    border-radius: 24px;
+
+    box-shadow: 0 30px 80px rgba(0,0,0,.18);
+
+    z-index: 100;
+
+}
+
+/* ======================================================
+   SEARCH FIELDS
+====================================================== */
+
+.search-field{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    height:68px;
+
+    padding:0 20px;
+
+    background:#fff;
+
+    border:1px solid #ececec;
+
+    border-radius:18px;
+
+    transition:.3s ease;
+
+}
+
+.search-field:hover{
+
+    border-color:var(--primary);
+
+    box-shadow:0 10px 30px rgba(0,0,0,.06);
+
+}
+
+.search-field svg{
+
+    color:var(--primary);
+
+    flex-shrink:0;
+
+}
+
+.search-field input,
+.search-field select{
+
+    width:100%;
+
+    height:100%;
+
+    border:none;
+
+    outline:none;
+
+    background:none;
+
+    font-size:1rem;
+
+    color:var(--secondary);
+
+    cursor:pointer;
+
+}
+
+.search-field input::placeholder{
+
+    color:#888;
+
+}
+
+/* Remove default select arrow */
+
+.search-field select{
+
+    appearance:none;
+
+    -webkit-appearance:none;
+
+    -moz-appearance:none;
+
+}
+
+/* ======================================================
+   SEARCH BUTTON
+====================================================== */
+
+.search-btn{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    font-weight:600;
+
+    font-size:1rem;
+
+    cursor:pointer;
+
+    transition:.35s ease;
+
+    padding:0 34px;
+
+}
+
+.search-btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 18px 40px rgba(0,0,0,.2);
+
+}
+
+/* ======================================================
+   HERO STATISTICS
+====================================================== */
+
+.hero-stats{
+
+    margin-top:180px;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:2rem;
+
+}
+
+.stat{
+
+    text-align:center;
+
+    color:#fff;
+
+}
+
+.stat h2{
+
+    font-size:2.6rem;
+
+    font-weight:700;
+
+    color:var(--primary);
+
+    margin-bottom:.5rem;
+
+}
+
+.stat p{
+
+    color:rgba(255,255,255,.85);
+
+    font-size:1rem;
+
+}
+
+/* ======================================================
+   SLIDER DOTS
+====================================================== */
+
+.hero-dots{
+
+    margin-top:55px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:14px;
+
+}
+
+.dot{
+
+    width:12px;
+
+    height:12px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.35);
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+.dot:hover{
+
+    background:#fff;
+
+}
+
+.dot.active{
+
+    width:40px;
+
+    border-radius:50px;
+
+    background:var(--primary);
+
+}
+
+/* ======================================================
+   GLASS EFFECT
+====================================================== */
+
+.hero-search-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:24px;
+
+    background:linear-gradient(
+
+        rgba(255,255,255,.4),
+
+        rgba(255,255,255,.05)
+
+    );
+
+    pointer-events:none;
+
+}
+
+
+
+/* ======================================================
+   RESPONSIVE - LARGE TABLETS
+====================================================== */
+
+@media (max-width: 1200px) {
+
+    .hero-search-card {
+
+        grid-template-columns: 1fr 1fr;
+
+        row-gap: 1rem;
+
+        bottom: -120px;
+
+    }
+
+    .hero-stats {
+
+        margin-top: 230px;
+
+    }
+
+}
+
+/* ======================================================
+   TABLETS
+====================================================== */
+
+@media (max-width: 992px) {
+
+    .hero {
+
+        padding-top: 120px;
+        padding-bottom: 280px;
+
+    }
+
+    .hero-content h1 {
+
+        font-size: 4rem;
+
+    }
+
+    .hero-content p {
+
+        font-size: 1.05rem;
+
+    }
+
+    .hero-search-card {
+
+        width: 94%;
+
+        grid-template-columns: 1fr;
+
+        bottom: -170px;
+
+    }
+
+    .search-btn {
+
+        height: 65px;
+
+    }
+
+    .hero-stats {
+
+        grid-template-columns: repeat(2,1fr);
+
+        margin-top: 300px;
+
+        gap: 2rem;
+
+    }
+
+}
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width:768px){
+
+    .hero{
+
+        padding-top:110px;
+        padding-bottom:360px;
+
+    }
+
+    .hero-content{
+
+        text-align:center;
+
+    }
+
+    .hero-content h1{
+
+        font-size:3rem;
+
+        line-height:1.15;
+
+    }
+
+    .hero-content p{
+
+        font-size:1rem;
+
+        line-height:1.7;
+
+    }
+
+    .hero-buttons{
+
+        flex-direction:column;
+
+        width:100%;
+
+    }
+
+    .hero-buttons .btn{
+
+        width:100%;
+
+    }
+
+    .hero-search-card{
+
+        width:94%;
+
+        padding:1rem;
+
+        grid-template-columns:1fr;
+
+        bottom:-230px;
+
+    }
+
+    .search-field{
+
+        height:60px;
+
+    }
+
+    .search-btn{
+
+        height:60px;
+
+        width:100%;
+
+    }
+
+    .hero-stats{
+
+        margin-top:380px;
+
+        grid-template-columns:1fr 1fr;
+
+    }
+
+}
+
+/* ======================================================
+   SMALL PHONES
+====================================================== */
+
+@media(max-width:480px){
+
+    .hero{
+
+        padding-top:100px;
+        padding-bottom:430px;
+
+    }
+
+    .hero-content h1{
+
+        font-size:2.35rem;
+
+    }
+
+    .hero-badge{
+
+        font-size:.8rem;
+
+        padding:10px 18px;
+
+    }
+
+    .hero-content p{
+
+        font-size:.95rem;
+
+    }
+
+    .hero-search-card{
+
+        bottom:-290px;
+
+    }
+
+    .hero-stats{
+
+        grid-template-columns:1fr;
+
+        margin-top:470px;
+
+        gap:1.8rem;
+
+    }
+
+    .stat h2{
+
+        font-size:2.2rem;
+
+    }
+
+}
+
+/* ======================================================
+   ANIMATIONS
+====================================================== */
+
+.hero-content{
+
+    animation:heroFadeUp 1s ease;
+
+}
+
+.hero-search-card{
+
+    animation:heroSearch .9s ease;
+
+}
+
+.hero-stats{
+
+    animation:heroFadeUp 1.3s ease;
+
+}
+
+@keyframes heroFadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes heroSearch{
+
+    from{
+
+        opacity:0;
+
+        transform:translate(-50%,60px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translate(-50%,0);
+
+    }
+
+}
+
+/* ======================================================
+   KEN BURNS IMAGE EFFECT
+====================================================== */
+
+.slide.active{
+
+    animation:kenburns 10s linear forwards;
+
+}
+
+@keyframes kenburns{
+
+    from{
+
+        transform:scale(1);
+
+    }
+
+    to{
+
+        transform:scale(1.12);
+
+    }
+
+}
+
+/* ======================================================
+   SMOOTH TRANSITIONS
+====================================================== */
+
+.hero *{
+
+    transition:
+
+        color .3s,
+
+        background .3s,
+
+        border-color .3s,
+
+        transform .3s;
+
+}
+
+/* ======================================================
+   OPTIONAL SCROLL INDICATOR
+====================================================== */
+
+.hero-scroll{
+
+    position:absolute;
+
+    bottom:25px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    z-index:20;
+
+    color:#fff;
+
+    animation:bounce 2s infinite;
+
+}
+
+@keyframes bounce{
+
+    0%,20%,50%,80%,100%{
+
+        transform:translate(-50%,0);
+
+    }
+
+    40%{
+
+        transform:translate(-50%,-10px);
+
+    }
+
+    60%{
+
+        transform:translate(-50%,-5px);
+
+    }
+
+}
