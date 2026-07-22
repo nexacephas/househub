@@ -1,5 +1,5 @@
 import "./Footer.css";
-
+import { NavLink } from "react-router-dom";
 import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 
 import {
@@ -51,7 +51,9 @@ export default function Footer() {
 
             <ul>
 
-              <li><a href="#">About</a></li>
+              <li><NavLink to="/about">
+  About
+</NavLink></li>
 
               <li><a href="#">Our Mission</a></li>
 

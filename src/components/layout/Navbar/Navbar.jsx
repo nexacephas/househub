@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom"
+
 import { Menu, X, ChevronDown } from "lucide-react";
 import logo from "../../../assets/logos/logo.jpeg";
 import { navLinks } from "../../../constants/navigation";
