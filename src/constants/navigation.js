@@ -32,7 +32,7 @@ export const navLinks = [
     },
     {
       name: "Become an Agent",
-      path: "/become-agent",
+      path: "/login",
     },
   ],
 },
