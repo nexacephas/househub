@@ -1,1 +1,345 @@
-/* Register Page Styles */
+.register-card{
+
+    width:100%;
+    max-width:560px;
+
+    background:#fff;
+
+    border-radius:28px;
+
+    padding:45px;
+
+    box-shadow:0 20px 60px rgba(15,23,42,.08);
+
+}
+
+.register-header{
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+}
+
+.register-header h2{
+
+    font-size:2rem;
+
+    margin-bottom:10px;
+
+}
+
+.register-header p{
+
+    color:#64748b;
+
+}
+
+.role-grid{
+
+    display:grid;
+
+    gap:20px;
+
+}
+
+.role-card{
+
+    padding:25px;
+
+    border:2px solid #e2e8f0;
+
+    border-radius:20px;
+
+    text-align:left;
+
+    cursor:pointer;
+
+    background:white;
+
+    transition:.3s;
+
+}
+
+.role-card:hover{
+
+    border-color:#2563eb;
+
+    transform:translateY(-3px);
+
+}
+
+.role-card.active{
+
+    border-color:#2563eb;
+
+    background:#eff6ff;
+
+}
+
+.role-icon{
+
+    width:60px;
+    height:60px;
+
+    border-radius:16px;
+
+    background:#2563eb;
+
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-bottom:18px;
+
+}
+
+.role-card h3{
+
+    margin-bottom:8px;
+
+}
+
+.role-card p{
+
+    color:#64748b;
+
+    line-height:1.6;
+
+}
+
+.continue-btn{
+
+    margin-top:35px;
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#2563eb;
+
+    color:white;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    cursor:pointer;
+
+}
+
+.continue-btn:disabled{
+
+    opacity:.5;
+
+    cursor:not-allowed;
+
+}
+
+.button-group{
+
+display:flex;
+
+justify-content:space-between;
+
+margin-top:35px;
+
+gap:15px;
+
+}
+
+.back-btn{
+
+flex:1;
+
+padding:16px;
+
+border-radius:14px;
+
+border:1px solid #dbe3ef;
+
+background:white;
+
+cursor:pointer;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.back-btn:hover{
+
+background:#f8fafc;
+
+}
+
+.button-group .continue-btn{
+
+margin-top:0;
+
+flex:1;
+
+}
+
+.input-wrapper{
+
+    display:flex;
+    align-items:center;
+
+    border:1px solid #dbe3ef;
+
+    border-radius:14px;
+
+    padding:0 16px;
+
+    margin-top:8px;
+
+}
+
+.input-wrapper input{
+
+    flex:1;
+
+    border:none;
+
+    outline:none;
+
+    padding:16px 12px;
+
+    background:transparent;
+
+}
+
+.password-toggle{
+
+    background:none;
+
+    border:none;
+
+    cursor:pointer;
+
+    color:#64748b;
+
+}
+
+.strength-bar{
+
+    width:100%;
+
+    height:6px;
+
+    background:#e2e8f0;
+
+    border-radius:999px;
+
+    margin:15px 0 8px;
+
+}
+
+.strength-fill{
+
+    width:35%;
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:#ef4444;
+
+}
+
+.strength-fill.strong{
+
+    width:100%;
+
+    background:#22c55e;
+
+}
+
+.password-tip{
+
+    display:block;
+
+    color:#64748b;
+
+    margin-bottom:24px;
+
+}
+
+.terms{
+
+    display:flex;
+
+    gap:10px;
+
+    align-items:flex-start;
+
+    margin:25px 0;
+
+    color:#475569;
+
+}
+
+.success-screen{
+
+text-align:center;
+
+padding:40px 0;
+
+}
+
+.success-icon{
+
+width:90px;
+height:90px;
+
+margin:auto;
+
+border-radius:50%;
+
+background:#22c55e;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+font-size:3rem;
+
+margin-bottom:25px;
+
+}
+
+.login-success-btn{
+
+display:inline-block;
+
+margin-top:30px;
+
+padding:16px 40px;
+
+background:#2563eb;
+
+color:#fff;
+
+border-radius:14px;
+
+text-decoration:none;
+
+font-weight:600;
+
+}
