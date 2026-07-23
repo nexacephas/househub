@@ -188,7 +188,7 @@ top: calc(100% + 18px);
   gap: 1rem;
 }
 
-.login-btn {
+.login-btn-1 {
   font-weight: 600;
   color: var(--secondary);
 

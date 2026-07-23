@@ -1,1 +1,66 @@
 /* Pagination Styles */
+.pagination{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:60px 0;
+
+}
+
+.page-btn,
+.page-number{
+
+    width:46px;
+
+    height:46px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    background:white;
+
+    box-shadow:var(--shadow-sm);
+
+    transition:var(--transition);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.page-number.active{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+.page-btn:hover,
+.page-number:hover{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+.page-btn:disabled{
+
+    opacity:.5;
+
+    cursor:not-allowed;
+
+}

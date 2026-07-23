@@ -1,0 +1,191 @@
+.property-hero{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--gray-900),
+            var(--gray-700)
+        );
+ min-height: 80vh; /* instead of 65vh */
+}
+
+.hero-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(180,138,63,.25),
+            transparent 45%
+        );
+
+}
+
+.property-hero .container{
+
+    width:min(1400px,92%);
+
+    margin:auto;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.hero-content{
+
+    max-width:760px;
+
+    color:white;
+
+}
+
+.hero-tag{
+
+    display:inline-block;
+
+    padding:10px 20px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.1);
+
+    backdrop-filter:blur(10px);
+
+    margin-bottom:5px;
+
+    letter-spacing:1px;
+
+    font-weight:600;
+
+}
+
+.hero-content h1{
+
+    font-size:clamp(3rem,6vw,5rem);
+
+    line-height:1.1;
+
+    margin-bottom:25px;
+
+}
+
+.hero-content h1 span{
+
+    color:var(--primary);
+
+}
+
+.hero-content p{
+
+    font-size:1.1rem;
+
+    line-height:1.9;
+
+    color:rgba(255,255,255,.8);
+
+    margin-bottom:45px;
+
+}
+
+.hero-search-preview{
+
+    background:white;
+
+    border-radius:20px;
+
+    display:flex;
+
+    align-items:center;
+
+    padding:14px;
+
+    gap:20px;
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+.search-item{
+
+    flex:1;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:var(--gray-600);
+
+}
+
+.divider{
+
+    width:1px;
+
+    height:35px;
+
+    background:var(--gray-200);
+
+}
+
+.hero-search-preview button{
+
+    border:none;
+
+    background:var(--primary);
+
+    color:white;
+
+    padding:16px 32px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    transition:var(--transition);
+
+}
+
+.hero-search-preview button:hover{
+
+    background:var(--primary-dark);
+
+}
+
+@media(max-width:900px){
+
+.hero-search-preview{
+
+    flex-direction:column;
+
+    align-items:stretch;
+
+}
+
+.divider{
+
+    display:none;
+
+}
+
+.hero-search-preview button{
+
+    width:100%;
+
+}
+
+}

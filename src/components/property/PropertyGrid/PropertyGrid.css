@@ -1,1 +1,23 @@
 /* PropertyGrid Styles */
+.property-grid {
+  padding: 20px 0 80px;
+}
+
+.property-grid .container {
+  width: min(1400px, 92%);
+  margin: auto;
+}
+
+.grid {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+
+  gap: 32px;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

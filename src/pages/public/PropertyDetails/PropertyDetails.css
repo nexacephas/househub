@@ -1,1 +1,8 @@
 /* PropertyDetails Page Styles */
+.property-details-page{
+
+    background:var(--background);
+
+    min-height:100vh;
+
+}

@@ -1,0 +1,990 @@
+/*=====================================
+HERO
+======================================*/
+
+.renting-hero{
+
+    position:relative;
+
+    padding:140px 0;
+
+    background:
+    linear-gradient(
+    135deg,
+    #0f172a,
+    #1e293b
+    );
+
+    overflow:hidden;
+
+}
+
+.hero-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    radial-gradient(
+    circle at top right,
+    rgba(180,138,63,.25),
+    transparent 50%
+    );
+
+}
+
+.renting-hero .container{
+
+    position:relative;
+
+    z-index:2;
+
+    display:grid;
+
+    grid-template-columns:1.2fr .8fr;
+
+    gap:60px;
+
+    align-items:center;
+
+}
+
+.renting-content{
+
+    color:white;
+
+}
+
+.renting-content h1{
+
+    font-size:clamp(3rem,6vw,5rem);
+
+    margin:25px 0;
+
+    line-height:1.1;
+
+}
+
+.renting-content h1 span{
+
+    color:var(--primary);
+
+}
+
+.renting-content p{
+
+    line-height:1.9;
+
+    max-width:600px;
+
+    color:rgba(255,255,255,.85);
+
+    margin-bottom:40px;
+
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.btn-primary,
+.btn-secondary{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:16px 28px;
+
+    border-radius:14px;
+
+    font-weight:600;
+
+}
+
+.btn-primary{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+.btn-secondary{
+
+    background:white;
+
+    color:var(--gray-900);
+
+}
+
+.hero-card{
+
+    background:white;
+
+    border-radius:28px;
+
+    padding:45px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+.hero-card svg{
+
+    color:var(--primary);
+
+}
+
+.hero-card h3{
+
+    margin:20px 0;
+
+}
+
+.hero-card p{
+
+    color:var(--gray-600);
+
+    line-height:1.8;
+
+}
+
+.hero-features{
+
+    margin-top:30px;
+
+    display:grid;
+
+    gap:18px;
+
+}
+
+.hero-features div{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+@media(max-width:992px){
+
+.renting-hero .container{
+
+grid-template-columns:1fr;
+
+}
+
+.hero-card{
+
+margin-top:40px;
+
+}
+
+}/*=====================================
+WHY RENT
+======================================*/
+
+.why-rent{
+
+    padding:120px 0;
+
+    background:var(--background);
+
+}
+
+.why-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:30px;
+
+    margin-top:60px;
+
+}
+
+.why-card{
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:24px;
+
+    box-shadow:var(--shadow-sm);
+
+    transition:.35s;
+
+    border-top:5px solid var(--primary);
+
+}
+
+.why-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+.why-card svg{
+
+    color:var(--primary);
+
+    margin-bottom:20px;
+
+}
+
+.why-card h3{
+
+    margin-bottom:15px;
+
+}
+
+.why-card p{
+
+    line-height:1.8;
+
+    color:var(--gray-600);
+
+}
+
+@media(max-width:1000px){
+
+.why-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.why-rent{
+
+padding:80px 0;
+
+}
+
+.why-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+/*=====================================
+RENTING PROCESS
+======================================*/
+
+.renting-process{
+
+    padding:120px 0;
+
+    background:var(--surface);
+
+}
+
+.timeline{
+
+    max-width:900px;
+
+    margin:70px auto 0;
+
+    position:relative;
+
+}
+
+.timeline::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:28px;
+
+    top:0;
+
+    bottom:0;
+
+    width:4px;
+
+    background:var(--primary);
+
+    opacity:.15;
+
+}
+
+.timeline-item{
+
+    display:flex;
+
+    gap:30px;
+
+    position:relative;
+
+    margin-bottom:45px;
+
+}
+
+.timeline-icon{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-shrink:0;
+
+    z-index:2;
+
+}
+
+.timeline-content{
+
+    background:white;
+
+    flex:1;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+.timeline-content h3{
+
+    margin-bottom:15px;
+
+}
+
+.timeline-content p{
+
+    line-height:1.8;
+
+    color:var(--gray-600);
+
+}
+
+@media(max-width:768px){
+
+.renting-process{
+
+padding:80px 0;
+
+}
+
+.timeline::before{
+
+left:20px;
+
+}
+
+.timeline-icon{
+
+width:42px;
+
+height:42px;
+
+}
+
+.timeline-item{
+
+gap:20px;
+
+}
+
+.timeline-content{
+
+padding:22px;
+
+}
+
+}/*=====================================
+RENT DOCUMENTS
+======================================*/
+
+.rent-documents{
+
+    padding:120px 0;
+
+    background:var(--background);
+
+}
+
+.documents-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:30px;
+
+    margin-top:60px;
+
+}
+
+.document-card{
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:24px;
+
+    box-shadow:var(--shadow-sm);
+
+    transition:.35s;
+
+    border-top:5px solid #10b981;
+
+}
+
+.document-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+.document-card svg{
+
+    color:#10b981;
+
+    margin-bottom:22px;
+
+}
+
+.document-card h3{
+
+    margin-bottom:15px;
+
+}
+
+.document-card p{
+
+    color:var(--gray-600);
+
+    line-height:1.8;
+
+}
+
+@media(max-width:1000px){
+
+.documents-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.rent-documents{
+
+padding:80px 0;
+
+}
+
+.documents-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}/*=====================================
+TENANT RIGHTS
+======================================*/
+
+.tenant-rights{
+
+    padding:120px 0;
+
+    background:var(--surface);
+
+}
+
+.rights-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:40px;
+
+    margin-top:60px;
+
+}
+
+.rights-card{
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:24px;
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+.rights-card h3{
+
+    margin-bottom:30px;
+
+    color:var(--gray-900);
+
+}
+
+.rights-card ul{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+}
+
+.rights-card li{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:16px;
+
+    line-height:1.7;
+
+    color:var(--gray-700);
+
+}
+
+.rights-card svg{
+
+    color:var(--primary);
+
+    flex-shrink:0;
+
+    margin-top:2px;
+
+}
+
+.responsibilities{
+
+    border-top:5px solid #10b981;
+
+}
+
+@media(max-width:900px){
+
+.rights-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.tenant-rights{
+
+padding:80px 0;
+
+}
+
+.rights-card{
+
+padding:28px;
+
+}
+
+}/*=====================================
+RENTAL SCAMS
+======================================*/
+
+.rental-scams{
+
+    padding:120px 0;
+
+    background:var(--background);
+
+}
+
+.scams-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:30px;
+
+    margin-top:60px;
+
+}
+
+.scam-card{
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:24px;
+
+    box-shadow:var(--shadow-sm);
+
+    transition:.35s;
+
+    border-top:5px solid #ef4444;
+
+}
+
+.scam-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+.scam-card svg{
+
+    color:#ef4444;
+
+    margin-bottom:20px;
+
+}
+
+.scam-card h3{
+
+    margin-bottom:15px;
+
+}
+
+.scam-card p{
+
+    line-height:1.8;
+
+    color:var(--gray-600);
+
+}
+
+.safety-note{
+
+    margin-top:70px;
+
+    background:#ecfdf5;
+
+    border-left:6px solid #10b981;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    display:flex;
+
+    gap:20px;
+
+    align-items:flex-start;
+
+}
+
+.safety-note svg{
+
+    color:#10b981;
+
+    flex-shrink:0;
+
+}
+
+.safety-note h3{
+
+    margin-bottom:10px;
+
+}
+
+.safety-note p{
+
+    color:var(--gray-700);
+
+    line-height:1.8;
+
+}
+
+@media(max-width:1000px){
+
+.scams-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.rental-scams{
+
+padding:80px 0;
+
+}
+
+.scams-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.safety-note{
+
+flex-direction:column;
+
+}
+
+}/*=====================================
+MOVE-IN CHECKLIST
+======================================*/
+
+.move-checklist{
+
+    padding:120px 0;
+
+    background:var(--surface);
+
+}
+
+.checklist-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:30px;
+
+    margin-top:60px;
+
+}
+
+.checklist-card{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:35px;
+
+    box-shadow:var(--shadow-sm);
+
+    transition:.35s;
+
+}
+
+.checklist-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+.checklist-card svg{
+
+    color:#10b981;
+
+    margin-bottom:18px;
+
+}
+
+.checklist-card h3{
+
+    margin-bottom:15px;
+
+}
+
+.checklist-card p{
+
+    line-height:1.8;
+
+    color:var(--gray-600);
+
+}
+
+@media(max-width:1000px){
+
+.checklist-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.move-checklist{
+
+padding:80px 0;
+
+}
+
+.checklist-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}/*=====================================
+RENTING FAQ
+======================================*/
+
+.renting-faq{
+
+    padding:120px 0;
+
+    background:var(--background);
+
+}
+
+.faq-list{
+
+    max-width:900px;
+
+    margin:60px auto 0;
+
+}
+
+.faq-list details{
+
+    background:white;
+
+    border-radius:20px;
+
+    margin-bottom:20px;
+
+    box-shadow:var(--shadow-sm);
+
+    overflow:hidden;
+
+    transition:.3s;
+
+}
+
+.faq-list details:hover{
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+.faq-list summary{
+
+    cursor:pointer;
+
+    padding:24px 30px;
+
+    font-weight:700;
+
+    font-size:1.05rem;
+
+    list-style:none;
+
+    position:relative;
+
+}
+
+.faq-list summary::-webkit-details-marker{
+
+    display:none;
+
+}
+
+.faq-list summary::after{
+
+    content:"+";
+
+    position:absolute;
+
+    right:30px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    font-size:1.5rem;
+
+    color:var(--primary);
+
+    transition:.3s;
+
+}
+
+.faq-list details[open] summary::after{
+
+    content:"−";
+
+}
+
+.faq-list p{
+
+    padding:0 30px 25px;
+
+    line-height:1.9;
+
+    color:var(--gray-600);
+
+}
+
+@media(max-width:768px){
+
+.renting-faq{
+
+padding:80px 0;
+
+}
+
+.faq-list summary{
+
+padding:20px;
+
+}
+
+.faq-list p{
+
+padding:0 20px 20px;
+
+}
+
+}

@@ -1,1 +1,236 @@
 /* Blog Page Styles */
+.blog-placeholder{
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:120px 0;
+
+    background:linear-gradient(
+        135deg,
+        var(--background),
+        #f8fafc
+    );
+
+}
+
+.placeholder-card{
+
+    max-width:850px;
+
+    margin:auto;
+
+    background:white;
+
+    padding:70px 50px;
+
+    border-radius:32px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+.placeholder-icon{
+
+    width:110px;
+
+    height:110px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:rgba(180,138,63,.12);
+
+    color:var(--primary);
+
+    margin-bottom:30px;
+
+}
+
+.coming-soon{
+
+    display:inline-block;
+
+    padding:10px 20px;
+
+    border-radius:999px;
+
+    background:rgba(180,138,63,.1);
+
+    color:var(--primary);
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+    margin-bottom:25px;
+
+}
+
+.placeholder-card h1{
+
+    font-size:clamp(2.5rem,5vw,4rem);
+
+    margin-bottom:20px;
+
+}
+
+.placeholder-card p{
+
+    max-width:650px;
+
+    margin:auto;
+
+    color:var(--gray-600);
+
+    line-height:1.9;
+
+}
+
+.placeholder-features{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+
+    margin:50px 0;
+
+}
+
+.feature{
+
+    background:#f8fafc;
+
+    padding:18px;
+
+    border-radius:14px;
+
+    font-weight:600;
+
+}
+
+.placeholder-actions{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.btn-primary,
+
+.btn-secondary{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:16px 30px;
+
+    border-radius:14px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.btn-primary{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+.btn-primary:hover{
+
+    background:var(--primary-dark);
+
+}
+
+.btn-secondary{
+
+    border:1px solid var(--gray-300);
+
+}
+
+.btn-secondary:hover{
+
+    border-color:var(--primary);
+
+    color:var(--primary);
+
+}
+
+.launch-note{
+
+    margin-top:40px;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:var(--gray-500);
+
+}
+
+@media(max-width:768px){
+
+.blog-placeholder{
+
+padding:80px 0;
+
+}
+
+.placeholder-card{
+
+padding:45px 25px;
+
+}
+
+.placeholder-features{
+
+grid-template-columns:1fr;
+
+}
+
+.placeholder-actions{
+
+flex-direction:column;
+
+}
+
+.btn-primary,
+
+.btn-secondary{
+
+justify-content:center;
+
+}
+
+}

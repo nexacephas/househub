@@ -62,7 +62,7 @@ export default function Navbar() {
 
         <div className="nav-buttons">
 
-          <Link className="login-btn" to="/login">
+          <Link className="login-btn-1" to="/login">
             Login
           </Link>
 

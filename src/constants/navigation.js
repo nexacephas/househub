@@ -4,17 +4,20 @@ export const navLinks = [
     path: "/",
   },
 
-  {
-    name: "Properties",
-    children: [
-      { name: "Buy", path: "/buy" },
-      { name: "Rent", path: "/rent" },
-      { name: "Short Lets", path: "/short-lets" },
-      { name: "Commercial", path: "/commercial" },
-      { name: "Luxury Homes", path: "/luxury" },
-      { name: "New Developments", path: "/developments" },
-    ],
-  },
+{
+  name: "Properties",
+  children: [
+    { name: "Browse All", path: "/properties" },
+    { name: "For Sale", path: "/properties/sale" },
+    { name: "For Rent", path: "/properties/rent" },
+    { name: "Short Lets", path: "/properties/short-lets" },
+    { name: "Commercial", path: "/properties/commercial" },
+    { name: "Luxury Homes", path: "/properties/luxury" },
+    { name: "New Developments", path: "/properties/developments" },
+    { name: "Verified Listings", path: "/properties/verified" },
+    { name: "Featured Properties", path: "/properties/featured" },
+  ],
+},
 
   {
     name: "Agents",
@@ -34,15 +37,27 @@ export const navLinks = [
     ],
   },
 
-  {
-    name: "Resources",
-    children: [
-      { name: "Blog", path: "/blog" },
-      { name: "Buying Guide", path: "/buying-guide" },
-      { name: "Renting Guide", path: "/renting-guide" },
-      { name: "FAQs", path: "/faq" },
-    ],
-  },
+{
+  name: "Resources",
+  children: [
+    {
+      name: "Blog",
+      path: "/blog",
+    },
+    {
+      name: "Buying Guide",
+      path: "/buying-guide",
+    },
+    {
+      name: "Renting Guide",
+      path: "/renting-guide",
+    },
+    {
+      name: "FAQs",
+      path: "/faq",
+    },
+  ],
+},
 
   {
     name: "About",

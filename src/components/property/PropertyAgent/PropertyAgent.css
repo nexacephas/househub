@@ -1,1 +1,230 @@
 /* PropertyAgent Styles */
+.property-agent{
+
+    padding:90px 0;
+
+}
+
+.property-agent .container{
+
+    width:min(1400px,92%);
+
+    margin:auto;
+
+}
+
+.agent-layout{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:40px;
+
+}
+
+.agent-card,
+.contact-card{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:35px;
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+.agent-card{
+
+    text-align:center;
+
+}
+
+.agent-card img{
+
+    width:150px;
+
+    height:150px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    margin-bottom:25px;
+
+}
+
+.agent-info h2{
+
+    margin:16px 0 8px;
+
+}
+
+.agent-info p{
+
+    color:var(--gray-500);
+
+}.agent-stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:20px;
+
+    margin-top:35px;
+
+}
+
+.agent-stats div{
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:var(--gray-100);
+
+}
+
+.agent-stats svg{
+
+    color:var(--primary);
+
+    margin-bottom:10px;
+
+}
+
+.agent-stats strong{
+
+    display:block;
+
+    font-size:1.2rem;
+
+}
+
+.agent-stats small{
+
+    color:var(--gray-500);
+
+}
+
+.contact-card h3{
+
+    margin-bottom:25px;
+
+}
+
+.contact-card button{
+
+    width:100%;
+
+    height:54px;
+
+    border:none;
+
+    border-radius:14px;
+
+    margin-bottom:15px;
+
+    cursor:pointer;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-weight:600;
+
+}
+
+.call-btn{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+.whatsapp-btn{
+
+    background:#25D366;
+
+    color:white;
+
+}
+
+.email-btn{
+
+    background:#1e293b;
+
+    color:white;
+
+}
+
+.inspection-btn{
+
+    background:white;
+
+    border:1px solid var(--gray-300) !important;
+
+}
+
+.agent-form{
+
+    margin-top:25px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.agent-form input,
+.agent-form textarea{
+
+    padding:16px;
+
+    border-radius:14px;
+
+    border:1px solid var(--gray-300);
+
+    font:inherit;
+
+    resize:none;
+
+}
+
+.agent-form button{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+@media(max-width:992px){
+
+.agent-layout{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.agent-stats{
+
+grid-template-columns:1fr;
+
+}
+
+}

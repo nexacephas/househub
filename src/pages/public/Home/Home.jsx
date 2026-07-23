@@ -6,7 +6,7 @@ import WhyChooseUs from "../../../components/home/WhyChooseUs";
 import HowItWorks from "../../../components/home/HowItWorks/HowItWorks";
 import FeaturedLocations from "../../../components/home/FeaturedLocations/FeaturedLocations";
 import Testimonials from "../../../components/home/Testimonials/Testimonials";
-import FAQ from "../FAQ";
+import FAQSection from "../../../components/home/FAQSection";
 import CallToAction from "../../../components/home/CTASection/CTASection";
 
 import "./Home.css";
@@ -22,7 +22,7 @@ export default function Home() {
       <HowItWorks />
       <FeaturedLocations />
       <Testimonials />
-      <FAQ />
+      <FAQSection />
       <CallToAction />
     </>
   );
