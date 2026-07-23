@@ -316,3 +316,51 @@ top: calc(100% + 18px);
     }
     }
 
+.mobile-nav-item{
+    width:100%;
+}
+
+.mobile-dropdown-btn{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:12px 0;
+
+    font-size:1.1rem;
+    font-weight:600;
+
+    color:var(--secondary);
+
+    background:none;
+    border:none;
+    cursor:pointer;
+}
+
+.mobile-dropdown-btn svg{
+    transition:.3s;
+}
+
+.mobile-dropdown-btn svg.rotate{
+    transform:rotate(180deg);
+}
+
+.mobile-dropdown{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s ease;
+    padding-left:18px;
+}
+
+.mobile-dropdown.open{
+    max-height:300px;
+}
+
+.mobile-dropdown a{
+    display:block;
+    padding:12px 0;
+
+    font-size:1rem;
+    color:#666;
+}

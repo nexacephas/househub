@@ -10,7 +10,11 @@ import "./Navbar.css";
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+const [openDropdown, setOpenDropdown] = useState(null);
 
+const toggleDropdown = (name) => {
+  setOpenDropdown(openDropdown === name ? null : name);
+};
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 80);
@@ -85,33 +89,80 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
 
-      <div className={menuOpen ? "mobile-menu active" : "mobile-menu"}>
+<div className={menuOpen ? "mobile-menu active" : "mobile-menu"}>
 
-        {navLinks.map((link) => (
+  {navLinks.map((item) => (
 
-          <NavLink
-            key={link.name}
-            to={link.path}
-            onClick={() => setMenuOpen(false)}
+    <div key={item.name} className="mobile-nav-item">
+
+      {item.children ? (
+        <>
+          <button
+            className="mobile-dropdown-btn"
+            onClick={() => toggleDropdown(item.name)}
           >
-            {link.name}
-          </NavLink>
+            <span>{item.name}</span>
 
-        ))}
+            <ChevronDown
+              size={18}
+              className={
+                openDropdown === item.name
+                  ? "rotate"
+                  : ""
+              }
+            />
+          </button>
 
-        <Link to="/login" onClick={() => setMenuOpen(false)}>
-          Login
-        </Link>
-
-        <Link
-          className="mobile-register"
-          to="/register"
+          <div
+            className={
+              openDropdown === item.name
+                ? "mobile-dropdown open"
+                : "mobile-dropdown"
+            }
+          >
+            {item.children.map((child) => (
+              <NavLink
+                key={child.name}
+                to={child.path}
+                onClick={() => {
+                  setMenuOpen(false);
+                  setOpenDropdown(null);
+                }}
+              >
+                {child.name}
+              </NavLink>
+            ))}
+          </div>
+        </>
+      ) : (
+        <NavLink
+          to={item.path}
           onClick={() => setMenuOpen(false)}
         >
-          Register
-        </Link>
+          {item.name}
+        </NavLink>
+      )}
 
-      </div>
+    </div>
+
+  ))}
+
+  <Link
+    to="/login"
+    onClick={() => setMenuOpen(false)}
+  >
+    Login
+  </Link>
+
+  <Link
+    className="mobile-register"
+    to="/register"
+    onClick={() => setMenuOpen(false)}
+  >
+    Register
+  </Link>
+
+</div>
     </header>
   );
 }
