@@ -19,14 +19,23 @@ export const navLinks = [
   ],
 },
 
-  {
-    name: "Agents",
-    children: [
-      { name: "Find an Agent", path: "/agents" },
-      { name: "Verified Agents", path: "/verified-agents" },
-      { name: "Become an Agent", path: "/become-agent" },
-    ],
-  },
+{
+  name: "Agents",
+  children: [
+    {
+      name: "Browse Agents",
+      path: "/agents",
+    },
+    {
+      name: "Verified Agents",
+      path: "/verified-agents",
+    },
+    {
+      name: "Become an Agent",
+      path: "/become-agent",
+    },
+  ],
+},
 
   {
     name: "List Property",

@@ -1,0 +1,6 @@
+@import "../Terms/Terms.css";
+
+
+.privacy-page{
+    background:var(--background);
+}

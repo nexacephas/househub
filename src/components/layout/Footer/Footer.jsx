@@ -1,7 +1,7 @@
 import "./Footer.css";
 import { NavLink } from "react-router-dom";
 import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
-
+import { Link } from "react-router-dom";
 import {
   FaFacebookF,
   FaInstagram,
@@ -95,19 +95,43 @@ export default function Footer() {
 
             <h4>Resources</h4>
 
-            <ul>
+          <ul>
 
-              <li><a href="#">Help Center</a></li>
+  <li>
+    <Link to="/help">
+      Help Center
+    </Link>
+  </li>
 
-              <li><a href="#">FAQs</a></li>
 
-              <li><a href="#">Privacy Policy</a></li>
+  <li>
+    <Link to="/faq">
+      FAQs
+    </Link>
+  </li>
 
-              <li><a href="#">Terms of Service</a></li>
 
-              <li><a href="#">Cookie Policy</a></li>
+  <li>
+    <Link to="/privacy">
+      Privacy Policy
+    </Link>
+  </li>
 
-            </ul>
+
+  <li>
+    <Link to="/terms">
+      Terms of Service
+    </Link>
+  </li>
+
+
+  <li>
+    <Link to="/cookies">
+      Cookie Policy
+    </Link>
+  </li>
+
+</ul>
 
           </div>
 

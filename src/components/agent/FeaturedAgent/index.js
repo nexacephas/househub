@@ -1,1 +1,1 @@
-export { default } from "./FeaturedAgents";
+export { default } from "./FeaturedAgent";

@@ -1,0 +1,90 @@
+export const featuredAgents = [
+  {
+    id: 1,
+    name: "Michael Johnson",
+    location: "Abuja",
+    company: "Prime Properties",
+    experience: "8 Years",
+    listings: 142,
+    rating: 4.9,
+    image: "https://i.pravatar.cc/400?img=11",
+  },
+  {
+    id: 2,
+    name: "Sarah Williams",
+    location: "Lagos",
+    company: "Urban Homes",
+    experience: "6 Years",
+    listings: 98,
+    rating: 4.8,
+    image: "https://i.pravatar.cc/400?img=5",
+  },
+  {
+    id: 3,
+    name: "David Okoro",
+    location: "Port Harcourt",
+    company: "Elite Realtors",
+    experience: "10 Years",
+    listings: 186,
+    rating: 5.0,
+    image: "https://i.pravatar.cc/400?img=15",
+  },
+  {
+    id: 4,
+    name: "Aisha Bello",
+    location: "Kano",
+    company: "Luxury Living",
+    experience: "7 Years",
+    listings: 115,
+    rating: 4.9,
+    image: "https://i.pravatar.cc/400?img=32",
+  },
+];
+
+export const allAgents = [
+  ...featuredAgents,
+
+  {
+    id: 5,
+    name: "Grace Eze",
+    location: "Enugu",
+    company: "HomeLink Realty",
+    experience: "5 Years",
+    listings: 74,
+    rating: 4.7,
+    image: "https://i.pravatar.cc/400?img=25",
+  },
+
+  {
+    id: 6,
+    name: "Ibrahim Musa",
+    location: "Kaduna",
+    company: "Capital Homes",
+    experience: "9 Years",
+    listings: 156,
+    rating: 4.9,
+    image: "https://i.pravatar.cc/400?img=17",
+  },
+
+  {
+    id: 7,
+    name: "Chioma Okafor",
+    location: "Owerri",
+    company: "Skyline Realtors",
+    experience: "4 Years",
+    listings: 82,
+    rating: 4.8,
+    image: "https://i.pravatar.cc/400?img=44",
+  },
+
+  {
+    id: 8,
+    name: "Samuel Adeyemi",
+    location: "Ibadan",
+    company: "Metro Properties",
+    experience: "11 Years",
+    listings: 203,
+    rating: 5.0,
+    image: "https://i.pravatar.cc/400?img=60",
+  },
+];
