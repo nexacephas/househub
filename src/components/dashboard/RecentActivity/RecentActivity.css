@@ -1,1 +1,68 @@
 /* RecentActivity Styles */
+.recent-activity{
+    background:var(--background);
+    border:1px solid var(--gray-200);
+    border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-sm);
+    padding:24px;
+}
+
+.recent-activity-header{
+    margin-bottom:20px;
+}
+
+.recent-activity-header h3{
+    color:var(--gray-900);
+}
+
+.recent-activity-list{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.activity-item{
+    display:flex;
+    gap:15px;
+    align-items:flex-start;
+}
+
+.activity-icon{
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    background:var(--gray-100);
+    color:var(--primary);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    flex-shrink:0;
+}
+
+.activity-content{
+    flex:1;
+}
+
+.activity-content h4{
+    font-size:.95rem;
+    color:var(--gray-900);
+    margin-bottom:4px;
+}
+
+.activity-content p{
+    color:var(--gray-500);
+    margin-bottom:6px;
+}
+
+.activity-content span{
+    font-size:.8rem;
+    color:var(--gray-400);
+}
+
+.empty-state{
+    color:var(--gray-500);
+    text-align:center;
+    padding:20px;
+}

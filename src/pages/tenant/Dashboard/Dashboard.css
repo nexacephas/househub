@@ -1,1 +1,43 @@
 /* Dashboard Page Styles */
+/* Dashboard Page Styles */
+.stats-section{
+    margin-bottom:30px;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:24px;
+}.dashboard-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 992px) {
+  .dashboard-row {
+    grid-template-columns: 1fr;
+  }
+}.profile-avatar-placeholder {
+  background: var(--primary);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+}.dashboard-row-two {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 992px) {
+  .dashboard-row-two {
+    grid-template-columns: 1fr;
+  }
+}.quick-actions-section {
+  margin-bottom: 30px;
+}

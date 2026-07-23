@@ -36,16 +36,20 @@ export const navLinks = [
     },
   ],
 },
-
-  {
-    name: "List Property",
-    children: [
-      { name: "List a Property", path: "/list-property" },
-      { name: "Landlord Dashboard", path: "/landlord" },
-      { name: "Agent Dashboard", path: "/agent" },
-    ],
-  },
-
+{
+  name: "List Property",
+  children: [
+    { name: "List a Property", path: "/list-property" },
+    {
+      name: "Landlord Dashboard",
+      path: "/login?redirect=/landlord",
+    },
+    {
+      name: "Agent Dashboard",
+      path: "/login?redirect=/agent",
+    },
+  ],
+},
 {
   name: "Resources",
   children: [

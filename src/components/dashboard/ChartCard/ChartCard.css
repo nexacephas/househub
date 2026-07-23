@@ -1,1 +1,51 @@
 /* ChartCard Styles */
+.chart-card {
+  background: var(--background);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 24px;
+  transition: var(--transition);
+}
+
+.chart-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.chart-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.chart-card-header h3 {
+  font-size: 1.2rem;
+  color: var(--gray-900);
+  margin-bottom: 4px;
+}
+
+.chart-card-header p {
+  color: var(--gray-500);
+  font-size: 0.9rem;
+}
+
+.chart-card-action {
+  display: flex;
+  align-items: center;
+}
+
+.chart-card-body {
+  width: 100%;
+  height: 350px;
+}
+
+@media (max-width: 768px) {
+  .chart-card {
+    padding: 20px;
+  }
+
+  .chart-card-body {
+    height: 280px;
+  }
+}
