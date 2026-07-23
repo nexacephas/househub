@@ -1,0 +1,212 @@
+.agent-hero{
+
+    position:relative;
+
+    min-height:65vh;
+
+    display:flex;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--secondary),
+        #1f2937
+    );
+
+}
+
+.agent-hero-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    radial-gradient(
+        circle at top right,
+        rgba(180,138,63,.25),
+        transparent 45%
+    );
+
+}
+
+.agent-hero .container{
+
+    width:min(1200px,92%);
+    margin:auto;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.agent-hero-content{
+
+    max-width:760px;
+
+    color:#fff;
+
+}
+
+.hero-tag{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 22px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.12);
+
+    border:1px solid rgba(255,255,255,.18);
+
+    margin-bottom:30px;
+
+    font-weight:600;
+
+}
+
+.hero-tag svg{
+
+    color:var(--primary);
+
+}
+
+.agent-hero-content h1{
+
+    font-size:clamp(3rem,6vw,5rem);
+
+    line-height:1.1;
+
+    margin-bottom:25px;
+
+}
+
+.agent-hero-content h1 span{
+
+    color:var(--primary);
+
+}
+
+.agent-hero-content p{
+
+    max-width:650px;
+
+    line-height:1.9;
+
+    color:rgba(255,255,255,.82);
+
+    margin-bottom:45px;
+
+    font-size:1.08rem;
+
+}
+
+.hero-actions{
+
+    display:flex;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+
+}
+
+.hero-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:18px 34px;
+
+    border-radius:50px;
+
+    font-weight:600;
+
+    transition:.35s;
+
+}
+
+.hero-btn.primary{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+.hero-btn.primary:hover{
+
+    transform:translateY(-4px);
+
+    background:var(--primary-dark);
+
+}
+
+.hero-btn.secondary{
+
+    color:white;
+
+    border:1px solid rgba(255,255,255,.3);
+
+}
+
+.hero-btn.secondary:hover{
+
+    background:rgba(255,255,255,.1);
+
+}
+
+@media(max-width:768px){
+
+.agent-hero{
+
+    min-height:55vh;
+
+    text-align:center;
+
+}
+
+.hero-actions{
+
+    justify-content:center;
+
+}
+
+.agent-hero-content p{
+
+    margin-inline:auto;
+
+}
+
+}
+
+@media(max-width:576px){
+
+.agent-hero-content h1{
+
+    font-size:2.6rem;
+
+}
+
+.hero-btn{
+
+    width:100%;
+
+    justify-content:center;
+
+}
+
+}
