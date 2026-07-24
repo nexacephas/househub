@@ -58,19 +58,18 @@
 /* ======================================================
    DARK OVERLAY
 ====================================================== */
-
-.hero-overlay{
-    position:absolute;
-    inset:0;
+.hero-overlay {
+    position: absolute;
+    inset: 0;
 
     background: linear-gradient(
-      rgba(7, 18, 45, 0.72),
-      rgba(7, 18, 45, 0.72)
+        rgba(7, 18, 45, 0.75) 0%,
+        rgba(7, 18, 45, 0.82) 50%,
+        rgba(7, 18, 45, 0.90) 100%
     );
 
-    z-index:3;
-
-    pointer-events:none;   /* ADD THIS */
+    z-index: 3;
+    pointer-events: none;
 }
 /* ======================================================
    CONTENT WRAPPER
@@ -371,7 +370,7 @@
 
 .search-field input::placeholder{
 
-    color:#888;
+    color:#000000;
 
 }
 

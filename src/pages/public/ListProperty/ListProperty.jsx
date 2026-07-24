@@ -1,7 +1,7 @@
 import "./ListProperty.css";
 
-import Navbar from "../../../components/layout/Navbar";
-import Footer from "../../../components/layout/Footer/Footer";
+/* import Navbar from "../../../components/layout/Navbar";
+import Footer from "../../../components/layout/Footer/Footer"; */
 
 import {
   Eye,
@@ -24,7 +24,7 @@ import { Link } from "react-router-dom";
 export default function ListProperty() {
   return (
     <>
-      <Navbar />
+{/*       <Navbar /> */}
 <section className="list-hero">
 
   <div className="container">
@@ -582,7 +582,7 @@ export default function ListProperty() {
   </div>
 
 </section>
-      <Footer />
+{/*       <Footer /> */}
     </>
   );
 }

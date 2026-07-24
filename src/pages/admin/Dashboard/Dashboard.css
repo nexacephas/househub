@@ -1,1 +1,24 @@
-/* Dashboard Page Styles */
+.dashboard-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.dashboard-row-two {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.quick-actions-section {
+  margin-bottom: 30px;
+}
+
+@media (max-width: 992px) {
+  .dashboard-row,
+  .dashboard-row-two {
+    grid-template-columns: 1fr;
+  }
+}

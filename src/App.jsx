@@ -39,6 +39,8 @@ import VerifyEmail from "./pages/auth/VerifyEmail";
 // ==============================
 import Dashboard from "./pages/landlord/Dashboard/Dashboard";
 import TenantDashboard from "./pages/tenant/Dashboard/Dashboard";
+import AgentDashboard from "./pages/agent/Dashboard/Dashboard";
+import AdminDashboard from "./pages/admin/Dashboard/Dashboard";
 function App() {
   return (
     <BrowserRouter>
@@ -70,7 +72,6 @@ function App() {
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/cookies" element={<CookiePolicy />} />
         </Route>
-
         {/* ==========================
             Authentication Routes
         ========================== */}
@@ -88,9 +89,24 @@ function App() {
         <Route path="/landlord">
           <Route path="dashboard" element={<Dashboard />} />
         </Route>
-          <Route path="/tenant">
-  <Route path="dashboard" element={<TenantDashboard />} />
+
+        {/* ==========================
+            Tenant Routes
+        ========================== */}
+        <Route path="/tenant">
+          <Route path="dashboard" element={<TenantDashboard />} />
+        </Route>
+
+        {/* ==========================
+            Agent Routes
+        ========================== */}
+        <Route path="/agent">
+          <Route path="dashboard" element={<AgentDashboard />} />
+        </Route>
+        <Route path="/admin">
+  <Route path="dashboard" element={<AdminDashboard />} />
 </Route>
+
       </Routes>
     </BrowserRouter>
   );
