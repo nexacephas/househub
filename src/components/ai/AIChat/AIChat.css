@@ -1,0 +1,200 @@
+.ai-chat-window{
+
+    position:fixed;
+    right: 24px;
+    bottom: 100px;
+
+    width: 400px;
+    height: min(700px, 80vh);
+
+    background:var(--background);
+
+    border-radius:var(--radius-lg);
+
+    box-shadow:var(--shadow-lg);
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+    z-index:9999;
+
+}
+.ai-chat-header{
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary-dark)
+    );
+
+    color:var(--white);
+
+    padding:20px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+}
+
+.ai-header-left{
+
+    display:flex;
+
+    gap:15px;
+
+}
+
+.ai-header-left h3{
+
+    margin:0;
+
+    font-size:18px;
+
+}
+
+.ai-header-left p{
+
+    margin:6px 0;
+
+    font-size:13px;
+
+    opacity:.9;
+
+}
+
+.ai-header-left span{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    font-size:12px;
+
+}
+
+.status-dot{
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:#22c55e;
+}
+.ai-chat-brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.ai-avatar{
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.15);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:24px;
+
+}
+
+.ai-chat-brand h3{
+
+    margin:0;
+
+}
+
+.ai-chat-brand span{
+
+    font-size:13px;
+
+    opacity:.8;
+
+}
+
+.ai-chat-header button{
+
+    background:none;
+
+    border:none;
+
+    color:var(--white);
+
+    cursor:pointer;
+
+    font-size:24px;
+
+}
+
+.ai-chat-body{
+    flex: 1;
+
+    overflow-y: auto;
+
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 18px;
+
+    background: var(--surface);
+}
+
+@media(max-width:768px){
+
+.ai-chat-window{
+
+left:15px;
+
+right:15px;
+
+width:auto;
+
+height:75vh;
+
+bottom:90px;
+
+}
+
+}.ai-chat-body::-webkit-scrollbar{
+
+width:6px;
+
+}
+
+.ai-chat-body::-webkit-scrollbar-thumb{
+
+background:var(--gray-300);
+
+border-radius:20px;
+
+}
+
+.ai-chat-body::-webkit-scrollbar-thumb:hover{
+
+background:var(--primary);
+
+}

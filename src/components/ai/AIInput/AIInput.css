@@ -1,0 +1,45 @@
+.ai-input{
+
+display:flex;
+
+padding:18px;
+
+gap:10px;
+
+background:var(--background);
+
+border-top:1px solid var(--gray-200);
+
+}
+
+.ai-input{
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 18px;
+
+    background: var(--background);
+
+    border-top: 1px solid var(--gray-200);
+}
+.ai-input button{
+
+width:50px;
+
+border:none;
+
+border-radius:50%;
+
+background:var(--primary);
+
+color:var(--white);
+
+cursor:pointer;
+
+font-size:20px;
+
+}
