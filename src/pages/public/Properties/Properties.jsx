@@ -2,7 +2,7 @@ import "./Properties.css";
 
 import Navbar from "../../../components/layout/Navbar";
 
-import Footer from "../../../components/layout/Footer";
+/* import Footer from "../../../components/layout/Footer"; */
 
 import PropertyHero from "../../../components/property/PropertyHero";
 import PropertySearch from "../../../components/property/PropertySearch";
@@ -38,8 +38,8 @@ export default function Properties() {
         <CTASection />
 
       </main>
-
-      <Footer />
+{/*  */}
+{/*       <Footer /> */}
     </>
   );
 }
