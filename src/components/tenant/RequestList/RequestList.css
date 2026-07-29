@@ -1,0 +1,45 @@
+.request-list{
+    background:#fff;
+    border:1px solid #e5e7eb;
+    border-radius:18px;
+    padding:24px;
+}
+
+.request-list-header{
+    margin-bottom:24px;
+}
+
+.request-list-header h2{
+    color:#111827;
+    margin-bottom:6px;
+}
+
+.request-list-header p{
+    color:#6b7280;
+}
+
+.request-cards{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.request-empty{
+    padding:60px;
+    text-align:center;
+    color:#6b7280;
+    border:2px dashed #d1d5db;
+    border-radius:14px;
+}
+
+@media(max-width:768px){
+
+.request-list{
+    padding:20px;
+}
+
+.request-empty{
+    padding:40px 20px;
+}
+
+}

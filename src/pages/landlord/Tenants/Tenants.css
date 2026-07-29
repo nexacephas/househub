@@ -1,1 +1,21 @@
-/* Tenants Page Styles */
+.tenants-page{
+    padding:32px;
+}
+
+.page-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.page-header h1{
+    font-size:34px;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+.page-header p{
+    color:#777;
+    font-size:15px;
+}

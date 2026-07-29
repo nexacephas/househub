@@ -1,0 +1,85 @@
+.message-input{
+    display:flex;
+    align-items:flex-end;
+    gap:12px;
+    padding:18px 20px;
+    background:#fff;
+    border-top:1px solid #e5e7eb;
+}
+
+.message-input textarea{
+    flex:1;
+    resize:none;
+    border:1px solid #d1d5db;
+    border-radius:14px;
+    padding:12px 16px;
+    outline:none;
+    font-size:.95rem;
+    font-family:inherit;
+    min-height:48px;
+    max-height:140px;
+    transition:.25s;
+}
+
+.message-input textarea:focus{
+    border-color:#2563eb;
+}
+
+.input-icon{
+    width:44px;
+    height:44px;
+    border:none;
+    border-radius:12px;
+    background:#f3f4f6;
+    color:#4b5563;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.input-icon:hover{
+    background:#e5e7eb;
+}
+
+.send-btn{
+    width:48px;
+    height:48px;
+    border:none;
+    border-radius:12px;
+    background:#2563eb;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.send-btn:hover{
+    background:#1d4ed8;
+}
+
+@media(max-width:768px){
+
+.message-input{
+    gap:8px;
+    padding:14px;
+}
+
+.input-icon{
+    width:40px;
+    height:40px;
+}
+
+.send-btn{
+    width:44px;
+    height:44px;
+}
+
+.message-input textarea{
+    min-height:44px;
+}
+
+}

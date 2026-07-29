@@ -1,0 +1,40 @@
+.payment-chart{
+    background:#fff;
+    border:1px solid #e5e7eb;
+    border-radius:18px;
+    padding:24px;
+}
+
+.chart-header{
+    margin-bottom:20px;
+}
+
+.chart-header h2{
+    color:#111827;
+    margin-bottom:6px;
+}
+
+.chart-header p{
+    color:#6b7280;
+}
+
+.chart-wrapper{
+    width:100%;
+    height:350px;
+}
+
+.recharts-tooltip-wrapper{
+    border-radius:12px;
+}
+
+@media(max-width:768px){
+
+.payment-chart{
+    padding:20px;
+}
+
+.chart-wrapper{
+    height:280px;
+}
+
+}

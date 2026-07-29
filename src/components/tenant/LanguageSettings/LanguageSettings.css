@@ -1,0 +1,46 @@
+.language-settings{
+    background:#fff;
+    border:1px solid #e5e7eb;
+    border-radius:18px;
+    padding:24px;
+}
+
+.language-settings form{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.form-group label{
+    font-weight:600;
+    color:#374151;
+}
+
+.form-group select{
+    height:48px;
+    border:1px solid #d1d5db;
+    border-radius:12px;
+    padding:0 14px;
+    outline:none;
+    font-size:.95rem;
+    background:#fff;
+    transition:.3s;
+}
+
+.form-group select:focus{
+    border-color:#2563eb;
+}
+
+@media(max-width:768px){
+
+.language-settings{
+    padding:20px;
+}
+
+}

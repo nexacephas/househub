@@ -1,0 +1,155 @@
+/* ===========================
+   Tenant Form Page
+=========================== */
+
+.tenant-form-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.page-header {
+  margin-bottom: 30px;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.page-header p {
+  color: #6b7280;
+  font-size: 15px;
+}
+
+/* ===========================
+   Form
+=========================== */
+
+.tenant-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* ===========================
+   Sections
+=========================== */
+
+.tenant-form section {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
+}
+
+.tenant-form section h2 {
+  margin-bottom: 22px;
+  font-size: 1.15rem;
+  color: #111827;
+  font-weight: 600;
+}
+
+/* ===========================
+   Grid Layouts
+=========================== */
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+/* ===========================
+   Inputs
+=========================== */
+
+.tenant-form input,
+.tenant-form textarea,
+.tenant-form select {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  font-size: 15px;
+  outline: none;
+  background: #fff;
+  transition: 0.3s;
+  margin-bottom: 16px;
+}
+
+.tenant-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.tenant-form input:focus,
+.tenant-form textarea:focus,
+.tenant-form select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+/* ===========================
+   Button
+=========================== */
+
+.submit-btn {
+  align-self: flex-end;
+  border: none;
+  border-radius: 12px;
+  background: #2563eb;
+  color: white;
+  padding: 15px 34px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+.submit-btn:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media (max-width: 992px) {
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .tenant-form-page {
+    padding: 20px;
+  }
+
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+
+  .tenant-form section {
+    padding: 20px;
+  }
+}

@@ -1,0 +1,27 @@
+.my-property-page{
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+}
+
+.property-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:30px;
+    align-items:start;
+}
+
+.property-left,
+.property-right{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+}
+
+@media(max-width:1024px){
+
+.property-grid{
+    grid-template-columns:1fr;
+}
+
+}

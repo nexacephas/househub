@@ -1,5 +1,7 @@
 import "./PropertyAgent.css";
 
+import { useState } from "react";
+
 import {
   BadgeCheck,
   Phone,
@@ -12,7 +14,53 @@ import {
 
 import { FaWhatsapp } from "react-icons/fa";
 
-export default function PropertyAgent() {
+import toast from "react-hot-toast";
+
+import { createInquiry } from "../../../services/inquiry.service";
+
+export default function PropertyAgent({ property }) {
+
+  const landlord = property.owner || {};
+
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    try {
+      setLoading(true);
+
+      await createInquiry(property._id, {
+        subject: "Property Inquiry",
+        message: form.message,
+      });
+
+      toast.success("Message sent successfully.");
+
+      setForm({
+        name: "",
+        email: "",
+        message: "",
+      });
+
+    } catch (error) {
+
+      toast.error(
+        error.response?.data?.message ||
+          "Unable to send inquiry."
+      );
+
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <section className="property-agent">
 
@@ -20,13 +68,16 @@ export default function PropertyAgent() {
 
         <div className="agent-layout">
 
-          {/* Left */}
+          {/* LEFT */}
 
           <div className="agent-card">
 
             <img
-              src="https://i.pravatar.cc/300?img=32"
-              alt="Agent"
+              src={
+                landlord.avatar ||
+                "https://i.pravatar.cc/300"
+              }
+              alt={landlord.firstName}
             />
 
             <div className="agent-info">
@@ -35,34 +86,46 @@ export default function PropertyAgent() {
 
                 <BadgeCheck size={18} />
 
-                Verified Agent
+                Verified Landlord
 
               </span>
 
-              <h2>Daniel Musa</h2>
+              <h2>
+                {landlord.firstName} {landlord.lastName}
+              </h2>
 
-              <p>
-                Premium Real Estate Consultant
-              </p>
+              <p>Property Owner</p>
 
               <div className="agent-stats">
 
                 <div>
+
                   <Star size={18} />
-                  <strong>4.9</strong>
+
+                  <strong>5.0</strong>
+
                   <small>Rating</small>
+
                 </div>
 
                 <div>
+
                   <Building2 size={18} />
-                  <strong>132</strong>
+
+                  <strong>--</strong>
+
                   <small>Listings</small>
+
                 </div>
 
                 <div>
+
                   <Clock3 size={18} />
-                  <strong>15 mins</strong>
+
+                  <strong>Fast</strong>
+
                   <small>Response</small>
+
                 </div>
 
               </div>
@@ -71,65 +134,101 @@ export default function PropertyAgent() {
 
           </div>
 
-          {/* Right */}
+          {/* RIGHT */}
 
           <div className="contact-card">
 
-            <h3>Contact Agent</h3>
+            <h3>Contact Landlord</h3>
 
-            <button className="call-btn">
+            {landlord.phone && (
+              <a
+                href={`tel:${landlord.phone}`}
+                className="call-btn"
+              >
+                <Phone size={18} />
+                Call
+              </a>
+            )}
 
-              <Phone size={18} />
+            {landlord.phone && (
+              <a
+                href={`https://wa.me/${landlord.phone}`}
+                target="_blank"
+                rel="noreferrer"
+                className="whatsapp-btn"
+              >
+                <FaWhatsapp />
+                WhatsApp
+              </a>
+            )}
 
-              Call Agent
+            {landlord.email && (
+              <a
+                href={`mailto:${landlord.email}`}
+                className="email-btn"
+              >
+                <Mail size={18} />
+                Email
+              </a>
+            )}
 
-            </button>
-
-            <button className="whatsapp-btn">
-
-              <FaWhatsapp />
-
-              WhatsApp
-
-            </button>
-
-            <button className="email-btn">
-
-              <Mail size={18} />
-
-              Send Email
-
-            </button>
-
-            <button className="inspection-btn">
-
+            <button
+              className="inspection-btn"
+            >
               <Calendar size={18} />
 
               Book Inspection
 
             </button>
 
-            <form className="agent-form">
+            <form
+              className="agent-form"
+              onSubmit={handleSubmit}
+            >
 
               <input
                 type="text"
                 placeholder="Your Name"
+                value={form.name}
+                onChange={(e) =>
+                  setForm({
+                    ...form,
+                    name: e.target.value,
+                  })
+                }
               />
 
               <input
                 type="email"
                 placeholder="Email Address"
+                value={form.email}
+                onChange={(e) =>
+                  setForm({
+                    ...form,
+                    email: e.target.value,
+                  })
+                }
               />
 
               <textarea
                 rows="5"
                 placeholder="I'm interested in this property..."
+                value={form.message}
+                onChange={(e) =>
+                  setForm({
+                    ...form,
+                    message: e.target.value,
+                  })
+                }
               />
 
-              <button type="submit">
-
-                Send Message
-
+              <button
+                type="submit"
+                disabled={loading}
+              >
+                {loading
+                  ? "Sending..."
+                  : "Send Message"}
               </button>
 
             </form>

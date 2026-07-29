@@ -1,0 +1,124 @@
+
+
+
+
+
+
+
+
+
+.payment-table-wrapper{
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.05);
+}
+
+.payment-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.payment-table th{
+    background:#f9fafb;
+    text-align:left;
+    padding:18px;
+    font-size:.9rem;
+    color:#6b7280;
+    font-weight:600;
+}
+
+.payment-table td{
+    padding:18px;
+    border-top:1px solid #f3f4f6;
+}
+
+.payment-table tr:hover{
+    background:#fafafa;
+}
+
+.payment-status{
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:.82rem;
+    font-weight:600;
+    text-transform:capitalize;
+}
+
+.payment-status.paid{
+    background:#dcfce7;
+    color:#16a34a;
+}
+
+.payment-status.pending{
+    background:#fef3c7;
+    color:#ca8a04;
+}
+
+.payment-status.overdue{
+    background:#fee2e2;
+    color:#dc2626;
+}
+
+.payment-actions{
+    display:flex;
+    gap:10px;
+}
+
+.payment-actions a,
+.payment-actions button{
+    width:38px;
+    height:38px;
+    border:none;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    background:#f3f4f6;
+    color:#374151;
+    transition:.25s;
+}
+
+.payment-actions a{
+    text-decoration:none;
+}
+
+.payment-actions a:hover,
+.payment-actions button:hover{
+    background:#4f46e5;
+    color:#fff;
+}
+
+.payment-loading,
+.payment-empty{
+    background:#fff;
+    padding:60px;
+    text-align:center;
+    border-radius:18px;
+}
+
+.payment-empty svg{
+    color:#9ca3af;
+    margin-bottom:16px;
+}
+
+.payment-empty h2{
+    margin-bottom:8px;
+}
+
+.payment-empty p{
+    color:#6b7280;
+}
+
+@media(max-width:992px){
+
+.payment-table-wrapper{
+    overflow-x:auto;
+}
+
+.payment-table{
+    min-width:900px;
+}
+
+}

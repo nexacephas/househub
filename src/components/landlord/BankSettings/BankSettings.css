@@ -1,0 +1,96 @@
+.bank-settings{
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+}
+
+.bank-header{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.bank-header svg{
+    color:#2563eb;
+}
+
+.bank-header h2{
+    margin-bottom:5px;
+}
+
+.bank-header p{
+    color:#6b7280;
+}
+
+.bank-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.form-group label{
+    font-weight:600;
+}
+
+.form-group input,
+.form-group select{
+    padding:12px;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+    outline:none;
+    font-size:.95rem;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+    border-color:#2563eb;
+}
+
+.checkbox-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.checkbox-row input{
+    width:18px;
+    height:18px;
+}
+
+.save-btn{
+    align-self:flex-end;
+    padding:14px 28px;
+    background:#2563eb;
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.save-btn:hover{
+    background:#1d4ed8;
+}
+
+@media(max-width:768px){
+
+.bank-grid{
+    grid-template-columns:1fr;
+}
+
+.bank-header{
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.save-btn{
+    width:100%;
+}
+
+}

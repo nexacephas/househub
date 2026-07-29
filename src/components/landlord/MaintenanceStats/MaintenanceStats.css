@@ -1,0 +1,51 @@
+.maintenance-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  gap: 24px;
+  margin-bottom: 35px;
+}
+
+.maintenance-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,.05);
+  transition: .25s;
+}
+
+.maintenance-card:hover {
+  transform: translateY(-4px);
+}
+
+.maintenance-card-info h4 {
+  font-size: .95rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.maintenance-card-info h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.maintenance-card-icon {
+  width: 65px;
+  height: 65px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+@media(max-width:768px){
+
+.maintenance-stats{
+grid-template-columns:1fr;
+}
+
+}

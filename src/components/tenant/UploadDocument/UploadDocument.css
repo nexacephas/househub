@@ -1,0 +1,153 @@
+.upload-document{
+    background:#fff;
+    border:1px solid #e5e7eb;
+    border-radius:18px;
+    padding:24px;
+}
+
+.upload-header{
+    margin-bottom:24px;
+}
+
+.upload-header h2{
+    color:#111827;
+    margin-bottom:6px;
+}
+
+.upload-header p{
+    color:#6b7280;
+}
+
+.upload-document form{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.form-group label{
+    font-weight:600;
+    color:#374151;
+}
+
+.form-group input,
+.form-group select{
+    height:48px;
+    border:1px solid #d1d5db;
+    border-radius:12px;
+    padding:0 14px;
+    outline:none;
+    font-size:.95rem;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+    border-color:#2563eb;
+}
+
+.upload-area{
+    border:2px dashed #93c5fd;
+    border-radius:14px;
+    padding:40px 20px;
+    text-align:center;
+    cursor:pointer;
+    transition:.3s;
+    background:#f8fbff;
+}
+
+.upload-area:hover{
+    border-color:#2563eb;
+    background:#eff6ff;
+}
+
+.upload-area svg{
+    color:#2563eb;
+    margin-bottom:12px;
+}
+
+.upload-area h3{
+    color:#111827;
+    margin-bottom:6px;
+}
+
+.upload-area p{
+    color:#6b7280;
+}
+
+.selected-file{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px;
+    border:1px solid #e5e7eb;
+    border-radius:12px;
+    background:#f9fafb;
+}
+
+.file-info{
+    display:flex;
+    gap:12px;
+    align-items:center;
+}
+
+.file-info svg{
+    color:#2563eb;
+}
+
+.file-info strong{
+    display:block;
+    color:#111827;
+}
+
+.file-info small{
+    color:#6b7280;
+}
+
+.selected-file button{
+    width:38px;
+    height:38px;
+    border:none;
+    border-radius:10px;
+    background:#fee2e2;
+    color:#dc2626;
+    cursor:pointer;
+}
+
+.upload-btn{
+    height:50px;
+    border:none;
+    border-radius:12px;
+    background:#2563eb;
+    color:#fff;
+    font-size:1rem;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.upload-btn:hover{
+    background:#1d4ed8;
+}
+
+@media(max-width:768px){
+
+.upload-document{
+    padding:20px;
+}
+
+.upload-area{
+    padding:30px 16px;
+}
+
+.selected-file{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:16px;
+}
+
+}

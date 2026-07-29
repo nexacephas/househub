@@ -1,0 +1,48 @@
+.payment-filters{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:18px;
+    margin-bottom:30px;
+}
+
+.search-box{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#fff;
+    padding:0 16px;
+    border-radius:12px;
+    border:1px solid #e5e7eb;
+}
+
+.search-box input{
+    width:100%;
+    border:none;
+    outline:none;
+    background:transparent;
+    padding:14px 0;
+    font-size:.95rem;
+}
+
+.payment-filters select,
+.payment-filters input[type="number"]{
+    border:1px solid #e5e7eb;
+    border-radius:12px;
+    padding:14px;
+    font-size:.95rem;
+    background:#fff;
+    outline:none;
+}
+
+.payment-filters select:focus,
+.payment-filters input:focus{
+    border-color:#4f46e5;
+}
+
+@media(max-width:900px){
+
+.payment-filters{
+    grid-template-columns:1fr;
+}
+
+}

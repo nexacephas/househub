@@ -1,0 +1,144 @@
+.receipt-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+    padding:20px;
+}
+
+.receipt-modal{
+    width:100%;
+    max-width:600px;
+    background:#fff;
+    border-radius:20px;
+    padding:35px;
+    position:relative;
+    animation:popup .3s ease;
+}
+
+@keyframes popup{
+    from{
+        transform:translateY(30px);
+        opacity:0;
+    }
+    to{
+        transform:translateY(0);
+        opacity:1;
+    }
+}
+
+.close-btn{
+    position:absolute;
+    top:18px;
+    right:18px;
+    border:none;
+    background:#f3f4f6;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    cursor:pointer;
+}
+
+.receipt-header{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.receipt-header h1{
+    color:#2563eb;
+    margin-bottom:6px;
+}
+
+.receipt-header p{
+    color:#6b7280;
+}
+
+.receipt-success{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.receipt-success svg{
+    color:#22c55e;
+    margin-bottom:12px;
+}
+
+.receipt-info{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+.receipt-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 0;
+    border-bottom:1px solid #f3f4f6;
+}
+
+.receipt-row span{
+    color:#6b7280;
+}
+
+.receipt-row strong{
+    color:#111827;
+}
+
+.total{
+    font-size:1.1rem;
+    font-weight:700;
+}
+
+.receipt-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin-top:30px;
+}
+
+.receipt-actions button{
+    border:none;
+    padding:14px;
+    border-radius:12px;
+    cursor:pointer;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.download-receipt{
+    background:#2563eb;
+    color:#fff;
+}
+
+.download-receipt:hover{
+    background:#1d4ed8;
+}
+
+.print-receipt{
+    background:#f3f4f6;
+    color:#111827;
+}
+
+.print-receipt:hover{
+    background:#e5e7eb;
+}
+
+@media(max-width:768px){
+
+.receipt-modal{
+    padding:25px;
+}
+
+.receipt-actions{
+    grid-template-columns:1fr;
+}
+
+}

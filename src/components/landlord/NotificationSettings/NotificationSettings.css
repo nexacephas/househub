@@ -1,0 +1,89 @@
+.notification-settings{
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+}
+
+.notification-header{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.notification-header svg{
+    color:#2563eb;
+}
+
+.notification-header h2{
+    margin-bottom:5px;
+}
+
+.notification-header p{
+    color:#6b7280;
+}
+
+.notification-section{
+    background:#f9fafb;
+    border-radius:12px;
+    padding:20px;
+}
+
+.notification-section h3{
+    margin-bottom:20px;
+    color:#111827;
+}
+
+.toggle-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 0;
+    border-bottom:1px solid #e5e7eb;
+}
+
+.toggle-row:last-child{
+    border-bottom:none;
+}
+
+.toggle-row span{
+    font-weight:500;
+    color:#374151;
+}
+
+.toggle-row input{
+    width:20px;
+    height:20px;
+    cursor:pointer;
+}
+
+.save-btn{
+    align-self:flex-end;
+    padding:14px 30px;
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.save-btn:hover{
+    background:#1d4ed8;
+}
+
+@media(max-width:768px){
+
+.notification-header{
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.toggle-row{
+    gap:20px;
+}
+
+.save-btn{
+    width:100%;
+}
+
+}

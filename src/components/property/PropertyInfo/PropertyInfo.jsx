@@ -1,5 +1,7 @@
 import "./PropertyInfo.css";
 
+import { useState } from "react";
+
 import {
   BedDouble,
   Bath,
@@ -13,15 +15,64 @@ import {
   BadgeCheck,
 } from "lucide-react";
 
-export default function PropertyInfo() {
+import toast from "react-hot-toast";
+
+import {
+  addFavorite,
+} from "../../../services/favorite.service";
+
+import {
+  createInquiry,
+} from "../../../services/inquiry.service";
+
+export default function PropertyInfo({ property }) {
+
+  const [loading, setLoading] = useState(false);
+
+  const saveProperty = async () => {
+    try {
+      setLoading(true);
+
+      await addFavorite(property._id);
+
+      toast.success("Property added to favorites.");
+    } catch (error) {
+      toast.error(
+        error.response?.data?.message ||
+          "Unable to save property."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const contactLandlord = async () => {
+    try {
+      setLoading(true);
+
+      await createInquiry(property._id, {
+        subject: "Interested in this property",
+        message:
+          "Hello, I would like to schedule a viewing.",
+      });
+
+      toast.success("Inquiry sent successfully.");
+    } catch (error) {
+      toast.error(
+        error.response?.data?.message ||
+          "Unable to send inquiry."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section className="property-info">
 
       <div className="container">
 
         <div className="info-layout">
-
-          {/* LEFT */}
 
           <div className="info-content">
 
@@ -33,29 +84,31 @@ export default function PropertyInfo() {
 
                   <Home size={16} />
 
-                  Apartment
+                  {property.propertyType}
 
                 </span>
 
-                <h2>Luxury 3 Bedroom Apartment</h2>
+                <h2>{property.title}</h2>
 
                 <p>
 
                   <MapPin size={16} />
 
-                  Wuse 2, Abuja, Nigeria
+                  {property.address}, {property.city}, {property.state}
 
                 </p>
 
               </div>
 
-              <div className="verified-badge">
+              {property.isVerified && (
+                <div className="verified-badge">
 
-                <BadgeCheck size={18} />
+                  <BadgeCheck size={18} />
 
-                Verified
+                  Verified
 
-              </div>
+                </div>
+              )}
 
             </div>
 
@@ -64,7 +117,9 @@ export default function PropertyInfo() {
               <div>
 
                 <BedDouble size={22} />
-                <strong>3</strong>
+
+                <strong>{property.bedrooms}</strong>
+
                 <span>Bedrooms</span>
 
               </div>
@@ -72,7 +127,9 @@ export default function PropertyInfo() {
               <div>
 
                 <Bath size={22} />
-                <strong>4</strong>
+
+                <strong>{property.bathrooms}</strong>
+
                 <span>Bathrooms</span>
 
               </div>
@@ -80,7 +137,9 @@ export default function PropertyInfo() {
               <div>
 
                 <Car size={22} />
-                <strong>2</strong>
+
+                <strong>-</strong>
+
                 <span>Parking</span>
 
               </div>
@@ -88,8 +147,10 @@ export default function PropertyInfo() {
               <div>
 
                 <Maximize size={22} />
-                <strong>320</strong>
-                <span>sqm</span>
+
+                <strong>{property.propertyType}</strong>
+
+                <span>Type</span>
 
               </div>
 
@@ -99,34 +160,31 @@ export default function PropertyInfo() {
 
               <h3>Property Description</h3>
 
-              <p>
-                Experience luxury living in the heart of Abuja.
-                This beautifully finished apartment offers spacious
-                bedrooms, modern bathrooms, premium finishing,
-                24-hour security, uninterrupted power supply,
-                water treatment, ample parking and close proximity
-                to shopping malls, schools and major road networks.
-              </p>
+              <p>{property.description}</p>
 
             </div>
 
             <div className="highlights">
 
-              <h3>Highlights</h3>
+              <h3>Amenities</h3>
 
               <ul>
 
-                <li>24 Hours Electricity</li>
+                {property.amenities?.length ? (
 
-                <li>Security Gate</li>
+                  property.amenities.map((item) => (
 
-                <li>Swimming Pool</li>
+                    <li key={item}>
+                      {item}
+                    </li>
 
-                <li>Gym</li>
+                  ))
 
-                <li>Fiber Internet</li>
+                ) : (
 
-                <li>Smart Home Features</li>
+                  <li>No amenities listed.</li>
+
+                )}
 
               </ul>
 
@@ -134,31 +192,43 @@ export default function PropertyInfo() {
 
           </div>
 
-          {/* RIGHT */}
-
           <aside className="price-card">
 
             <h2>
 
-              ₦2,500,000
+              ₦{property.price.toLocaleString()}
 
-              <span>/year</span>
+              {property.purpose === "rent" && (
+                <span>/month</span>
+              )}
 
             </h2>
 
-            <button className="contact-btn">
+            <button
+              className="contact-btn"
+              onClick={contactLandlord}
+              disabled={loading}
+            >
 
-              Contact Agent
+              Contact Landlord
 
             </button>
 
-            <button className="schedule-btn">
+            <button
+              className="schedule-btn"
+              onClick={contactLandlord}
+              disabled={loading}
+            >
 
               Schedule Inspection
 
             </button>
 
-            <button className="save-btn">
+            <button
+              className="save-btn"
+              onClick={saveProperty}
+              disabled={loading}
+            >
 
               <Heart size={18} />
 
@@ -172,7 +242,9 @@ export default function PropertyInfo() {
 
                 <Calendar size={18} />
 
-                Listed: 12 Jul 2026
+                {new Date(
+                  property.createdAt
+                ).toLocaleDateString()}
 
               </div>
 
@@ -180,7 +252,7 @@ export default function PropertyInfo() {
 
                 <Eye size={18} />
 
-                1,245 Views
+                {property.views} Views
 
               </div>
 

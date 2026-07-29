@@ -1,0 +1,46 @@
+.tenant-documents-page{
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+}
+
+.documents-header h1{
+    font-size:2rem;
+    color:#111827;
+    margin-bottom:8px;
+}
+
+.documents-header p{
+    color:#6b7280;
+    max-width:700px;
+}
+
+.documents-grid{
+    display:grid;
+    grid-template-columns:380px 1fr;
+    gap:24px;
+    align-items:start;
+}
+
+.documents-left,
+.documents-right{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+}
+
+@media(max-width:1100px){
+
+.documents-grid{
+    grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:768px){
+
+.documents-header h1{
+    font-size:1.7rem;
+}
+
+}

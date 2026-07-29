@@ -59,12 +59,12 @@ export const sidebarMenus = {
     },
     {
       name: "My Property",
-      path: "/tenant/property",
+      path: "/tenant/my-property",
       icon: FiHome,
     },
     {
-      name: "Rent",
-      path: "/tenant/rent",
+      name: "Payments",
+      path: "/tenant/payments",
       icon: FiDollarSign,
     },
     {

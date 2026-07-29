@@ -1,0 +1,141 @@
+.request-card{
+    background:#fff;
+    border:1px solid #e5e7eb;
+    border-radius:16px;
+    padding:22px;
+    transition:.3s;
+}
+
+.request-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 24px rgba(0,0,0,.08);
+}
+
+.request-card-top{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    align-items:flex-start;
+}
+
+.request-card-top h3{
+    color:#111827;
+    margin-bottom:10px;
+    font-size:1.1rem;
+}
+
+.category{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    color:#6b7280;
+    font-size:.9rem;
+}
+
+.priority{
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:.8rem;
+    font-weight:600;
+}
+
+.priority.low{
+    background:#dcfce7;
+    color:#15803d;
+}
+
+.priority.medium{
+    background:#dbeafe;
+    color:#2563eb;
+}
+
+.priority.high{
+    background:#fef3c7;
+    color:#b45309;
+}
+
+.priority.emergency{
+    background:#fee2e2;
+    color:#dc2626;
+}
+
+.request-meta{
+    display:flex;
+    justify-content:space-between;
+    margin:22px 0;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.request-meta div{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:#6b7280;
+}
+
+.status{
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:.85rem;
+    font-weight:600;
+}
+
+.status.pending{
+    background:#fef3c7;
+    color:#b45309;
+}
+
+.status.in-progress{
+    background:#dbeafe;
+    color:#2563eb;
+}
+
+.status.completed{
+    background:#dcfce7;
+    color:#15803d;
+}
+
+.request-footer{
+    display:flex;
+    justify-content:flex-end;
+}
+
+.details-btn{
+    border:none;
+    background:#2563eb;
+    color:#fff;
+    padding:12px 18px;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.details-btn:hover{
+    background:#1d4ed8;
+}
+
+@media(max-width:768px){
+
+.request-card-top{
+    flex-direction:column;
+}
+
+.request-meta{
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.request-footer{
+    justify-content:stretch;
+}
+
+.details-btn{
+    width:100%;
+    justify-content:center;
+}
+
+}

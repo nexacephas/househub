@@ -1,6 +1,6 @@
 import "./PropertyGallery.css";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import {
   Heart,
@@ -9,70 +9,69 @@ import {
   Expand,
 } from "lucide-react";
 
-export default function PropertyGallery() {
+const FALLBACK =
+  "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200";
 
-  const images = [
-
-    "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200",
-
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0?w=1200",
-
-    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200",
-
-    "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=1200",
-
-    "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200"
-
-  ];
+export default function PropertyGallery({ property }) {
+  const images =
+    property.images?.length > 0
+      ? property.images.map((img) => img.url)
+      : [FALLBACK];
 
   const [activeImage, setActiveImage] = useState(images[0]);
 
+  useEffect(() => {
+    setActiveImage(images[0]);
+  }, [property]);
+
+  const shareProperty = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: property.title,
+          text: property.description,
+          url: window.location.href,
+        });
+      } catch (err) {}
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert("Property link copied.");
+    }
+  };
+
   return (
-
     <section className="property-gallery">
-
       <div className="container">
 
         <div className="gallery-top">
 
           <div className="gallery-title">
 
-            <span className="verified">
+            {property.isVerified && (
+              <span className="verified">
+                ✓ Verified Property
+              </span>
+            )}
 
-              ✓ Verified Property
-
-            </span>
-
-            <h1>
-
-              Luxury 3 Bedroom Apartment
-
-            </h1>
+            <h1>{property.title}</h1>
 
             <p>
-
-              Wuse 2, Abuja, Nigeria
-
+              {property.address}, {property.city},{" "}
+              {property.state}
             </p>
 
           </div>
 
           <div className="gallery-actions">
 
-            <button>
-
+            <button onClick={shareProperty}>
               <Share2 size={18} />
-
               Share
-
             </button>
 
             <button>
-
               <Heart size={18} />
-
               Save
-
             </button>
 
           </div>
@@ -85,13 +84,11 @@ export default function PropertyGallery() {
 
             <img
               src={activeImage}
-              alt="Property"
+              alt={property.title}
             />
 
             <button className="expand-btn">
-
               <Expand size={18} />
-
             </button>
 
           </div>
@@ -99,28 +96,23 @@ export default function PropertyGallery() {
           <div className="thumb-grid">
 
             {images.slice(1).map((img, index) => (
-
               <div
                 key={index}
-                className="thumb"
+                className={`thumb ${
+                  activeImage === img ? "active" : ""
+                }`}
                 onClick={() => setActiveImage(img)}
               >
-
                 <img
                   src={img}
-                  alt="Property"
+                  alt={property.title}
                 />
-
               </div>
-
             ))}
 
             <button className="show-all">
-
               <Camera size={20} />
-
-              Show All Photos
-
+              Show All Photos ({images.length})
             </button>
 
           </div>
@@ -128,9 +120,6 @@ export default function PropertyGallery() {
         </div>
 
       </div>
-
     </section>
-
   );
-
 }

@@ -1,40 +1,39 @@
 import "./PropertyCard.css";
+
 import { Link } from "react-router-dom";
+
 import {
   BedDouble,
   Bath,
   MapPin,
   Heart,
   Maximize,
-  Star,
 } from "lucide-react";
 
 import { MdVerified } from "react-icons/md";
 
-export default function PropertyCard({
-  image,
-  title,
-  price,
-  period,
-  location,
-  bedrooms,
-  bathrooms,
-  area,
-  rating,
-  verified,
-  listingType,
-  agent,
-}) {
+const FALLBACK_IMAGE =
+  "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=900";
+
+export default function PropertyCard({ property }) {
+  const image =
+    property.images?.length > 0
+      ? property.images[0].url
+      : FALLBACK_IMAGE;
+
   return (
     <article className="property-card">
 
       <div className="property-image">
 
-        <img src={image} alt={title} />
+        <img
+          src={image}
+          alt={property.title}
+        />
 
         <div className="property-badges">
 
-          {verified && (
+          {property.isVerified && (
             <span className="verified">
               <MdVerified />
               Verified
@@ -42,7 +41,7 @@ export default function PropertyCard({
           )}
 
           <span className="rent">
-            {listingType}
+            {property.purpose.toUpperCase()}
           </span>
 
         </div>
@@ -58,42 +57,41 @@ export default function PropertyCard({
         <div className="price-rating">
 
           <h2>
-            ₦{price}
-            <span>/{period}</span>
-          </h2>
+            ₦{property.price.toLocaleString()}
 
-          <div className="rating">
-            <Star
-              size={16}
-              fill="currentColor"
-            />
-            {rating}
-          </div>
+            {property.purpose === "rent" && (
+              <span>/month</span>
+            )}
+
+          </h2>
 
         </div>
 
-        <h3>{title}</h3>
+        <h3>{property.title}</h3>
 
         <div className="location">
+
           <MapPin size={17} />
-          {location}
+
+          {property.city}, {property.state}
+
         </div>
 
         <div className="property-meta">
 
           <span>
             <BedDouble size={18} />
-            {bedrooms} Beds
+            {property.bedrooms} Beds
           </span>
 
           <span>
             <Bath size={18} />
-            {bathrooms} Baths
+            {property.bathrooms} Baths
           </span>
 
           <span>
             <Maximize size={18} />
-            {area} sqm
+            {property.propertyType}
           </span>
 
         </div>
@@ -103,26 +101,29 @@ export default function PropertyCard({
           <div className="agent">
 
             <img
-              src={agent.image}
-              alt={agent.name}
+              src="https://ui-avatars.com/api/?name=HouseHub"
+              alt="Owner"
             />
 
             <div>
 
-              <strong>{agent.name}</strong>
+              <strong>
+                {property.owner?.firstName}{" "}
+                {property.owner?.lastName}
+              </strong>
 
-              <small>{agent.role}</small>
+              <small>Property Owner</small>
 
             </div>
 
           </div>
 
-         <Link
-  to={`/properties/${1}`}
-  className="details-btn"
->
-  View Details
-</Link>
+          <Link
+            to={`/properties/${property._id}`}
+            className="details-btn"
+          >
+            View Details
+          </Link>
 
         </div>
 

@@ -1,1 +1,38 @@
-/* Messages Page Styles */
+.messages-page{
+    display:flex;
+    height:calc(100vh - 90px);
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.chat-panel{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    background:#f9fafb;
+}
+
+.empty-chat{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    color:#9ca3af;
+}
+
+.empty-chat h2{
+    margin-bottom:10px;
+    color:#111827;
+}
+
+@media(max-width:992px){
+
+.messages-page{
+    flex-direction:column;
+    height:auto;
+}
+
+}

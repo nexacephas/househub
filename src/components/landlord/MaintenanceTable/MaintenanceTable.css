@@ -1,0 +1,124 @@
+.maintenance-table-wrapper {
+  background: #fff;
+  border-radius: 18px;
+  overflow: auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,.05);
+}
+
+.maintenance-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.maintenance-table th {
+  background: #f8fafc;
+  padding: 18px;
+  text-align: left;
+  font-size: .9rem;
+  color: #555;
+}
+
+.maintenance-table td {
+  padding: 18px;
+  border-top: 1px solid #eee;
+}
+
+.maintenance-table td strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.maintenance-table td span {
+  font-size: .85rem;
+  color: #777;
+}
+
+.priority,
+.status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 30px;
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+/* PRIORITY */
+
+.priority.low {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.priority.medium {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.priority.high {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.priority.urgent {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* STATUS */
+
+.status.pending {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.status.assigned {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.status.in-progress {
+  background: #ede9fe;
+  color: #7c3aed;
+}
+
+.status.completed {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.status.cancelled {
+  background: #e5e7eb;
+  color: #4b5563;
+}
+
+.maintenance-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.maintenance-actions a,
+.maintenance-actions button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #555;
+  transition: .2s;
+}
+
+.maintenance-actions a:hover,
+.maintenance-actions button:hover {
+  color: #2563eb;
+}
+
+.maintenance-loading,
+.maintenance-empty {
+  text-align: center;
+  padding: 60px;
+}
+
+.maintenance-empty svg {
+  color: #9ca3af;
+  margin-bottom: 16px;
+}

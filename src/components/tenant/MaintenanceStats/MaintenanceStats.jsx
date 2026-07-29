@@ -1,0 +1,80 @@
+import "./MaintenanceStats.css";
+
+import {
+  Wrench,
+  Clock3,
+  Hammer,
+  CheckCircle2,
+} from "lucide-react";
+
+export default function MaintenanceStats() {
+  const stats = [
+    {
+      title: "Total Requests",
+      value: 12,
+      icon: Wrench,
+      color: "#2563eb",
+    },
+    {
+      title: "Pending",
+      value: 3,
+      icon: Clock3,
+      color: "#f59e0b",
+    },
+    {
+      title: "In Progress",
+      value: 2,
+      icon: Hammer,
+      color: "#8b5cf6",
+    },
+    {
+      title: "Completed",
+      value: 7,
+      icon: CheckCircle2,
+      color: "#22c55e",
+    },
+  ];
+
+  return (
+    <section className="maintenance-stats">
+
+      {stats.map((stat) => {
+
+        const Icon = stat.icon;
+
+        return (
+
+          <div
+            key={stat.title}
+            className="maintenance-stat-card"
+          >
+
+            <div className="maintenance-stat-info">
+
+              <small>{stat.title}</small>
+
+              <h2>{stat.value}</h2>
+
+            </div>
+
+            <div
+              className="maintenance-stat-icon"
+              style={{
+                background: `${stat.color}15`,
+                color: stat.color,
+              }}
+            >
+
+              <Icon size={28} />
+
+            </div>
+
+          </div>
+
+        );
+
+      })}
+
+    </section>
+  );
+}

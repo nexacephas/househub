@@ -164,3 +164,23 @@ padding:24px;
 }
 
 }
+
+.empty-amenities{
+    text-align:center;
+    padding:60px 20px;
+    color:#777;
+}
+
+.empty-amenities svg{
+    margin-bottom:15px;
+}
+
+.amenity-card{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.amenity-card span{
+    font-weight:500;
+}

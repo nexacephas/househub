@@ -1,0 +1,99 @@
+.account-settings{
+    background:#fff;
+    border:1px solid #e5e7eb;
+    border-radius:18px;
+    padding:24px;
+}
+
+.settings-card-header{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:24px;
+}
+
+.settings-icon{
+    width:56px;
+    height:56px;
+    border-radius:14px;
+    background:#eff6ff;
+    color:#2563eb;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.settings-card-header h2{
+    color:#111827;
+    margin-bottom:4px;
+}
+
+.settings-card-header p{
+    color:#6b7280;
+}
+
+.account-settings form{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.two-columns{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.form-group label{
+    color:#374151;
+    font-weight:600;
+}
+
+.form-group input{
+    height:48px;
+    border:1px solid #d1d5db;
+    border-radius:12px;
+    padding:0 14px;
+    font-size:.95rem;
+    outline:none;
+    transition:.3s;
+}
+
+.form-group input:focus{
+    border-color:#2563eb;
+}
+
+.save-btn{
+    margin-top:8px;
+    height:48px;
+    border:none;
+    border-radius:12px;
+    background:#2563eb;
+    color:#fff;
+    font-size:1rem;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.save-btn:hover{
+    background:#1d4ed8;
+}
+
+@media(max-width:768px){
+
+.two-columns{
+    grid-template-columns:1fr;
+}
+
+.account-settings{
+    padding:20px;
+}
+
+}

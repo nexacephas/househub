@@ -1,0 +1,43 @@
+.revenue-chart{
+    background:#fff;
+    border-radius:18px;
+    padding:24px;
+    box-shadow:0 8px 30px rgba(0,0,0,.05);
+    margin-bottom:30px;
+}
+
+.chart-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.chart-header h2{
+    margin:0;
+    font-size:1.4rem;
+    color:#111827;
+}
+
+.chart-header p{
+    color:#6b7280;
+    margin-top:6px;
+}
+
+.recharts-tooltip-wrapper{
+    outline:none;
+}
+
+@media(max-width:768px){
+
+.revenue-chart{
+    padding:18px;
+}
+
+.chart-header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+}
+
+}
