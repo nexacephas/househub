@@ -1,0 +1,69 @@
+.booking-form-overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.5);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:1000;
+}
+
+.booking-form{
+width:600px;
+max-width:95%;
+background:#fff;
+padding:30px;
+border-radius:16px;
+}
+
+.booking-form h2{
+margin-bottom:20px;
+}
+
+.booking-form form{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form textarea{
+padding:12px;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:14px;
+}
+
+.booking-form textarea{
+resize:vertical;
+}
+
+.booking-form-actions{
+display:flex;
+justify-content:flex-end;
+gap:15px;
+margin-top:10px;
+}
+
+.cancel-btn{
+padding:10px 18px;
+border:none;
+background:#e5e7eb;
+border-radius:10px;
+cursor:pointer;
+}
+
+.save-btn{
+padding:10px 20px;
+border:none;
+background:#2563eb;
+color:#fff;
+border-radius:10px;
+cursor:pointer;
+}
+
+.save-btn:disabled{
+opacity:.7;
+cursor:not-allowed;
+}

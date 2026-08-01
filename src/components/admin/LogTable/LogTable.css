@@ -1,0 +1,58 @@
+.log-table-wrapper{
+background:#fff;
+border-radius:16px;
+overflow:hidden;
+box-shadow:0 8px 24px rgba(0,0,0,.05);
+}
+
+.log-table{
+width:100%;
+border-collapse:collapse;
+}
+
+.log-table th,
+.log-table td{
+padding:16px;
+text-align:left;
+border-bottom:1px solid #eef2f7;
+}
+
+.level{
+padding:6px 12px;
+border-radius:999px;
+font-size:12px;
+font-weight:600;
+text-transform:capitalize;
+}
+
+.level.info{
+background:#dbeafe;
+color:#2563eb;
+}
+
+.level.warning{
+background:#fef3c7;
+color:#b45309;
+}
+
+.level.error{
+background:#fee2e2;
+color:#dc2626;
+}
+
+.view-btn{
+width:36px;
+height:36px;
+border:none;
+border-radius:10px;
+background:#dbeafe;
+color:#2563eb;
+cursor:pointer;
+}
+
+.log-table-loading{
+padding:60px;
+background:#fff;
+border-radius:16px;
+text-align:center;
+}

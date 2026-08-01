@@ -1,0 +1,118 @@
+.property-table-wrapper{
+    overflow-x:auto;
+}
+
+.property-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.property-table th{
+    text-align:left;
+    padding:18px;
+    background:#f8fafc;
+    font-size:14px;
+    color:#64748b;
+}
+
+.property-table td{
+    padding:18px;
+    border-bottom:1px solid #eef2f7;
+}
+
+.property-info{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.property-info img{
+    width:80px;
+    height:60px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+.property-info h4{
+    font-size:15px;
+    margin-bottom:6px;
+}
+
+.featured-badge{
+    display:inline-block;
+    background:#2563eb;
+    color:white;
+    padding:4px 10px;
+    border-radius:20px;
+    font-size:12px;
+}
+
+.location-cell{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.status-badge{
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.status-badge.available{
+    background:#dcfce7;
+    color:#15803d;
+}
+
+.status-badge.occupied{
+    background:#fee2e2;
+    color:#dc2626;
+}
+
+.status-badge.pending{
+    background:#fef3c7;
+    color:#d97706;
+}
+
+.status-badge.draft{
+    background:#e5e7eb;
+    color:#374151;
+}
+
+.table-actions{
+    display:flex;
+    gap:10px;
+}
+
+.table-actions button{
+    width:36px;
+    height:36px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.view-btn{
+    background:#dbeafe;
+    color:#2563eb;
+}
+
+.edit-btn{
+    background:#dcfce7;
+    color:#16a34a;
+}
+
+.delete-btn{
+    background:#fee2e2;
+    color:#dc2626;
+}
+
+.property-table-loading{
+    padding:60px;
+    text-align:center;
+    color:#64748b;
+}

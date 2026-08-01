@@ -1,1 +1,35 @@
-/* Settings Page Styles */
+.admin-settings-page{
+padding:30px;
+}
+
+.admin-settings-page h1{
+margin-bottom:25px;
+}
+
+.settings-tabs{
+display:flex;
+gap:12px;
+margin-bottom:30px;
+flex-wrap:wrap;
+}
+
+.settings-tabs button{
+padding:12px 20px;
+border:none;
+border-radius:10px;
+background:#e5e7eb;
+cursor:pointer;
+font-weight:600;
+}
+
+.settings-tabs button.active{
+background:#2563eb;
+color:#fff;
+}
+
+.settings-content{
+background:#fff;
+padding:30px;
+border-radius:16px;
+box-shadow:0 8px 24px rgba(0,0,0,.05);
+}

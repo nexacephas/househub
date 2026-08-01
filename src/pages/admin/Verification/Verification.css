@@ -1,1 +1,47 @@
 /* Verification Page Styles */
+.admin-verification-page{
+padding:30px;
+}
+
+.page-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+.page-header h1{
+margin:0;
+font-size:32px;
+color:#111827;
+}
+
+.page-header p{
+margin-top:8px;
+color:#64748b;
+}
+
+.verification-content{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:25px;
+align-items:start;
+}
+
+.verification-table-section{
+min-width:0;
+}
+
+.verification-side-panel{
+display:flex;
+flex-direction:column;
+gap:20px;
+}
+
+@media(max-width:1200px){
+
+.verification-content{
+grid-template-columns:1fr;
+}
+
+}

@@ -1,0 +1,68 @@
+.refund-modal-overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.45);
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:999;
+}
+
+.refund-modal{
+width:420px;
+background:#fff;
+border-radius:16px;
+padding:30px;
+box-shadow:0 20px 40px rgba(0,0,0,.2);
+}
+
+.refund-modal h2{
+margin:0 0 10px;
+}
+
+.refund-modal p{
+color:#6b7280;
+}
+
+.refund-summary{
+margin:20px 0;
+padding:18px;
+background:#f9fafb;
+border-radius:12px;
+}
+
+.refund-summary p{
+margin:8px 0;
+color:#374151;
+}
+
+.refund-actions{
+display:flex;
+justify-content:flex-end;
+gap:12px;
+margin-top:25px;
+}
+
+.cancel-btn,
+.refund-btn{
+border:none;
+padding:12px 20px;
+border-radius:10px;
+cursor:pointer;
+font-weight:600;
+}
+
+.cancel-btn{
+background:#e5e7eb;
+}
+
+.refund-btn{
+background:#ef4444;
+color:#fff;
+}
+
+.refund-btn:disabled,
+.cancel-btn:disabled{
+opacity:.7;
+cursor:not-allowed;
+}

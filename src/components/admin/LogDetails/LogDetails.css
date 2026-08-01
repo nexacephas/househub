@@ -1,0 +1,36 @@
+.log-details{
+background:#fff;
+padding:24px;
+border-radius:16px;
+box-shadow:0 8px 24px rgba(0,0,0,.05);
+}
+
+.detail{
+margin-bottom:20px;
+}
+
+.detail label{
+display:block;
+font-size:12px;
+color:#64748b;
+margin-bottom:5px;
+}
+
+.detail span{
+font-weight:600;
+}
+
+.detail pre{
+background:#f8fafc;
+padding:15px;
+border-radius:10px;
+overflow:auto;
+font-size:12px;
+}
+
+.log-details-empty{
+padding:60px;
+background:#fff;
+border-radius:16px;
+text-align:center;
+}

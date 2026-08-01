@@ -1,0 +1,79 @@
+.delete-property-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+.delete-property-modal{
+    width:450px;
+    max-width:95%;
+    background:#fff;
+    border-radius:18px;
+    padding:35px;
+    text-align:center;
+}
+
+.delete-icon{
+    width:80px;
+    height:80px;
+    margin:auto;
+    margin-bottom:20px;
+    border-radius:50%;
+    background:#fee2e2;
+    color:#dc2626;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.delete-property-modal h2{
+    margin-bottom:15px;
+    font-size:26px;
+}
+
+.delete-property-modal p{
+    color:#64748b;
+    line-height:1.7;
+}
+
+.warning{
+    color:#dc2626;
+    font-weight:600;
+    margin-top:12px;
+}
+
+.delete-actions{
+    margin-top:35px;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+}
+
+.cancel-delete{
+    border:none;
+    background:#e5e7eb;
+    padding:12px 24px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.confirm-delete{
+    border:none;
+    background:#dc2626;
+    color:white;
+    padding:12px 24px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.cancel-delete:hover{
+    background:#d1d5db;
+}
+
+.confirm-delete:hover{
+    background:#b91c1c;
+}

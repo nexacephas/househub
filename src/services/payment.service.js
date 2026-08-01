@@ -85,6 +85,7 @@ const paymentService = {
       params,
       responseType: "blob",
     });
+    
   },
 };
 

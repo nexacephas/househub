@@ -1,1 +1,55 @@
-/* Properties Page Styles */
+.admin-properties-page{
+    padding:30px;
+}
+
+.page-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.page-header h1{
+    font-size:32px;
+    margin-bottom:8px;
+}
+
+.page-header p{
+    color:#6b7280;
+}
+
+.add-property-btn{
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    padding:12px 22px;
+    cursor:pointer;
+}
+
+.properties-content{
+    margin-top:25px;
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:25px;
+}
+
+.properties-table{
+    background:#fff;
+    border-radius:16px;
+    padding:20px;
+}
+
+.property-details-panel{
+    background:#fff;
+    border-radius:16px;
+    padding:20px;
+}
+
+@media(max-width:1000px){
+
+.properties-content{
+    grid-template-columns:1fr;
+}
+
+}

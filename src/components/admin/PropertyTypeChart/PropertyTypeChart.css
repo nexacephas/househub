@@ -1,0 +1,26 @@
+.property-type-card{
+background:#fff;
+padding:25px;
+border-radius:16px;
+box-shadow:0 8px 25px rgba(0,0,0,.06);
+height:100%;
+}
+
+.chart-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
+
+.chart-header h2{
+margin:0;
+font-size:22px;
+font-weight:700;
+color:#111827;
+}
+
+.chart-header span{
+font-size:14px;
+color:#6b7280;
+}

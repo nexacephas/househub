@@ -48,7 +48,8 @@ import AddTenant from "./pages/landlord/AddTenant/AddTenant";
 import EditTenant from "./pages/landlord/EditTenant/EditTenant";
 
 import Payments from "./pages/landlord/Payments/Payments";
-import Maintenance from "./pages/landlord/MaintenanceDetails/MaintenanceDetails";
+import Maintenance from "./pages/landlord/Maintenance/Maintenance";
+import MaintenanceDetails from "./pages/landlord/MaintenanceDetails/MaintenanceDetails";
 import Messages from "./pages/landlord/Messages/Messages";
 import Settings from "./pages/landlord/Settings/Settings";
 
@@ -244,11 +245,17 @@ function App() {
 
           {/* Maintenance */}
 
-          <Route
-            path="maintenance"
-            element={<Maintenance />}
-          />
+     {/* Maintenance */}
 
+<Route
+  path="maintenance"
+  element={<Maintenance />}
+/>
+
+<Route
+  path="maintenance/:id"
+  element={<MaintenanceDetails />}
+/>
           {/* Messages */}
 
           <Route
@@ -363,6 +370,17 @@ function App() {
     path="settings"
     element={<Settings />}
   />
+      {/* Maintenance */}
+
+<Route
+  path="maintenance"
+  element={<Maintenance />}
+/>
+
+<Route
+  path="maintenance/:id"
+  element={<MaintenanceDetails />}
+/>
 
 </Route>
 

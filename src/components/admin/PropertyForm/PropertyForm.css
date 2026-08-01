@@ -1,0 +1,98 @@
+.property-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+}
+
+.property-form-container{
+    width:900px;
+    max-width:95%;
+    max-height:90vh;
+    overflow:auto;
+    background:#fff;
+    border-radius:16px;
+    padding:30px;
+}
+
+.form-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.close-btn{
+    border:none;
+    background:none;
+    font-size:24px;
+    cursor:pointer;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    margin-bottom:20px;
+}
+
+.form-group label{
+    margin-bottom:8px;
+    font-weight:600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+    padding:12px;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+    font-size:15px;
+}
+
+.checkbox-group{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:20px 0;
+}
+
+.form-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:15px;
+    margin-top:25px;
+}
+
+.cancel-btn{
+    padding:12px 22px;
+    border:none;
+    background:#e5e7eb;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.save-btn{
+    padding:12px 22px;
+    border:none;
+    background:#2563eb;
+    color:#fff;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+@media(max-width:768px){
+
+.form-grid{
+    grid-template-columns:1fr;
+}
+
+}

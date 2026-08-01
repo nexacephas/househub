@@ -1,0 +1,66 @@
+.delete-user-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+}
+
+.delete-user-modal{
+    width:450px;
+    max-width:90%;
+    background:#fff;
+    border-radius:18px;
+    padding:35px;
+    text-align:center;
+}
+
+.delete-icon{
+    color:#dc2626;
+    margin-bottom:20px;
+}
+
+.delete-user-modal h2{
+    margin-bottom:15px;
+}
+
+.delete-user-modal p{
+    color:#6b7280;
+    line-height:1.6;
+}
+
+.warning{
+    color:#dc2626;
+    margin-top:12px;
+    font-weight:600;
+}
+
+.delete-actions{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-top:35px;
+}
+
+.cancel-btn{
+    padding:12px 24px;
+    border:none;
+    border-radius:10px;
+    background:#e5e7eb;
+    cursor:pointer;
+}
+
+.delete-btn{
+    padding:12px 24px;
+    border:none;
+    border-radius:10px;
+    background:#dc2626;
+    color:#fff;
+    cursor:pointer;
+}
+
+.delete-btn:hover{
+    background:#b91c1c;
+}

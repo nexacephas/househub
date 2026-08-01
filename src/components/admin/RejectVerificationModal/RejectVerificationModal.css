@@ -1,0 +1,85 @@
+.reject-overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.45);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:1000;
+}
+
+.reject-modal{
+background:#fff;
+width:520px;
+max-width:95%;
+padding:30px;
+border-radius:18px;
+position:relative;
+box-shadow:0 20px 45px rgba(0,0,0,.15);
+}
+
+.close-btn{
+position:absolute;
+right:18px;
+top:18px;
+border:none;
+background:none;
+cursor:pointer;
+}
+
+.reject-icon{
+width:85px;
+height:85px;
+margin:auto;
+border-radius:50%;
+background:#fee2e2;
+display:flex;
+justify-content:center;
+align-items:center;
+color:#dc2626;
+margin-bottom:20px;
+}
+
+.reject-modal h2,
+.reject-modal p{
+text-align:center;
+}
+
+.reject-modal label{
+display:block;
+margin:20px 0 8px;
+font-weight:600;
+}
+
+.reject-modal textarea{
+width:100%;
+padding:14px;
+border:1px solid #d1d5db;
+border-radius:12px;
+resize:none;
+}
+
+.modal-actions{
+display:flex;
+justify-content:flex-end;
+gap:15px;
+margin-top:25px;
+}
+
+.cancel-btn,
+.reject-btn{
+padding:12px 22px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-weight:600;
+}
+
+.cancel-btn{
+background:#f3f4f6;
+}
+
+.reject-btn{
+background:#dc2626;
+color:#fff;
+}

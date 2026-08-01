@@ -1,0 +1,45 @@
+.admin-payments-page{
+padding:30px;
+display:flex;
+flex-direction:column;
+gap:25px;
+}
+
+.page-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.page-header h1{
+margin:0;
+font-size:32px;
+}
+
+.page-header p{
+margin-top:8px;
+color:#6b7280;
+}
+
+.payments-content{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:25px;
+align-items:start;
+}
+
+.payments-table,
+.payment-details-panel{
+background:#fff;
+border-radius:16px;
+box-shadow:0 10px 30px rgba(0,0,0,.05);
+overflow:hidden;
+}
+
+@media(max-width:1100px){
+
+.payments-content{
+grid-template-columns:1fr;
+}
+
+}

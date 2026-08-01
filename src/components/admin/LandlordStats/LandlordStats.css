@@ -1,0 +1,55 @@
+.landlord-stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin:25px 0;
+}
+
+.landlord-stat-card{
+background:#fff;
+padding:22px;
+border-radius:16px;
+display:flex;
+align-items:center;
+gap:18px;
+box-shadow:0 8px 24px rgba(0,0,0,.05);
+}
+
+.stat-icon{
+width:58px;
+height:58px;
+border-radius:14px;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#fff;
+}
+
+.stat-icon.blue{
+background:#2563eb;
+}
+
+.stat-icon.green{
+background:#16a34a;
+}
+
+.stat-icon.orange{
+background:#ea580c;
+}
+
+.stat-icon.red{
+background:#dc2626;
+}
+
+.landlord-stat-card h3{
+margin:0;
+font-size:28px;
+font-weight:700;
+color:#111827;
+}
+
+.landlord-stat-card p{
+margin-top:6px;
+font-size:14px;
+color:#64748b;
+}

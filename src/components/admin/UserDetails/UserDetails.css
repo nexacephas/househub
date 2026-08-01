@@ -1,0 +1,70 @@
+.user-details-card{
+    background:#fff;
+    border-radius:18px;
+    border:1px solid #e5e7eb;
+    padding:28px;
+}
+
+.user-profile{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.user-profile img{
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:15px;
+}
+
+.user-profile h2{
+    margin:0;
+    font-size:22px;
+}
+
+.user-profile p{
+    color:#6b7280;
+    text-transform:capitalize;
+    margin-top:6px;
+}
+
+.user-details-info{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+.detail-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:#374151;
+    font-size:15px;
+}
+
+.detail-item svg{
+    color:#2563eb;
+}
+
+.user-role-box{
+    margin-top:30px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    background:#eff6ff;
+    border-radius:12px;
+    padding:18px;
+}
+
+.user-role-box h4{
+    margin:0;
+    font-size:15px;
+}
+
+.user-role-box p{
+    margin-top:4px;
+    text-transform:capitalize;
+    color:#2563eb;
+    font-weight:600;
+}

@@ -1,0 +1,99 @@
+.user-form-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+.user-form-modal{
+    width:700px;
+    max-width:95%;
+    background:#fff;
+    border-radius:18px;
+    padding:30px;
+}
+
+.user-form-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.user-form-header button{
+    border:none;
+    background:none;
+    cursor:pointer;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    margin-bottom:20px;
+}
+
+.form-group label{
+    margin-bottom:8px;
+    font-weight:600;
+}
+
+.form-group input,
+.form-group select{
+    height:50px;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+    padding:0 15px;
+    font-size:15px;
+}
+
+.form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.checkbox{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:20px 0;
+}
+
+.form-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:15px;
+    margin-top:30px;
+}
+
+.cancel-btn{
+    padding:12px 25px;
+    border:none;
+    border-radius:10px;
+    background:#e5e7eb;
+    cursor:pointer;
+}
+
+.save-btn{
+    padding:12px 30px;
+    border:none;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    cursor:pointer;
+}
+
+.save-btn:hover{
+    background:#1d4ed8;
+}
+
+@media(max-width:700px){
+
+.form-row{
+    grid-template-columns:1fr;
+}
+
+}

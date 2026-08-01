@@ -1,1 +1,44 @@
-/* Landlords Page Styles */
+.admin-landlords-page{
+padding:30px;
+}
+
+.page-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+.page-header h1{
+margin:0;
+font-size:32px;
+color:#111827;
+}
+
+.page-header p{
+margin-top:8px;
+color:#64748b;
+}
+
+.landlords-content{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:25px;
+align-items:start;
+}
+
+.landlords-table{
+min-width:0;
+}
+
+.landlord-side-panel{
+display:flex;
+flex-direction:column;
+gap:20px;
+}
+
+@media(max-width:1200px){
+.landlords-content{
+grid-template-columns:1fr;
+}
+}
