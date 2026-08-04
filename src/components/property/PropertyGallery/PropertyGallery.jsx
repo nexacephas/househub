@@ -1,6 +1,6 @@
 import "./PropertyGallery.css";
 
-import { useState, useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import {
   Heart,
@@ -13,16 +13,19 @@ const FALLBACK =
   "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200";
 
 export default function PropertyGallery({ property }) {
-  const images =
-    property.images?.length > 0
-      ? property.images.map((img) => img.url)
-      : [FALLBACK];
+  const images = useMemo(
+    () =>
+      property.images?.length > 0
+        ? property.images.map((img) => img.url)
+        : [FALLBACK],
+    [property]
+  );
 
   const [activeImage, setActiveImage] = useState(images[0]);
 
   useEffect(() => {
     setActiveImage(images[0]);
-  }, [property]);
+  }, [images]);
 
   const shareProperty = async () => {
     if (navigator.share) {
@@ -32,7 +35,9 @@ export default function PropertyGallery({ property }) {
           text: property.description,
           url: window.location.href,
         });
-      } catch (err) {}
+      } catch (error) {
+        console.error(error);
+      }
     } else {
       navigator.clipboard.writeText(window.location.href);
       alert("Property link copied.");
@@ -41,7 +46,7 @@ export default function PropertyGallery({ property }) {
 
   return (
     <section className="property-gallery">
-      <div className="container">
+      <div className="property-gallery-container">
 
         <div className="gallery-top">
 

@@ -29,12 +29,12 @@
     font-weight:600;
 }
 
-.hero-content{
-    background:#fff;
+/* .hero-content{
+    background:#1d0f0f;
     border-radius:18px;
     padding:28px;
     border:1px solid #e5e7eb;
-}
+} */
 
 .hero-header{
     display:flex;

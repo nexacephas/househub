@@ -20,7 +20,7 @@ const benefits = [
 export default function AgentCTA() {
   return (
     <section className="agent-cta">
-      <div className="container">
+      <div className="agent-cta-container">
 
         <div className="agent-cta-card">
 

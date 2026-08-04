@@ -1,0 +1,62 @@
+.state-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 220px;
+  padding: 1.5rem;
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  background: var(--surface);
+  color: var(--gray-700);
+  text-align: center;
+}
+
+.state-panel h3 {
+  margin: 0;
+  color: var(--gray-900);
+}
+
+.state-panel p {
+  margin: 0;
+  color: var(--gray-600);
+}
+
+.state-panel-icon {
+  color: var(--primary);
+}
+
+.state-panel-loading .state-panel-icon {
+  color: var(--primary);
+}
+
+.state-panel-error .state-panel-icon {
+  color: #dc2626;
+}
+
+.state-panel-empty .state-panel-icon {
+  color: #0f766e;
+}
+
+.state-panel-action {
+  margin-top: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: none;
+  border-radius: 999px;
+  padding: 0.65rem 1rem;
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+}
+
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

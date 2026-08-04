@@ -1,10 +1,11 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 // ==============================
 // Layouts
 // ==============================
 import PublicLayout from "./components/layout/PublicLayout";
 import AuthLayout from "./components/auth/AuthLayout";
+import ProtectedRoute from "./components/common/ProtectedRoute/ProtectedRoute";
 
 // ==============================
 // Public Pages
@@ -24,6 +25,7 @@ import ListProperty from "./pages/public/ListProperty/ListProperty";
 import Terms from "./pages/public/Terms";
 import Privacy from "./pages/public/Privacy";
 import CookiePolicy from "./pages/public/CookiePolicy";
+import NotFound from "./pages/public/NotFound/NotFound";
 
 // ==============================
 // Authentication
@@ -68,11 +70,29 @@ import TenantSettings from "./pages/tenant/Settings/Settings";
 // Agent
 // ==============================
 import AgentDashboard from "./pages/agent/Dashboard/Dashboard";
+import Listings from "./pages/agent/Listings/Listings";
+import Clients from "./pages/agent/Clients/Clients";
+import Leads from "./pages/agent/Leads/Leads";
+import AgentMessages from "./pages/agent/Messages/Messages";
+import AgentReports from "./pages/agent/Reports/Reports";
+import AgentSettings from "./pages/agent/Settings/Settings";
+import AgentProfile from "./pages/agent/Profile/Profile";
 
 // ==============================
 // Admin
 // ==============================
 import AdminDashboard from "./pages/admin/Dashboard/Dashboard";
+import AdminAgents from "./pages/admin/Agents/Agents";
+import AdminAnalytics from "./pages/admin/Analytics/Analytics";
+import AdminBookings from "./pages/admin/Bookings/Bookings";
+import AdminProperties from "./pages/admin/Properties/Properties";
+import AdminReports from "./pages/admin/Reports/Reports";
+import AdminSettings from "./pages/admin/Settings/Settings";
+import AdminUsers from "./pages/admin/Users/Users";
+import AdminVerification from "./pages/admin/Verification/Verification";
+import AdminLandlords from "./pages/admin/Landlords/Landlords";
+import AdminLogs from "./pages/admin/Logs/Logs";
+import AdminPayments from "./pages/admin/Payments/Payments";
 
 function App() {
   return (
@@ -91,15 +111,12 @@ function App() {
 
           <Route path="/contact" element={<Contact />} />
 
-          <Route
-            path="/properties"
-            element={<Properties />}
-          />
-
-          <Route
-            path="/properties/:id"
-            element={<PropertyDetails />}
-          />
+          <Route path="/properties">
+            <Route index element={<Properties />} />
+            <Route path="rent" element={<Properties />} />
+            <Route path="sale" element={<Properties />} />
+            <Route path=":id" element={<PropertyDetails />} />
+          </Route>
 
           <Route
             path="/list-property"
@@ -151,6 +168,7 @@ function App() {
             element={<CookiePolicy />}
           />
 
+          <Route path="*" element={<NotFound />} />
         </Route>
 
         {/* =====================================
@@ -190,86 +208,86 @@ function App() {
             Landlord
         ====================================== */}
 
-        <Route path="/landlord">
+        <Route element={<ProtectedRoute roles={["landlord"]} />}>
+          <Route path="/landlord">
+            <Route index element={<Navigate to="dashboard" replace />} />
+            <Route
+              path="dashboard"
+              element={<Dashboard />}
+            />
 
-          <Route
-            path="dashboard"
-            element={<Dashboard />}
-          />
+            {/* Properties */}
 
-          {/* Properties */}
+            <Route
+              path="properties"
+              element={<MyProperties />}
+            />
 
-          <Route
-            path="properties"
-            element={<MyProperties />}
-          />
+            <Route
+              path="properties/new"
+              element={<AddProperty />}
+            />
 
-          <Route
-            path="properties/new"
-            element={<AddProperty />}
-          />
+            <Route
+              path="properties/edit/:id"
+              element={<EditProperty />}
+            />
 
-          <Route
-            path="properties/edit/:id"
-            element={<EditProperty />}
-          />
+            {/* Tenants */}
 
-          {/* Tenants */}
+            <Route
+              path="tenants"
+              element={<Tenants />}
+            />
 
-          <Route
-            path="tenants"
-            element={<Tenants />}
-          />
+            <Route
+              path="tenants/new"
+              element={<AddTenant />}
+            />
 
-          <Route
-            path="tenants/new"
-            element={<AddTenant />}
-          />
+            <Route
+              path="tenants/:id"
+              element={<TenantDetails />}
+            />
 
-          <Route
-            path="tenants/:id"
-            element={<TenantDetails />}
-          />
+            <Route
+              path="tenants/edit/:id"
+              element={<EditTenant />}
+            />
 
-          <Route
-            path="tenants/edit/:id"
-            element={<EditTenant />}
-          />
+            {/* Payments */}
 
-          {/* Payments */}
+            <Route
+              path="payments"
+              element={<Payments />}
+            />
 
-          <Route
-            path="payments"
-            element={<Payments />}
-          />
+            {/* Maintenance */}
 
-          {/* Maintenance */}
+            <Route
+              path="maintenance"
+              element={<Maintenance />}
+            />
 
-     {/* Maintenance */}
+            <Route
+              path="maintenance/:id"
+              element={<MaintenanceDetails />}
+            />
 
-<Route
-  path="maintenance"
-  element={<Maintenance />}
-/>
+            {/* Messages */}
 
-<Route
-  path="maintenance/:id"
-  element={<MaintenanceDetails />}
-/>
-          {/* Messages */}
+            <Route
+              path="messages"
+              element={<Messages />}
+            />
 
-          <Route
-            path="messages"
-            element={<Messages />}
-          />
+            {/* Settings */}
 
-          {/* Settings */}
-
-          <Route
-            path="settings"
-            element={<Settings />}
-          />
-
+            <Route
+              path="settings"
+              element={<Settings />}
+            />
+          </Route>
         </Route>
 
  
@@ -277,140 +295,162 @@ function App() {
     Tenant
 ===================================== */}
 
-<Route path="/tenant">
+        <Route element={<ProtectedRoute roles={["tenant"]} />}>
+          <Route path="/tenant">
+            <Route index element={<Navigate to="dashboard" replace />} />
+            <Route
+              path="dashboard"
+              element={<TenantDashboard />}
+            />
 
-  <Route
-    path="dashboard"
-    element={<TenantDashboard />}
-  />
+            <Route
+              path="my-property"
+              element={<MyProperty />}
+            />
 
-  <Route
-    path="my-property"
-    element={<MyProperty />}
-  />
+            <Route
+              path="payments"
+              element={<TenantPayments />}
+            />
 
-  <Route
-    path="payments"
-    element={<TenantPayments />}
-  />
+            <Route
+              path="maintenance"
+              element={<TenantMaintenance />}
+            />
 
-  <Route
-    path="maintenance"
-    element={<TenantMaintenance />}
-  />
+            <Route
+              path="messages"
+              element={<TenantMessages />}
+            />
 
-  <Route
-    path="messages"
-    element={<TenantMessages />}
-  />
+            <Route
+              path="documents"
+              element={<Documents />}
+            />
 
-  <Route
-    path="documents"
-    element={<Documents />}
-  />
-
-  <Route
-    path="settings"
-    element={<TenantSettings />}
-  />
-
-</Route>
+            <Route
+              path="settings"
+              element={<TenantSettings />}
+            />
+          </Route>
+        </Route>
         {/* =====================================
             Agent
         ====================================== */}
 
-        <Route path="/agent">
+        <Route element={<ProtectedRoute roles={["agent"]} />}>
+          <Route path="/agent">
+            <Route index element={<Navigate to="dashboard" replace />} />
+            <Route
+              path="dashboard"
+              element={<AgentDashboard />}
+            />
 
-          <Route
-            path="dashboard"
-            element={<AgentDashboard />}
-          />
+            <Route
+              path="listings"
+              element={<Listings />}
+            />
 
-  <Route
-    path="listings"
-    element={<MyProperties />}
-  />
+            <Route
+              path="clients"
+              element={<Clients />}
+            />
 
-  <Route
-    path="listings/new"
-    element={<AddProperty />}
-  />
+            <Route
+              path="leads"
+              element={<Leads />}
+            />
 
-  <Route
-    path="listings/edit/:id"
-    element={<EditProperty />}
-  />
+            <Route
+              path="messages"
+              element={<AgentMessages />}
+            />
 
-  <Route
-    path="clients"
-    element={<Tenants />}
-  />
+            <Route
+              path="reports"
+              element={<AgentReports />}
+            />
 
-  <Route
-    path="clients/new"
-    element={<AddTenant />}
-  />
+            <Route
+              path="profile"
+              element={<AgentProfile />}
+            />
 
-  <Route
-    path="clients/:id"
-    element={<TenantDetails />}
-  />
-
-  <Route
-    path="clients/edit/:id"
-    element={<EditTenant />}
-  />
-
-  <Route
-    path="messages"
-    element={<Messages />}
-  />
-
-  <Route
-    path="settings"
-    element={<Settings />}
-  />
-      {/* Maintenance */}
-
-<Route
-  path="maintenance"
-  element={<Maintenance />}
-/>
-
-<Route
-  path="maintenance/:id"
-  element={<MaintenanceDetails />}
-/>
-
-</Route>
+            <Route
+              path="settings"
+              element={<AgentSettings />}
+            />
+          </Route>
+        </Route>
 
 
         {/* =====================================
             Admin
         ====================================== */}
 
-        <Route path="/admin">
+        <Route element={<ProtectedRoute roles={["admin"]} />}>
+          <Route path="/admin">
+            <Route index element={<Navigate to="dashboard" replace />} />
+            <Route
+              path="dashboard"
+              element={<AdminDashboard />}
+            />
 
-          <Route
-            path="dashboard"
-            element={<AdminDashboard />}
-          />
+            <Route
+              path="agents"
+              element={<AdminAgents />}
+            />
 
-          <Route
-            path="properties"
-            element={<MyProperties />}
-          />
+            <Route
+              path="analytics"
+              element={<AdminAnalytics />}
+            />
 
-          <Route
-            path="properties/new"
-            element={<AddProperty />}
-          />
+            <Route
+              path="bookings"
+              element={<AdminBookings />}
+            />
 
-          <Route
-            path="properties/edit/:id"
-            element={<EditProperty />}
-          />
+            <Route
+              path="properties"
+              element={<AdminProperties />}
+            />
 
+            <Route
+              path="reports"
+              element={<AdminReports />}
+            />
+
+            <Route
+              path="settings"
+              element={<AdminSettings />}
+            />
+
+            <Route
+              path="users"
+              element={<AdminUsers />}
+            />
+
+            <Route
+              path="verification"
+              element={<AdminVerification />}
+            />
+
+            <Route
+              path="landlords"
+              element={<AdminLandlords />}
+            />
+
+            <Route
+              path="logs"
+              element={<AdminLogs />}
+            />
+
+            <Route
+              path="payments"
+              element={<AdminPayments />}
+            />
+          </Route>
         </Route>
 
       </Routes>

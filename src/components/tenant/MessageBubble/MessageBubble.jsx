@@ -1,9 +1,15 @@
+import { useMemo } from "react";
 import "./MessageBubble.css";
 
 import { Check, CheckCheck } from "lucide-react";
+import { useAuth } from "../../../context/AuthContext";
 
 export default function MessageBubble({ message }) {
-  const isTenant = message.sender === "tenant";
+  const { user } = useAuth();
+  const isTenant = useMemo(() => {
+    const senderId = message.sender?._id || message.sender;
+    return senderId === user?._id;
+  }, [message.sender, user?._id]);
 
   return (
     <div

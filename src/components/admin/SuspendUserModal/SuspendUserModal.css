@@ -1,0 +1,53 @@
+.suspend-user-overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.45);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:1000;
+}
+
+.suspend-user-modal{
+background:#fff;
+width:520px;
+max-width:95%;
+padding:30px;
+border-radius:18px;
+position:relative;
+box-shadow:0 20px 45px rgba(0,0,0,.15);
+}
+
+.suspend-user-modal h2{
+text-align:center;
+margin-bottom:10px;
+}
+
+.suspend-user-modal p{
+text-align:center;
+color:#64748b;
+margin-bottom:25px;
+line-height:1.6;
+}
+
+.suspend-user-modal label{
+display:block;
+margin-bottom:8px;
+font-weight:600;
+color:#374151;
+}
+
+.suspend-user-modal textarea{
+width:100%;
+padding:14px;
+border:1px solid #d1d5db;
+border-radius:12px;
+resize:none;
+font-size:14px;
+outline:none;
+margin-bottom:25px;
+}
+
+.suspend-user-modal textarea:focus{
+border-color:#2563eb;
+}

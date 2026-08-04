@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import propertyService from "../../../services/property.service";
 
@@ -9,6 +9,7 @@ import PropertyTable from "../../../components/landlord/PropertyTable/PropertyTa
 import PropertyFilters from "../../../components/landlord/PropertyFilters/PropertyFilters";
 import PropertyTable from "../../../components/landlord/PropertyTable/PropertyTable";
  */
+import DashboardLayout from "../../../components/dashboard/DashboardLayout/DashboardLayout";
 import "./MyProperties.css";
 
 export default function MyProperties() {
@@ -21,7 +22,7 @@ export default function MyProperties() {
     type: "",
   });
 
-  const loadProperties = async () => {
+  const loadProperties = useCallback(async () => {
     try {
       const { data } =
         await propertyService.getMyProperties();
@@ -32,11 +33,11 @@ export default function MyProperties() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     loadProperties();
-  }, []);
+  }, [loadProperties]);
 
   const filteredProperties = useMemo(() => {
     return properties.filter((property) => {
@@ -66,6 +67,7 @@ export default function MyProperties() {
   }
 
   return (
+    <DashboardLayout role="landlord">
     <div className="my-properties">
 
       <div className="page-header">
@@ -93,5 +95,6 @@ export default function MyProperties() {
       />
 
     </div>
+    </DashboardLayout>
   );
 }   

@@ -37,7 +37,7 @@ export default function BuyingGuide() {
 
         <div className="hero-overlay"></div>
 
-        <div className="container">
+        <div className="buying-guide-container">
 
           <div className="buying-content">
 
@@ -144,7 +144,7 @@ export default function BuyingGuide() {
 
 <section className="buying-process">
 
-  <div className="container">
+  <div className="buying-guide-container">
 
     <div className="section-heading">
 
@@ -294,7 +294,7 @@ export default function BuyingGuide() {
 
 <section className="financing-section">
 
-  <div className="container">
+  <div className="buying-guide-container">
 
     <div className="section-heading">
 
@@ -408,7 +408,7 @@ export default function BuyingGuide() {
 
 <section className="documents-section">
 
-  <div className="container">
+  <div className="buying-guide-container">
 
     <div className="section-heading">
 
@@ -523,7 +523,7 @@ export default function BuyingGuide() {
 
 <section className="mistakes-section">
 
-  <div className="container">
+  <div className="buying-guide-container">
 
     <div className="section-heading">
 
@@ -627,7 +627,7 @@ export default function BuyingGuide() {
 
 <section className="tips-section">
 
-  <div className="container">
+  <div className="buying-guide-container">
 
     <div className="section-heading">
 
@@ -736,7 +736,7 @@ export default function BuyingGuide() {
 
 <section className="buying-faq">
 
-  <div className="container">
+  <div className="buying-guide-container">
 
     <div className="section-heading">
 

@@ -11,45 +11,16 @@ export default function PaymentHistory({
   payments = [],
   loading = false,
 }) {
-  const demoPayments = [
-    {
-      id: 1,
-      receipt: "HH-2026-001",
-      date: "01 Jan 2026",
-      amount: 750000,
-      method: "Paystack",
-      status: "Paid",
-    },
-    {
-      id: 2,
-      receipt: "HH-2026-002",
-      date: "01 Feb 2026",
-      amount: 750000,
-      method: "Bank Transfer",
-      status: "Paid",
-    },
-    {
-      id: 3,
-      receipt: "HH-2026-003",
-      date: "01 Mar 2026",
-      amount: 750000,
-      method: "Card",
-      status: "Paid",
-    },
-    {
-      id: 4,
-      receipt: "HH-2026-004",
-      date: "01 Apr 2026",
-      amount: 750000,
-      method: "Paystack",
-      status: "Pending",
-    },
-  ];
-
-  const records =
-    payments.length > 0
-      ? payments
-      : demoPayments;
+  const records = payments.map((payment) => ({
+    id: payment._id,
+    receipt: payment.reference || payment._id,
+    date: payment.createdAt
+      ? new Date(payment.createdAt).toLocaleDateString()
+      : "—",
+    amount: Number(payment.amount || 0),
+    method: payment.method || "Card",
+    status: payment.status === "paid" || payment.status === "Paid" ? "Paid" : "Pending",
+  }));
 
   return (
     <section className="payment-history">

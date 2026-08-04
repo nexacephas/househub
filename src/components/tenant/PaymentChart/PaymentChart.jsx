@@ -10,17 +10,11 @@ import {
   YAxis,
 } from "recharts";
 
-const paymentData = [
-  { month: "Jan", amount: 750000 },
-  { month: "Feb", amount: 750000 },
-  { month: "Mar", amount: 750000 },
-  { month: "Apr", amount: 750000 },
-  { month: "May", amount: 750000 },
-  { month: "Jun", amount: 750000 },
-  { month: "Jul", amount: 750000 },
-];
-
-export default function PaymentChart() {
+export default function PaymentChart({ payments = [] }) {
+  const paymentData = payments.slice(-6).map((payment) => ({
+    month: new Date(payment.createdAt).toLocaleString("en", { month: "short" }),
+    amount: Number(payment.amount || 0),
+  }));
   return (
     <section className="payment-chart">
 

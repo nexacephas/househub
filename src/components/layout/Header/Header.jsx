@@ -2,7 +2,7 @@ import "./Header.css";
 
 export default function Header() {
     return (
-        <div className="header">
+        <div className="layout-header">
             Header
         </div>
     );

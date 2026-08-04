@@ -143,6 +143,62 @@ export default function PropertyForm({
     }));
   };
 
+const validateForm = () => {
+  if (!formData.title.trim()) {
+    toast.error("Title is required.");
+    return false;
+  }
+
+  if (!formData.description.trim()) {
+    toast.error("Description is required.");
+    return false;
+  }
+
+  if (!formData.address.trim()) {
+    toast.error("Address is required.");
+    return false;
+  }
+
+  if (!formData.city.trim()) {
+    toast.error("City is required.");
+    return false;
+  }
+
+  if (!formData.state.trim()) {
+    toast.error("State is required.");
+    return false;
+  }
+
+  if (!formData.price) {
+    toast.error("Price is required.");
+    return false;
+  }
+
+  return true;
+};
+
+const removeExistingImage = (index) => {
+  const toRemove = existingImages[index];
+  if (!toRemove) return;
+
+  setExistingImages((prev) =>
+    prev.filter((_, idx) => idx !== index)
+  );
+  setRemovedImages((prev) => [
+    ...prev,
+    toRemove.publicId,
+  ]);
+};
+
+const toggleAmenity = (amenity) => {
+  setFormData((prev) => ({
+    ...prev,
+    amenities: prev.amenities.includes(amenity)
+      ? prev.amenities.filter((item) => item !== amenity)
+      : [...prev.amenities, amenity],
+  }));
+};
+
 const handleSubmit = async (e) => {
   e.preventDefault();
 
@@ -353,12 +409,16 @@ const handleSubmit = async (e) => {
                   Bungalow
                 </option>
 
-                <option value="studio">
-                  Studio
+                <option value="house">
+                  House
                 </option>
 
-                <option value="terrace">
-                  Terrace
+                <option value="land">
+                  Land
+                </option>
+
+                <option value="office">
+                  Office
                 </option>
 
               </select>

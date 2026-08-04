@@ -12,7 +12,7 @@ export default function CookiePolicy() {
 
         <section className="legal-hero">
 
-          <div className="container">
+          <div className="cookie-policy-container">
 
             <span className="section-tag">
               COOKIES
@@ -40,7 +40,7 @@ export default function CookiePolicy() {
 
         <section className="legal-content">
 
-          <div className="container">
+          <div className="cookie-policy-container">
 
 
             <aside className="legal-sidebar">

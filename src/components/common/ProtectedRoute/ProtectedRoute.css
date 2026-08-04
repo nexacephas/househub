@@ -1,0 +1,24 @@
+.protected-route-loader {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  color: #444;
+}
+
+.loader-ring {
+  width: 48px;
+  height: 48px;
+  border: 6px solid rgba(0, 0, 0, 0.08);
+  border-top-color: #1b6eff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

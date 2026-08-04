@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import "./RequestForm.css";
 
 import {
@@ -8,6 +9,8 @@ import {
   Upload,
   Send,
 } from "lucide-react";
+
+import maintenanceService from "../../../services/maintenance.service";
 
 export default function RequestForm() {
   const [formData, setFormData] = useState({
@@ -19,6 +22,7 @@ export default function RequestForm() {
   });
 
   const [images, setImages] = useState([]);
+  const [submitting, setSubmitting] = useState(false);
 
   function handleChange(e) {
     setFormData({
@@ -31,13 +35,39 @@ export default function RequestForm() {
     setImages([...e.target.files]);
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
-    console.log(formData);
-    console.log(images);
+    if (!formData.title.trim() || !formData.description.trim()) {
+      return toast.error("Please add a title and description for the request.");
+    }
 
-    // Backend integration goes here
+    try {
+      setSubmitting(true);
+
+      await maintenanceService.createRequest({
+        title: formData.title.trim(),
+        description: formData.description.trim(),
+        category: formData.category,
+        priority: formData.priority.toLowerCase(),
+        preferredDate: formData.preferredDate || undefined,
+        images: images.map((file) => file.name),
+      });
+
+      toast.success("Maintenance request submitted.");
+      setFormData({
+        title: "",
+        category: "",
+        priority: "Medium",
+        description: "",
+        preferredDate: "",
+      });
+      setImages([]);
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Unable to submit maintenance request.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -203,11 +233,12 @@ export default function RequestForm() {
         <button
           className="submit-request-btn"
           type="submit"
+          disabled={submitting}
         >
 
           <Send size={18} />
 
-          Submit Request
+          {submitting ? "Submitting..." : "Submit Request"}
 
         </button>
 

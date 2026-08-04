@@ -1,7 +1,6 @@
 import "./TechnicianInfo.css";
 
 import {
-  User,
   Phone,
   Mail,
   CalendarDays,

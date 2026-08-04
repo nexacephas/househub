@@ -10,7 +10,7 @@
   position: relative;
 }
 
-.testimonials .container {
+.testimonials .testimonials-container {
   width: min(1150px, 92%);
   margin: 0 auto;
   text-align: center;
@@ -599,7 +599,7 @@
 
 }
 
-.container{
+.testimonials-container{
 
     position:relative;
     z-index:2;

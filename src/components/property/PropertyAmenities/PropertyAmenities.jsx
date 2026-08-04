@@ -12,7 +12,7 @@ export default function PropertyAmenities({ property }) {
   return (
     <section className="property-amenities">
 
-      <div className="container">
+      <div className="property-amenities-container">
 
         <div className="section-heading">
 

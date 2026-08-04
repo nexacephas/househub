@@ -1,0 +1,56 @@
+.floating-action-buttons {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 1400;
+}
+
+.floating-action-btn {
+  width: 56px;
+  height: 56px;
+  border: none;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ffffff 0%, #f5f7fb 100%);
+  color: var(--secondary);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.16);
+  cursor: pointer;
+  transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
+}
+
+.floating-action-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.2);
+  background: linear-gradient(135deg, #ffffff 0%, #eef2ff 100%);
+}
+
+.floating-action-btn:active {
+  transform: scale(0.96);
+}
+
+.floating-action-btn-ai {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: #ffffff;
+}
+
+.floating-action-btn-ai:hover {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+}
+
+@media (max-width: 640px) {
+  .floating-action-buttons {
+    right: 16px;
+    bottom: 16px;
+    gap: 12px;
+  }
+
+  .floating-action-btn {
+    width: 48px;
+    height: 48px;
+  }
+}

@@ -19,7 +19,7 @@ HERO
 
 }
 
-.hero-overlay{
+/* .hero-overlay{
 
     position:absolute;
 
@@ -32,9 +32,9 @@ HERO
     transparent 50%
     );
 
-}
+} */
 
-.renting-hero .container{
+.renting-hero .renting-guide-container{
 
     position:relative;
 
@@ -183,7 +183,7 @@ HERO
 
 @media(max-width:992px){
 
-.renting-hero .container{
+.renting-hero .renting-guide-container{
 
 grid-template-columns:1fr;
 

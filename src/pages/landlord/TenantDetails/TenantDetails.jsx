@@ -17,24 +17,24 @@ export default function TenantDetails() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    loadTenant();
-  }, []);
+    async function loadTenant() {
+      try {
+        const { data } =
+          await tenantService.getTenant(id);
 
-  async function loadTenant() {
-    try {
-      const { data } =
-        await tenantService.getTenant(id);
-
-      setTenant(data.tenant);
-    } catch (error) {
-      toast.error(
-        error.response?.data?.message ||
-          "Unable to load tenant."
-      );
-    } finally {
-      setLoading(false);
+        setTenant(data.tenant);
+      } catch (error) {
+        toast.error(
+          error.response?.data?.message ||
+            "Unable to load tenant."
+        );
+      } finally {
+        setLoading(false);
+      }
     }
-  }
+
+    loadTenant();
+  }, [id]);
 
   if (loading) {
     return (

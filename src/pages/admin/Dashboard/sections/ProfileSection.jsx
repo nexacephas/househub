@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
+
 import ProfileCard from "../../../../components/dashboard/ProfileCard/ProfileCard";
 
 export default function ProfileSection() {
+  const navigate = useNavigate();
   const admin = {
     name: "Administrator",
     role: "Platform Admin",
@@ -14,7 +17,7 @@ export default function ProfileSection() {
       role={admin.role}
       email={admin.email}
       avatar={admin.avatar}
-      onEdit={() => console.log("Edit Admin Profile")}
+      onEdit={() => navigate("/admin/settings")}
     />
   );
 }

@@ -60,7 +60,7 @@ export default function PropertyLocation() {
   return (
     <section className="property-location">
 
-      <div className="container">
+      <div className="property-location-container">
 
         <div className="location-header">
 

@@ -65,7 +65,7 @@ export default function RequestCard({
         </div>
 
         <div
-          className={`status ${request.status
+          className={`status ${String(request.status || "pending")
             .toLowerCase()
             .replace(" ", "-")}`}
         >

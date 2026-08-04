@@ -5,39 +5,12 @@ import {
   Circle,
 } from "lucide-react";
 
-export default function ConversationList() {
-  const conversations = [
-    {
-      id: 1,
-      name: "Michael Johnson",
-      property: "Luxury 3 Bedroom Apartment",
-      message: "Your maintenance request has been approved.",
-      time: "10:42 AM",
-      unread: 2,
-      online: true,
-      avatar: "https://i.pravatar.cc/150?img=15",
-    },
-    {
-      id: 2,
-      name: "Sarah Williams",
-      property: "Ocean View Apartment",
-      message: "Your rent payment has been received.",
-      time: "Yesterday",
-      unread: 0,
-      online: false,
-      avatar: "https://i.pravatar.cc/150?img=32",
-    },
-    {
-      id: 3,
-      name: "HouseHub Support",
-      property: "Support Team",
-      message: "Welcome to HouseHub!",
-      time: "Mon",
-      unread: 1,
-      online: true,
-      avatar: "https://i.pravatar.cc/150?img=48",
-    },
-  ];
+export default function ConversationList({ conversations = [], selectedConversation, loading = false, onSelect }) {
+  const formatPreview = (conversation) => conversation.latestMessage?.text || conversation.message || "Start a conversation";
+  const formatTime = (conversation) => {
+    if (!conversation.updatedAt) return "Now";
+    return new Date(conversation.updatedAt).toLocaleDateString();
+  };
 
   return (
     <div className="conversation-list">
@@ -61,18 +34,24 @@ export default function ConversationList() {
 
       <div className="conversation-items">
 
-        {conversations.map((chat) => (
+        {loading ? (
+          <p className="conversation-empty">Loading conversations...</p>
+        ) : conversations.length === 0 ? (
+          <p className="conversation-empty">No conversations yet.</p>
+        ) : conversations.map((chat) => (
 
-          <div
-            className="conversation-item"
-            key={chat.id}
+          <button
+            type="button"
+            className={`conversation-item ${selectedConversation?._id === chat._id ? "active" : ""}`}
+            key={chat._id}
+            onClick={() => onSelect?.(chat)}
           >
 
             <div className="avatar-wrapper">
 
               <img
-                src={chat.avatar}
-                alt={chat.name}
+                src={chat.avatar || "https://i.pravatar.cc/150?img=15"}
+                alt={chat.title || "Conversation"}
               />
 
               {chat.online && (
@@ -90,15 +69,15 @@ export default function ConversationList() {
 
               <div className="conversation-top">
 
-                <h4>{chat.name}</h4>
+                <h4>{chat.title || "Conversation"}</h4>
 
-                <span>{chat.time}</span>
+                <span>{formatTime(chat)}</span>
 
               </div>
 
-              <small>{chat.property}</small>
+              <small>{chat.property || "HouseHub"}</small>
 
-              <p>{chat.message}</p>
+              <p>{formatPreview(chat)}</p>
 
             </div>
 
@@ -112,7 +91,7 @@ export default function ConversationList() {
 
             )}
 
-          </div>
+          </button>
 
         ))}
 

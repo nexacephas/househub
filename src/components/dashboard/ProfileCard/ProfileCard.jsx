@@ -7,6 +7,7 @@ export default function ProfileCard({
   email,
   avatar,
   onEdit,
+  isVerified,
 }) {
   return (
     <div className="profile-card">
@@ -27,6 +28,7 @@ export default function ProfileCard({
     <h3>{name}</h3>
     <p>{role}</p>
     <span>{email}</span>
+    {isVerified ? <span className="profile-badge">Verified</span> : null}
   </div>
 </div>
 

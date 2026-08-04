@@ -3,12 +3,32 @@ import "./ForgotPassword.css";
 import { Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import toast from "react-hot-toast";
+import { forgotPassword } from "../../../services/auth.service";
 
 export default function ForgotPassword(){
 
 const[email,setEmail]=useState("");
 
 const[sent,setSent]=useState(false);
+
+const[loading,setLoading]=useState(false);
+
+async function handleSubmit(){
+if(!email.trim()){
+return toast.error("Email is required.");
+}
+
+try{
+setLoading(true);
+await forgotPassword(email.trim());
+setSent(true);
+}catch(error){
+toast.error(error.response?.data?.message||"Unable to send reset link.");
+}finally{
+setLoading(false);
+}
+}
 
 if(sent){
 
@@ -74,11 +94,13 @@ onChange={(e)=>setEmail(e.target.value)}
 
 className="login-btn"
 
-onClick={()=>setSent(true)}
+onClick={handleSubmit}
+
+disabled={loading}
 
 >
 
-Send Reset Link
+{loading?"Sending...":"Send Reset Link"}
 
 </button>
 

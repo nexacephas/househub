@@ -7,10 +7,10 @@ import {
   Circle,
 } from "lucide-react";
 
-export default function PropertyChatHeader() {
+export default function PropertyChatHeader({ conversation }) {
   const landlord = {
-    name: "Michael Johnson",
-    property: "Luxury 3 Bedroom Apartment",
+    name: conversation?.title || "Support",
+    property: conversation?.metadata?.title || "HouseHub",
     online: true,
     avatar: "https://i.pravatar.cc/150?img=15",
   };

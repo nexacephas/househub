@@ -96,7 +96,7 @@
 
 }
 
-.stats{
+.auth-layout-stats{
 
     display:flex;
 
@@ -104,7 +104,7 @@
 
 }
 
-.stats h3{
+.auth-layout-stats h3{
 
     font-size:2rem;
 
@@ -112,7 +112,7 @@
 
 }
 
-.stats span{
+.auth-layout-stats span{
 
     color:rgba(255,255,255,.8);
 

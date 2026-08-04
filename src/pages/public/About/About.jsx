@@ -17,7 +17,7 @@ export default function About() {
 
       <section className="about-hero">
 
-        <div className="container">
+        <div className="about-page-container">
 
           <div className="breadcrumb">
 
@@ -52,7 +52,7 @@ export default function About() {
       {/* Next Section */}
      <section className="story">
 
-  <div className="container">
+  <div className="about-page-container">
 
     <span className="section-tag">
       OUR STORY
@@ -92,7 +92,7 @@ export default function About() {
 
 <section className="mission-vision">
 
-  <div className="container">
+  <div className="about-page-container">
 
     <span className="section-tag">
       OUR PURPOSE
@@ -150,7 +150,7 @@ export default function About() {
 
 <section className="values">
 
-  <div className="container">
+  <div className="about-page-container">
 
     <span className="section-tag">
       OUR VALUES
@@ -239,7 +239,7 @@ export default function About() {
 
 <section className="verification">
 
-  <div className="container">
+  <div className="about-page-container">
 
     <span className="section-tag">
       VERIFICATION PROCESS
@@ -345,7 +345,7 @@ export default function About() {
 
 <section className="comparison">
 
-  <div className="container">
+  <div className="about-page-container">
 
     <span className="section-tag">
       WHY HOUSEHUB
@@ -415,7 +415,7 @@ export default function About() {
 
 <section className="roadmap">
 
-  <div className="container">
+  <div className="about-page-container">
 
     <span className="section-tag">
       OUR JOURNEY

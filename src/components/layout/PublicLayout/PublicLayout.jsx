@@ -2,7 +2,8 @@ import { Outlet } from "react-router-dom";
 
 import Navbar from "../../layout/Navbar/Navbar";
 import Footer from "../../layout/Footer/Footer";
-import AIWidget from "../../ai/AIWidget/AIWidget";
+import FloatingActionButtons from "../../common/FloatingActionButtons/FloatingActionButtons";
+
 export default function PublicLayout() {
   return (
     <>
@@ -11,7 +12,7 @@ export default function PublicLayout() {
       <Outlet />
 
       <Footer />
-        <AIWidget />
+      <FloatingActionButtons />
     </>
   );
 }

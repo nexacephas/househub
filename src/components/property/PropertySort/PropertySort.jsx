@@ -9,7 +9,7 @@ import {
   Heart,
 } from "lucide-react";
 
-export default function PropertySort() {
+export default function PropertySort({ count = 0, filters = {}, onSortChange = () => {} }) {
 
   const [view, setView] = useState("grid");
 
@@ -17,7 +17,7 @@ export default function PropertySort() {
 
     <section className="property-sort">
 
-      <div className="container">
+      <div className="property-sort-container">
 
         <div className="sort-wrapper">
 
@@ -25,7 +25,7 @@ export default function PropertySort() {
 
             <h3>
 
-              245 Verified Properties
+              {count} Verified Properties
 
             </h3>
 
@@ -51,17 +51,15 @@ export default function PropertySort() {
 
               <ArrowUpDown size={18} />
 
-              <select>
+              <select value={filters.sort || "-createdAt"} onChange={(event) => onSortChange(event.target.value)}>
 
-                <option>Newest</option>
+                <option value="-createdAt">Newest</option>
 
-                <option>Featured</option>
+                <option value="-views">Most Viewed</option>
 
-                <option>Most Viewed</option>
+                <option value="price">Price: Low → High</option>
 
-                <option>Price: Low → High</option>
-
-                <option>Price: High → Low</option>
+                <option value="-price">Price: High → Low</option>
 
               </select>
 

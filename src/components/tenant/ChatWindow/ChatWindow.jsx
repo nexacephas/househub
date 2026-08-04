@@ -4,49 +4,30 @@ import PropertyChatHeader from "../PropertyChatHeader/PropertyChatHeader";
 import MessageBubble from "../MessageBubble/MessageBubble";
 import MessageInput from "../MessageInput/MessageInput";
 
-export default function ChatWindow() {
-const messages = [
-  {
-    id: 1,
-    sender: "landlord",
-    text: "Hello Cephas, I wanted to let you know your maintenance request has been assigned to a plumber.",
-    time: "10:10 AM",
-  },
-  {
-    id: 2,
-    sender: "tenant",
-    text: "Thank you. When should I expect the technician?",
-    time: "10:12 AM",
-    read: true,
-  },
-  {
-    id: 3,
-    sender: "landlord",
-    text: "He'll arrive tomorrow between 10:00 AM and 12:00 PM.",
-    time: "10:15 AM",
-  },
-];
-
+export default function ChatWindow({ conversation, messages = [], loading = false, onSend }) {
   return (
     <div className="chat-window">
-
-      <PropertyChatHeader />
+      <PropertyChatHeader conversation={conversation} />
 
       <div className="chat-messages">
-
-        {messages.map((message) => (
-
+        {loading ? (
+          <p className="conversation-empty">Loading messages...</p>
+        ) : messages.length === 0 ? (
+          <p className="conversation-empty">No messages yet. Start the conversation.</p>
+        ) : messages.map((message) => (
           <MessageBubble
-            key={message.id}
-            message={message}
+            key={message._id || message.id}
+            message={{
+              ...message,
+              sender: message.sender?._id ? "tenant" : "landlord",
+              text: message.text || message.body || "",
+              time: new Date(message.createdAt).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }),
+            }}
           />
-
         ))}
-
       </div>
 
-      <MessageInput />
-
+      <MessageInput onSend={onSend} disabled={loading} />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import "./Agents.css";
-
+/* 
 import Navbar from "../../../components/layout/Navbar";
-import Footer from "../../../components/layout/Footer";
+import Footer from "../../../components/layout/Footer"; */
 
 import AgentHero from "../../../components/agent/AgentHero";
 import AgentSearch from "../../../components/agent/AgentSearch";
@@ -15,8 +15,8 @@ import AgentCTA from "../../../components/agent/AgentCTA";
 export default function Agents() {
   return (
     <>
-      <Navbar />
-
+    {/*   <Navbar />
+ */}
       <main className="agents-page">
         <AgentHero />
 
@@ -34,8 +34,8 @@ export default function Agents() {
 
         <AgentCTA />
       </main>
-
-      <Footer />
+{/* 
+      <Footer /> */}
     </>
   );
 }

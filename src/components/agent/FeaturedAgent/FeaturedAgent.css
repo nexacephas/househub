@@ -7,7 +7,7 @@
     background: var(--background);
 }
 
-.featured-agents .container {
+.featured-agents .featured-agent-container {
     width: min(var(--container), 92%);
     margin: 0 auto;
 }

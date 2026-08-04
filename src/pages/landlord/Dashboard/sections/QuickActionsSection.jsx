@@ -29,7 +29,7 @@ export default function QuickActionsSection() {
     "My Properties": "/landlord/properties",
     Tenants: "/landlord/tenants",
     Messages: "/landlord/messages",
-    Earnings: "/landlord/earnings",
+    Earnings: "/landlord/payments",
     Settings: "/landlord/settings",
   };
 

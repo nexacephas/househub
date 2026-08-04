@@ -80,7 +80,7 @@
   background: #f8fafc;
 }
 
-.stats-grid {
+.list-property-stats-grid {
   display: grid;
   grid-template-columns: repeat(4,1fr);
   gap: 25px;
@@ -212,7 +212,7 @@
 @media(max-width:992px){
 
 .verification-grid,
-.stats-grid{
+.list-property-stats-grid{
 grid-template-columns:repeat(2,1fr);
 }
 
@@ -225,7 +225,7 @@ padding:60px 40px;
 @media(max-width:768px){
 
 .verification-grid,
-.stats-grid{
+.list-property-stats-grid{
 grid-template-columns:1fr;
 }
 
@@ -296,7 +296,7 @@ font-size:2.3rem;
   );
 }
 
-.list-hero .container {
+.list-hero .list-property-container {
   width: min(1180px, 92%);
   margin: auto;
   position: relative;

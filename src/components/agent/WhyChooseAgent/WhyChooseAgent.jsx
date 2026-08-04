@@ -51,7 +51,7 @@ const features = [
 export default function WhyChooseAgent() {
   return (
     <section className="why-agent">
-      <div className="container">
+      <div className="why-choose-agent-container">
 
         <div className="section-header">
 

@@ -12,7 +12,7 @@ export default function PropertyHero() {
 
       <div className="hero-overlay"></div>
 
-      <div className="container">
+      <div className="property-hero-container">
 
         <div className="hero-content">
 

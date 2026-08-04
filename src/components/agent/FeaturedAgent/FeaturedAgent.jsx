@@ -11,7 +11,7 @@ import { featuredAgents } from "../../../data/agents";
 export default function FeaturedAgents() {
   return (
     <section className="featured-agents">
-      <div className="container">
+      <div className="featured-agent-container">
 
         <div className="section-header">
           <span className="section-tag">

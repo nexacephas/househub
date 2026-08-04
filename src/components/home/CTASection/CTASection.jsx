@@ -11,7 +11,7 @@ export default function CallToAction() {
   return (
     <section className="cta">
 
-      <div className="container">
+      <div className="cta-section-container">
 
         <div className="cta-content">
 

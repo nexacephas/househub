@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
+
 import ProfileCard from "../../../../components/dashboard/ProfileCard/ProfileCard";
 
 export default function ProfileSection() {
+  const navigate = useNavigate();
   const agent = {
     name: "Cephas",
     role: "Agent",
@@ -14,7 +17,7 @@ export default function ProfileSection() {
       role={agent.role}
       email={agent.email}
       avatar={agent.avatar}
-      onEdit={() => console.log("Edit Profile")}
+      onEdit={() => navigate("/agent/settings")}
     />
   );
 }

@@ -70,7 +70,7 @@ export default function PropertyInfo({ property }) {
   return (
     <section className="property-info">
 
-      <div className="container">
+      <div className="property-info-container">
 
         <div className="info-layout">
 

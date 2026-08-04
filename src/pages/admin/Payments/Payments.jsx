@@ -27,10 +27,6 @@ function Payments() {
     date: "",
   });
 
-  useEffect(() => {
-    loadPayments();
-  }, []);
-
   async function loadPayments() {
     try {
       setLoading(true);
@@ -46,6 +42,10 @@ function Payments() {
       setLoading(false);
     }
   }
+
+  useEffect(() => {
+    loadPayments();
+  }, []);
 
   return (
     <div className="admin-payments-page">

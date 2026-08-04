@@ -6,37 +6,14 @@ export default function RequestList({
   requests = [],
   loading = false,
 }) {
-  const demoRequests = [
-    {
-      id: 1,
-      title: "Kitchen Sink Leak",
-      category: "Plumbing",
-      priority: "High",
-      status: "Pending",
-      createdAt: "27 Jul 2026",
-    },
-    {
-      id: 2,
-      title: "Bedroom Light Not Working",
-      category: "Electrical",
-      priority: "Medium",
-      status: "In Progress",
-      createdAt: "24 Jul 2026",
-    },
-    {
-      id: 3,
-      title: "Broken Window Lock",
-      category: "Security",
-      priority: "Low",
-      status: "Completed",
-      createdAt: "19 Jul 2026",
-    },
-  ];
-
-  const data =
-    requests.length > 0
-      ? requests
-      : demoRequests;
+  const data = requests.map((request) => ({
+    id: request._id,
+    title: request.title,
+    category: request.category || request.property?.title || "General",
+    priority: request.priority ? request.priority.charAt(0).toUpperCase() + request.priority.slice(1) : "Medium",
+    status: request.status === "open" ? "Pending" : request.status === "in_progress" ? "In Progress" : request.status === "resolved" || request.status === "closed" ? "Completed" : request.status,
+    createdAt: request.createdAt ? new Date(request.createdAt).toLocaleDateString() : "—",
+  }));
 
   return (
     <section className="request-list">

@@ -1,0 +1,117 @@
+.agent-profile-page{
+padding:30px;
+}
+
+.agent-profile-hero{
+display:flex;
+align-items:center;
+gap:20px;
+background:#fff;
+border-radius:18px;
+padding:28px;
+box-shadow:0 15px 35px rgba(15,23,42,.08);
+margin-bottom:24px;
+}
+
+.agent-profile-avatar{
+width:86px;
+height:86px;
+border-radius:50%;
+background:#eff6ff;
+color:#2563eb;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+flex:0 0 auto;
+}
+
+.agent-profile-avatar img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.agent-profile-hero p{
+margin:0 0 6px;
+color:#64748b;
+font-weight:600;
+}
+
+.agent-profile-hero h1{
+margin:0 0 10px;
+font-size:30px;
+color:#0f172a;
+}
+
+.agent-profile-hero span{
+display:inline-flex;
+align-items:center;
+gap:8px;
+color:#15803d;
+font-weight:700;
+}
+
+.agent-profile-grid{
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:24px;
+}
+
+.agent-profile-panel{
+background:#fff;
+border-radius:18px;
+padding:24px;
+box-shadow:0 15px 35px rgba(15,23,42,.08);
+}
+
+.agent-profile-panel h2{
+margin:0 0 18px;
+font-size:18px;
+color:#0f172a;
+}
+
+.agent-profile-row{
+display:flex;
+align-items:center;
+gap:12px;
+padding:13px 0;
+color:#475569;
+border-bottom:1px solid #e5e7eb;
+}
+
+.agent-profile-row:last-child{
+border-bottom:0;
+}
+
+.agent-profile-status{
+display:flex;
+justify-content:space-between;
+gap:15px;
+padding:13px 0;
+border-bottom:1px solid #e5e7eb;
+color:#64748b;
+}
+
+.agent-profile-status:last-child{
+border-bottom:0;
+}
+
+.agent-profile-status strong{
+color:#0f172a;
+text-transform:capitalize;
+}
+
+@media(max-width:760px){
+.agent-profile-page{
+padding:18px;
+}
+
+.agent-profile-hero{
+align-items:flex-start;
+}
+
+.agent-profile-grid{
+grid-template-columns:1fr;
+}
+}

@@ -70,7 +70,7 @@
 
 }
 
-.about-hero .container{
+.about-hero .about-page-container{
 
     position:relative;
 
@@ -183,7 +183,7 @@
 
 }
 
-.story .container{
+.story .about-page-container{
 
     max-width:900px;
 
@@ -259,7 +259,7 @@
 
 }
 
-.mission-vision .container{
+.mission-vision .about-page-container{
 
     text-align:center;
 
@@ -415,7 +415,7 @@
 
 }
 
-.values .container{
+.values .about-page-container{
 
     text-align:center;
 
@@ -540,7 +540,7 @@
 
 }
 
-.verification .container{
+.verification .about-page-container{
 
     text-align:center;
 
@@ -675,7 +675,7 @@
 
 }
 
-.comparison .container{
+.comparison .about-page-container{
 
     text-align:center;
 
@@ -797,7 +797,7 @@
 
 }
 
-.roadmap .container{
+.roadmap .about-page-container{
 
     text-align:center;
 

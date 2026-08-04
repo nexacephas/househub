@@ -7,7 +7,6 @@ import {
   Calendar,
   Home,
   BadgeCheck,
-  Ban,
 } from "lucide-react";
 
 export default function LandlordDetails({ landlord }) {

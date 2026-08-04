@@ -13,7 +13,7 @@ import {
 export default function AgentFilters() {
   return (
     <section className="agent-filters">
-      <div className="container">
+      <div className="agent-filters-container">
 
         <div className="filters-card">
 

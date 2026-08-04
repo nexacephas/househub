@@ -27,24 +27,23 @@ function Reports() {
   });
 
   useEffect(() => {
+    async function loadReports() {
+      try {
+        setLoading(true);
+
+        const { data } = await reportService.getReports();
+
+        setReports(data.reports || []);
+      } catch (error) {
+        console.error(error);
+        setReports([]);
+      } finally {
+        setLoading(false);
+      }
+    }
+
     loadReports();
   }, []);
-
-  async function loadReports() {
-    try {
-      setLoading(true);
-
-      const { data } =
-        await reportService.getReports();
-
-      setReports(data.reports || []);
-    } catch (error) {
-      console.error(error);
-      setReports([]);
-    } finally {
-      setLoading(false);
-    }
-  }
 
   return (
     <div className="admin-reports-page">

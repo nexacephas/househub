@@ -11,7 +11,7 @@ export default function Terms() {
 
         <section className="legal-hero">
 
-          <div className="container">
+          <div className="terms-page-container">
 
             <span className="section-tag">
               LEGAL
@@ -35,7 +35,7 @@ export default function Terms() {
 
         <section className="legal-content">
 
-          <div className="container">
+          <div className="terms-page-container">
 
             <aside className="legal-sidebar">
 

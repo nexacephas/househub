@@ -13,7 +13,7 @@ export default function Footer() {
   return (
     <footer className="footer">
 
-      <div className="container">
+      <div className="footer-container">
 
         <div className="footer-top">
 

@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
+
 import ProfileCard from "../../../../components/dashboard/ProfileCard/ProfileCard";
 
 export default function ProfileSection() {
+  const navigate = useNavigate();
   const user = {
     name: "Cephas",
     role: "Landlord",
@@ -9,9 +12,7 @@ export default function ProfileSection() {
   };
 
   const handleEditProfile = () => {
-    console.log("Navigate to profile settings");
-    // Later:
-    // navigate("/landlord/settings");
+    navigate("/landlord/settings");
   };
 
   return (

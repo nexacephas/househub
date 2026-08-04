@@ -8,14 +8,13 @@ import {
   Mic,
 } from "lucide-react";
 
-export default function MessageInput() {
+export default function MessageInput({ onSend, disabled = false }) {
   const [message, setMessage] = useState("");
 
-  function handleSend() {
-    if (!message.trim()) return;
+  async function handleSend() {
+    if (!message.trim() || disabled) return;
 
-    console.log(message);
-
+    await onSend?.(message.trim());
     setMessage("");
   }
 
@@ -55,6 +54,7 @@ export default function MessageInput() {
       <button
         className="send-btn"
         onClick={handleSend}
+        disabled={disabled}
       >
         <SendHorizonal size={20} />
       </button>

@@ -2,7 +2,7 @@ import "./Card.css";
 
 export default function Card() {
     return (
-        <div className="card">
+        <div className="ui-card">
             Card
         </div>
     );

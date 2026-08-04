@@ -45,7 +45,7 @@ export default function HowItWorks() {
   return (
     <section className="how">
 
-      <div className="container">
+      <div className="how-it-works-container">
 
         <span className="section-tag">
           HOW IT WORKS

@@ -64,7 +64,7 @@ export default function Testimonials() {
   return (
     <section className="testimonials">
 
-      <div className="container">
+      <div className="testimonials-container">
 
         <span className="section-tag">
           TESTIMONIALS

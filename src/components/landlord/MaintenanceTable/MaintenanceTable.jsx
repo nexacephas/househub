@@ -86,11 +86,11 @@ export default function MaintenanceTable({
               </td>
 
               <td>
-                {request.property?.title || "-"}
+                {request.property?.title || request.property?.name || "-"}
               </td>
 
               <td>
-                {request.tenant?.fullName || "-"}
+                {request.tenant?.fullName || [request.tenant?.firstName, request.tenant?.lastName].filter(Boolean).join(" ") || request.tenant?.name || "-"}
               </td>
 
               <td>
@@ -116,8 +116,7 @@ export default function MaintenanceTable({
               </td>
 
               <td>
-                {request.technician?.name ||
-                  "Unassigned"}
+                {request.technician?.name || request.technician || request.assignedTo || "Unassigned"}
               </td>
 
               <td>

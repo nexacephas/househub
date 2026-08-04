@@ -17,7 +17,7 @@ const iconMap = {
 
 export default function StatsSection() {
   return (
-    <div className="stats-grid">
+    <div className="agent-dashboard-stats-grid">
       {stats.map((item) => {
         const Icon = iconMap[item.icon];
 

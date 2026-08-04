@@ -39,7 +39,7 @@ const trustItems = [
 export default function TrustedPartners() {
   return (
     <section className="trusted">
-      <div className="container">
+      <div className="trusted-partners-container">
 
         <span className="section-tag">
           TRUSTED PLATFORM

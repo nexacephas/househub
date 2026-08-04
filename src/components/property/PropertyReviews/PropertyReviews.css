@@ -4,7 +4,7 @@
     background:var(--background);
 }
 
-.property-reviews .container{
+.property-reviews .property-reviews-container{
     width:min(1400px,92%);
     margin:auto;
 }

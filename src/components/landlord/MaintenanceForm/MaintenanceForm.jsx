@@ -81,79 +81,69 @@ export default function MaintenanceForm({
   ];
 
   useEffect(() => {
+    async function loadProperties() {
+      try {
+        const { data } =
+          await propertyService.getMyProperties();
+
+        setProperties(data.properties || []);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    async function loadTenants() {
+      try {
+        const { data } =
+          await tenantService.getTenants();
+
+        setTenants(data.tenants || []);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    async function loadRequest() {
+      try {
+        const { data } =
+          await maintenanceService.getRequest(id);
+
+        const request = data.request;
+
+        setFormData({
+          title: request.title || "",
+          description:
+            request.description || "",
+          property:
+            request.property?._id || "",
+          tenant:
+            request.tenant?._id || "",
+          category:
+            request.category || "Electrical",
+          priority:
+            request.priority || "Medium",
+          status:
+            request.status || "Pending",
+          technician:
+            request.technician || "",
+          estimatedCost:
+            request.estimatedCost || "",
+          notes:
+            request.notes || "",
+        });
+      } catch (error) {
+        console.error(error);
+        toast.error("Failed to load maintenance request.");
+      }
+    }
+
     loadProperties();
     loadTenants();
 
     if (editing) {
       loadRequest();
     }
-  }, []);
-
-  async function loadProperties() {
-    try {
-      const { data } =
-        await propertyService.getMyProperties();
-
-      setProperties(data.properties || []);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  async function loadTenants() {
-    try {
-      const { data } =
-        await tenantService.getTenants();
-
-      setTenants(data.tenants || []);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  async function loadRequest() {
-    try {
-      const { data } =
-        await maintenanceService.getRequest(id);
-
-      const request = data.request;
-
-      setFormData({
-        title: request.title || "",
-
-        description:
-          request.description || "",
-
-        property:
-          request.property?._id || "",
-
-        tenant:
-          request.tenant?._id || "",
-
-        category:
-          request.category || "Electrical",
-
-        priority:
-          request.priority || "Medium",
-
-        status:
-          request.status || "Pending",
-
-        technician:
-          request.technician || "",
-
-        estimatedCost:
-          request.estimatedCost || "",
-
-        notes:
-          request.notes || "",
-      });
-    } catch (error) {
-      toast.error(
-        "Failed to load maintenance request."
-      );
-    }
-  }
+  }, [editing, id]);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -244,6 +234,7 @@ export default function MaintenanceForm({
 
       navigate("/landlord/maintenance");
     } catch (error) {
+      console.error(error);
       toast.error(
         error.response?.data?.message ||
           "Something went wrong."

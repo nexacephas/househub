@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import PropertyStats from "../../../components/admin/PropertyStats/PropertyStats";
 import PropertyFilters from "../../../components/admin/PropertyFilters/PropertyFilters";
@@ -28,28 +28,28 @@ function Properties() {
     owner: "",
   });
 
+  const loadProperties = useCallback(
+    async (filterValues) => {
+      try {
+        setLoading(true);
+
+        const { data } =
+          await propertyService.getProperties(filterValues);
+
+        setProperties(data.properties || []);
+      } catch (error) {
+        console.error(error);
+        setProperties([]);
+      } finally {
+        setLoading(false);
+      }
+    },
+    []
+  );
+
   useEffect(() => {
-    loadProperties();
-  }, []);
-
-  async function loadProperties() {
-    try {
-      setLoading(true);
-
-      const { data } = await propertyService.getProperties(filters);
-
-      setProperties(data.properties || []);
-    } catch (error) {
-      console.error(error);
-      setProperties([]);
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  useEffect(() => {
-    loadProperties();
-  }, [filters]);
+    loadProperties(filters);
+  }, [filters, loadProperties]);
 
   async function handleDelete(property) {
     try {
@@ -58,7 +58,7 @@ function Properties() {
       setShowDelete(false);
       setSelectedProperty(null);
 
-      loadProperties();
+      loadProperties(filters);
     } catch (error) {
       console.error(error);
     }

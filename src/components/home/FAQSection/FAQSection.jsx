@@ -43,7 +43,7 @@ export default function FAQSection() {
   return (
     <section className="home-faq">
 
-      <div className="container">
+      <div className="faq-section-container">
 
         <div className="faq-header">
 

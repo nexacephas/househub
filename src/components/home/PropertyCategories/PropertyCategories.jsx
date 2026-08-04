@@ -58,7 +58,7 @@ export default function PropertyCategories() {
   return (
     <section className="categories">
 
-      <div className="container">
+      <div className="property-categories-container">
 
         <span className="section-tag">
           PROPERTY TYPES

@@ -15,24 +15,23 @@ export default function EditProperty() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    async function fetchProperty() {
+      try {
+        const { data } = await propertyService.getProperty(id);
+
+        setProperty(data.property);
+      } catch (error) {
+        toast.error(
+          error.response?.data?.message ||
+            "Unable to load property."
+        );
+      } finally {
+        setLoading(false);
+      }
+    }
+
     fetchProperty();
   }, [id]);
-
-  async function fetchProperty() {
-    try {
-      const { data } =
-        await propertyService.getProperty(id);
-
-      setProperty(data.property);
-    } catch (error) {
-      toast.error(
-        error.response?.data?.message ||
-          "Unable to load property."
-      );
-    } finally {
-      setLoading(false);
-    }
-  }
 
   if (loading) {
     return (

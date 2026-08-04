@@ -40,7 +40,7 @@ export default function PropertyReviews() {
   return (
     <section className="property-reviews">
 
-      <div className="container">
+      <div className="property-reviews-container">
 
         <div className="reviews-header">
 

@@ -4,98 +4,81 @@ import { Link } from "react-router-dom";
 
 import {
   Newspaper,
-  Clock3,
   ArrowRight,
+  BookOpen,
+  Home,
+  ShieldCheck,
 } from "lucide-react";
+
+const resources = [
+  {
+    title: "Buying guides",
+    description: "How to evaluate neighborhoods, compare listings, and close with confidence.",
+  },
+  {
+    title: "Renting tips",
+    description: "Everything tenants need to know about deposits, inspections, and lease terms.",
+  },
+  {
+    title: "Property management",
+    description: "Practical advice for landlords managing requests, renewals, and maintenance.",
+  },
+];
 
 export default function Blog() {
   return (
     <main className="blog-placeholder">
-
-      <div className="container">
-
+      <div className="blog-page-container">
         <div className="placeholder-card">
-
           <div className="placeholder-icon">
             <Newspaper size={60} />
           </div>
 
-          <span className="coming-soon">
-            COMING SOON
-          </span>
+          <span className="coming-soon">RESOURCE CENTER</span>
 
-          <h1>
-            HouseHub Blog
-          </h1>
+          <h1>HouseHub insights for buyers, renters, and landlords</h1>
 
           <p>
-            We're creating a comprehensive resource centre packed with
-            expert advice on buying, renting, investing, legal matters,
-            market trends, home ownership, and property management across
-            Nigeria.
+            Discover practical guidance for navigating the property market, staying organized, and
+            making safer real-estate decisions with confidence.
           </p>
 
           <div className="placeholder-features">
-
-            <div className="feature">
-              ✓ Property Tips
-            </div>
-
-            <div className="feature">
-              ✓ Buying Guides
-            </div>
-
-            <div className="feature">
-              ✓ Renting Advice
-            </div>
-
-            <div className="feature">
-              ✓ Market Insights
-            </div>
-
-            <div className="feature">
-              ✓ Investment Articles
-            </div>
-
-            <div className="feature">
-              ✓ Legal Resources
-            </div>
-
+            {resources.map((item) => (
+              <div className="feature" key={item.title}>
+                <strong>{item.title}</strong>
+                <span>{item.description}</span>
+              </div>
+            ))}
           </div>
 
           <div className="placeholder-actions">
-
-            <Link
-              to="/"
-              className="btn-primary"
-            >
+            <Link to="/" className="btn-primary">
               Back Home
             </Link>
-
-            <Link
-              to="/properties"
-              className="btn-secondary"
-            >
+            <Link to="/properties" className="btn-secondary">
               Browse Properties
-              <ArrowRight size={18}/>
+              <ArrowRight size={18} />
             </Link>
-
           </div>
 
           <div className="launch-note">
-
-            <Clock3 size={18}/>
-
-            <span>
-              Full blog experience launching soon.
-            </span>
-
+            <BookOpen size={18} />
+            <span>New articles and guides will be shared here as the platform grows.</span>
           </div>
 
+          <div className="placeholder-features" style={{ marginTop: "1rem" }}>
+            <div className="feature">
+              <Home size={18} />
+              <span>Property discovery tools</span>
+            </div>
+            <div className="feature">
+              <ShieldCheck size={18} />
+              <span>Secure account workflows</span>
+            </div>
+          </div>
         </div>
-
       </div>
-
     </main>
   );
 }

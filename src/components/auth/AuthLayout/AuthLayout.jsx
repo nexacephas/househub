@@ -34,7 +34,7 @@ export default function AuthLayout() {
             property experience across Nigeria.
           </p>
 
-          <div className="stats">
+          <div className="auth-layout-stats">
 
             <div>
               <h3>100%</h3>

@@ -9,7 +9,7 @@ export default function AgentHero() {
 
       <div className="agent-hero-overlay"></div>
 
-      <div className="container">
+      <div className="agent-hero-container">
 
         <div className="agent-hero-content">
 

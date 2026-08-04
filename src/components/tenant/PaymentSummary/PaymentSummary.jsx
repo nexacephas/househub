@@ -7,29 +7,29 @@ import {
   BadgeCheck,
 } from "lucide-react";
 
-export default function PaymentSummary() {
-  const stats = [
+export default function PaymentSummary({ stats = {} }) {
+  const summaryCards = [
     {
       title: "Total Rent Paid",
-      value: "₦18,500,000",
+      value: `₦${Number(stats.total || 0).toLocaleString()}`,
       icon: Wallet,
       color: "#2563eb",
     },
     {
-      title: "This Year",
-      value: "₦9,000,000",
+      title: "Payments Recorded",
+      value: Number(stats.paid || 0),
       icon: CalendarDays,
       color: "#10b981",
     },
     {
       title: "Outstanding",
-      value: "₦0",
+      value: Number(stats.outstanding || 0),
       icon: AlertCircle,
       color: "#f59e0b",
     },
     {
       title: "Payment Status",
-      value: "Up to Date",
+      value: Number(stats.outstanding || 0) === 0 ? "Up to Date" : "Needs Attention",
       icon: BadgeCheck,
       color: "#22c55e",
     },
@@ -38,7 +38,7 @@ export default function PaymentSummary() {
   return (
     <section className="payment-summary">
 
-      {stats.map((item) => {
+      {summaryCards.map((item) => {
 
         const Icon = item.icon;
 

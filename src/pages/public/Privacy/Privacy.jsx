@@ -12,7 +12,7 @@ export default function Privacy() {
 
         <section className="legal-hero">
 
-          <div className="container">
+          <div className="privacy-page-container">
 
             <span className="section-tag">
               PRIVACY
@@ -39,7 +39,7 @@ export default function Privacy() {
 
         <section className="legal-content">
 
-          <div className="container">
+          <div className="privacy-page-container">
 
 
             <aside className="legal-sidebar">

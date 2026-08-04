@@ -10,13 +10,13 @@ import {
 
 import "./Hero.css";
 
-import hero1 from "../../../assets/images/hero/hero1.jpg";
-import hero2 from "../../../assets/images/hero/hero2.jpg";
-import hero3 from "../../../assets/images/hero/hero3.jpg";
-import hero4 from "../../../assets/images/hero/hero4.jpg";
-import hero5 from "../../../assets/images/hero/hero5.jpg";
-
-const heroImages = [hero1, hero2, hero3, hero4, hero5];
+const heroImages = [
+  "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=3840&q=80",
+  "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=3840&q=80",
+  "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=3840&q=80",
+  "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=3840&q=80",
+  "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=3840&q=80",
+];
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);

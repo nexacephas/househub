@@ -3,11 +3,11 @@
 ========================================== */
 
 .property-filters {
-  padding: 70px 0;
+  padding: var(--space-6xl) 0;
   background: var(--background);
 }
 
-.property-filters .container {
+.property-filters .property-filters-container {
   width: min(1400px, 92%);
   margin: auto;
 }
@@ -18,13 +18,9 @@
 
 .filter-card {
   background: var(--surface);
-
-  border-radius: 24px;
-
-  padding: 35px;
-
+  border-radius: var(--radius-lg);
+  padding: var(--space-3xl);
   box-shadow: var(--shadow-md);
-
   border: 1px solid var(--gray-200);
 }
 
@@ -36,8 +32,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  margin-bottom: 35px;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-3xl);
 }
 
 .filter-header h3 {
@@ -59,10 +55,8 @@
 
 .filter-grid {
   display: grid;
-
-  grid-template-columns: repeat(3, 1fr);
-
-  gap: 25px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
 }
 
 /* ==========================================
@@ -98,10 +92,8 @@
 
 .filter-group input,
 .filter-group select {
-
   width: 100%;
-
-  height: 56px;
+  min-height: 48px;
 
   border: 1px solid var(--gray-200);
 
@@ -317,38 +309,41 @@
 }
 
 @media (max-width: 768px) {
+  .property-filters {
+    padding: 48px 0;
+  }
 
   .filter-card {
+    padding: 20px;
+    border-radius: 20px;
+  }
 
-    padding: 24px;
-
+  .filter-header {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
   }
 
   .filter-grid {
-
     grid-template-columns: 1fr;
-
+    gap: 14px;
   }
 
   .filter-actions {
-
     flex-direction: column;
-
+    gap: 12px;
+    margin-top: 24px;
   }
 
   .reset-btn,
   .apply-btn {
-
     width: 100%;
-
     justify-content: center;
-
+    min-height: 48px;
   }
 
   .amenity-options {
-
-    gap: 12px;
-
+    gap: 10px;
   }
 
 }

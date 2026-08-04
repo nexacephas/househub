@@ -1,7 +1,7 @@
 import "./VerifiedAgents.css";
-
+/* 
 import Navbar from "../../../components/layout/Navbar";
-import Footer from "../../../components/layout/Footer";
+import Footer from "../../../components/layout/Footer"; */
 
 import AgentHero from "../../../components/agent/AgentHero";
 import AgentSearch from "../../../components/agent/AgentSearch";
@@ -14,7 +14,7 @@ import { allAgents } from "../../../data/agents";
 export default function VerifiedAgents() {
   return (
     <>
-      <Navbar />
+   {/*    <Navbar /> */}
 
       <main className="verified-agents-page">
 
@@ -37,7 +37,7 @@ export default function VerifiedAgents() {
 
       </main>
 
-      <Footer />
+    {/*   <Footer /> */}
     </>
   );
 }

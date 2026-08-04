@@ -23,7 +23,7 @@
 
 }
 
-.hero-overlay{
+/* .hero-overlay{
 
     position:absolute;
 
@@ -36,9 +36,9 @@
             transparent 45%
         );
 
-}
+} */
 
-.buying-hero .container{
+.buying-hero .buying-guide-container{
 
     width:min(1200px,92%);
 
@@ -254,7 +254,7 @@
 
 }
 
-.buying-hero .container{
+.buying-hero .buying-guide-container{
 
     grid-template-columns:1fr;
 

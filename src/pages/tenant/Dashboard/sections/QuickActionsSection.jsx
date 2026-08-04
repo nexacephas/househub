@@ -26,10 +26,10 @@ export default function QuickActionsSection() {
 
   const routeMap = {
     "Pay Rent": "/tenant/payments",
-    "Saved Properties": "/tenant/saved-properties",
+    "Saved Properties": "/tenant/my-property",
     Maintenance: "/tenant/maintenance",
     Messages: "/tenant/messages",
-    Profile: "/tenant/profile",
+    Profile: "/tenant/settings",
     Settings: "/tenant/settings",
   };
 

@@ -46,7 +46,7 @@ background:var(--primary);
   right: -120px;
 }
 
-.cta .container{
+.cta .cta-section-container{
   width:min(1180px,92%);
   margin:auto;
   position:relative;

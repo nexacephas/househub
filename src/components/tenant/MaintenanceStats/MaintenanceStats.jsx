@@ -7,29 +7,29 @@ import {
   CheckCircle2,
 } from "lucide-react";
 
-export default function MaintenanceStats() {
+export default function MaintenanceStats({ requests = [] }) {
   const stats = [
     {
       title: "Total Requests",
-      value: 12,
+      value: requests.length,
       icon: Wrench,
       color: "#2563eb",
     },
     {
       title: "Pending",
-      value: 3,
+      value: requests.filter((request) => request.status === "open").length,
       icon: Clock3,
       color: "#f59e0b",
     },
     {
       title: "In Progress",
-      value: 2,
+      value: requests.filter((request) => request.status === "in_progress").length,
       icon: Hammer,
       color: "#8b5cf6",
     },
     {
       title: "Completed",
-      value: 7,
+      value: requests.filter((request) => request.status === "resolved" || request.status === "closed").length,
       icon: CheckCircle2,
       color: "#22c55e",
     },

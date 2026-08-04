@@ -1,21 +1,24 @@
 /* NotificationCard Styles */
 .notification-card {
-  background: var(--background);
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
   padding: 24px;
+  min-width: 0;
 }
 
 .notification-card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .notification-card-header h3 {
   color: var(--gray-900);
+  font-size: 1.05rem;
+  margin: 0;
 }
 
 .notification-badge {
@@ -33,61 +36,65 @@
 .notification-list {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 14px;
 }
 
 .notification-item {
   display: flex;
-  gap: 14px;
+  gap: 12px;
   align-items: flex-start;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .notification-dot {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   margin-top: 7px;
   flex-shrink: 0;
 }
 
-.notification-dot.info {
-  background: var(--primary);
-}
-
-.notification-dot.success {
-  background: var(--accent);
-}
-
-.notification-dot.warning {
-  background: #f59e0b;
-}
-
-.notification-dot.danger {
-  background: #ef4444;
-}
+.notification-dot.info { background: var(--primary); }
+.notification-dot.success { background: var(--accent); }
+.notification-dot.warning { background: #f59e0b; }
+.notification-dot.danger { background: #ef4444; }
 
 .notification-content {
   flex: 1;
+  min-width: 0;
 }
 
 .notification-content h4 {
   font-size: 0.95rem;
   color: var(--gray-900);
-  margin-bottom: 4px;
+  margin: 0 0 4px;
 }
 
 .notification-content p {
   color: var(--gray-500);
-  margin-bottom: 6px;
+  margin: 0 0 6px;
+  line-height: 1.45;
 }
 
 .notification-content span {
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: var(--gray-400);
 }
 
 .notification-empty {
   text-align: center;
   color: var(--gray-500);
-  padding: 20px;
+  padding: 12px 0 4px;
+}
+
+@media (max-width: 640px) {
+  .notification-card {
+    padding: 18px;
+  }
 }

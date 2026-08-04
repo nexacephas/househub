@@ -49,7 +49,7 @@ export default function AgentStats() {
   console.log(CountUp);
   return (
     <section className="agent-stats">
-      <div className="container">
+      <div className="agent-stats-container">
         <div className="section-header">
           <span className="section-tag">
             OUR IMPACT
@@ -64,7 +64,7 @@ export default function AgentStats() {
           </p>
         </div>
 
-        <div className="stats-grid">
+        <div className="agent-stats-grid">
           {stats.map((stat) => (
             <div
               className="stat-card"

@@ -30,23 +30,23 @@ export default function Users() {
   });
 
   useEffect(() => {
-    loadUsers();
-  }, []);
+    async function loadUsers() {
+      try {
+        setLoading(true);
 
-  async function loadUsers() {
-    try {
-      setLoading(true);
+        const { data } = await userService.getUsers(filters);
 
-      const { data } = await userService.getUsers(filters);
-
-      setUsers(data.users || []);
-    } catch (err) {
-      console.log(err);
-      setUsers([]);
-    } finally {
-      setLoading(false);
+        setUsers(data.users || []);
+      } catch (err) {
+        console.log(err);
+        setUsers([]);
+      } finally {
+        setLoading(false);
+      }
     }
-  }
+
+    loadUsers();
+  }, [filters]);
 
   return (
     <div className="users-page">

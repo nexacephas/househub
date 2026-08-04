@@ -1,18 +1,38 @@
 import "./ProfileSettings.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Camera } from "lucide-react";
 import toast from "react-hot-toast";
 
+import { useAuth } from "../../../context/AuthContext";
+import api from "../../../services/api";
+
 export default function ProfileSettings() {
+  const { user, refreshUser } = useAuth();
   const [profile, setProfile] = useState({
     avatar: "",
-    fullName: "John Doe",
-    email: "john@example.com",
-    phone: "+234 800 000 0000",
-    address: "Lagos, Nigeria",
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    address: "",
     bio: "",
   });
+  const [saving, setSaving] = useState(false);
+
+  useEffect(() => {
+    if (user) {
+      setProfile({
+        avatar: user.avatar || "",
+        firstName: user.firstName || "",
+        lastName: user.lastName || "",
+        email: user.email || "",
+        phone: user.phone || "",
+        address: user.address || "",
+        bio: user.bio || "",
+      });
+    }
+  }, [user]);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -23,24 +43,52 @@ export default function ProfileSettings() {
     }));
   }
 
-  function handleAvatar(e) {
+  async function handleAvatar(e) {
     const file = e.target.files[0];
 
     if (!file) return;
 
-    setProfile((prev) => ({
-      ...prev,
-      avatar: URL.createObjectURL(file),
-    }));
+    const preview = URL.createObjectURL(file);
+    setProfile((prev) => ({ ...prev, avatar: preview }));
+
+    try {
+      const formData = new FormData();
+      formData.append("image", file);
+      const { data } = await api.post("/upload/images", formData);
+      const imageUrl = data.images?.[0]?.url;
+
+      if (!imageUrl) throw new Error("Image upload failed.");
+
+      await api.patch("/users/me", { avatar: imageUrl });
+      await refreshUser();
+      toast.success("Profile picture updated.");
+    } catch {
+      toast.error("Unable to upload profile picture.");
+    }
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
-    // Later:
-    // await settingsService.updateProfile(profile)
+    try {
+      setSaving(true);
+      const payload = {
+        firstName: profile.firstName,
+        lastName: profile.lastName,
+        email: profile.email,
+        phone: profile.phone,
+        address: profile.address,
+        bio: profile.bio,
+      };
 
-    toast.success("Profile updated successfully.");
+      await api.patch("/users/me", payload);
+      await refreshUser();
+      toast.success("Profile updated successfully.");
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Unable to save profile.");
+    } finally {
+      setSaving(false);
+    }
   }
 
   return (
@@ -56,7 +104,7 @@ export default function ProfileSettings() {
             src={
               profile.avatar ||
               `https://ui-avatars.com/api/?name=${encodeURIComponent(
-                profile.fullName
+                `${profile.firstName || ""} ${profile.lastName || ""}`.trim() || "User"
               )}`
             }
             alt="Profile"
@@ -85,11 +133,24 @@ export default function ProfileSettings() {
 
           <label>Full Name</label>
 
-          <input
-            name="fullName"
-            value={profile.fullName}
-            onChange={handleChange}
-          />
+          <div className="form-grid">
+            <div className="form-group">
+              <label>First Name</label>
+              <input
+                name="firstName"
+                value={profile.firstName}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>Last Name</label>
+              <input
+                name="lastName"
+                value={profile.lastName}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
 
         </div>
 
@@ -149,8 +210,9 @@ export default function ProfileSettings() {
       <button
         type="submit"
         className="save-btn"
+        disabled={saving}
       >
-        Save Changes
+        {saving ? "Saving..." : "Save Changes"}
       </button>
 
     </form>

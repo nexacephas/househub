@@ -7,13 +7,24 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-export default function UpcomingPayment() {
-  const payment = {
-    amount: "₦750,000",
-    dueDate: "August 15, 2026",
-    daysLeft: 17,
-    status: "Upcoming",
-  };
+export default function UpcomingPayment({ payments = [] }) {
+  const payment = payments[0]
+    ? {
+        amount: `₦${Number(payments[0].amount || 0).toLocaleString()}`,
+        dueDate: payments[0].dueDate
+          ? new Date(payments[0].dueDate).toLocaleDateString()
+          : "No due date set",
+        daysLeft: payments[0].dueDate
+          ? Math.max(0, Math.ceil((new Date(payments[0].dueDate) - new Date()) / (1000 * 60 * 60 * 24)))
+          : 0,
+        status: payments[0].status === "paid" || payments[0].status === "Paid" ? "Paid" : "Upcoming",
+      }
+    : {
+        amount: "₦0",
+        dueDate: "No payments yet",
+        daysLeft: 0,
+        status: "No payment",
+      };
 
   return (
     <section className="upcoming-payment">

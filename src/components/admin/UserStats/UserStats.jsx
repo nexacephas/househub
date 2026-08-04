@@ -18,9 +18,6 @@ export default function UserStats({ users = [] }) {
     (user) => user.role === "tenant"
   ).length;
 
-  const agents = users.filter(
-    (user) => user.role === "agent"
-  ).length;
 
   const admins = users.filter(
     (user) => user.role === "admin"

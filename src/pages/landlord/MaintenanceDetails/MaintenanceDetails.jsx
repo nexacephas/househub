@@ -31,26 +31,26 @@ export default function MaintenanceDetails() {
   const [request, setRequest] = useState(null);
 
   useEffect(() => {
-    loadRequest();
-  }, []);
+    async function loadRequest() {
+      try {
+        setLoading(true);
 
-  async function loadRequest() {
-    try {
-      setLoading(true);
+        const { data } =
+          await maintenanceService.getRequest(id);
 
-      const { data } =
-        await maintenanceService.getRequest(id);
-
-      setRequest(data.request);
-    } catch (error) {
-      toast.error(
-        error.response?.data?.message ||
-          "Failed to load maintenance request."
-      );
-    } finally {
-      setLoading(false);
+        setRequest(data.request);
+      } catch (error) {
+        toast.error(
+          error.response?.data?.message ||
+            "Failed to load maintenance request."
+        );
+      } finally {
+        setLoading(false);
+      }
     }
-  }
+
+    loadRequest();
+  }, [id]);
 
   if (loading) {
     return (

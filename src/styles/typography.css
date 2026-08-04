@@ -13,6 +13,7 @@ body{
     overflow-x:hidden;
 
     -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
 }
 
 h1,
@@ -31,17 +32,20 @@ h6{
 
 h1{
 
-    font-size:clamp(2.8rem,6vw,5rem);
+    font-size:clamp(2.6rem,5vw,4.6rem);
+    letter-spacing:-0.03em;
 }
 
 h2{
 
-    font-size:clamp(2rem,4vw,3.5rem);
+    font-size:clamp(1.9rem,3.4vw,3rem);
+    letter-spacing:-0.025em;
 }
 
 h3{
 
-    font-size:clamp(1.5rem,3vw,2rem);
+    font-size:clamp(1.3rem,2.6vw,1.8rem);
+    letter-spacing:-0.02em;
 }
 
 p{
@@ -49,4 +53,5 @@ p{
     color:var(--gray-500);
 
     font-size:1rem;
+    line-height:1.75;
 }

@@ -1,6 +1,6 @@
 import "./Login.css";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -8,6 +8,7 @@ import { useAuth } from "../../../context/AuthContext";
 
 export default function Login() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { login } = useAuth();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -38,6 +39,14 @@ export default function Login() {
       const user = await login(formData);
 
       toast.success(`Welcome back, ${user.firstName}!`);
+
+      const redirectTo =
+        location.state?.from?.pathname || null;
+
+      if (redirectTo) {
+        navigate(redirectTo, { replace: true });
+        return;
+      }
 
       switch (user.role) {
         case "landlord":

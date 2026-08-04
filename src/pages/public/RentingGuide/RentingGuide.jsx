@@ -42,7 +42,7 @@ export default function RentingGuide() {
 
         <div className="hero-overlay"></div>
 
-        <div className="container">
+        <div className="renting-guide-container">
 
           <div className="renting-content">
 
@@ -126,7 +126,7 @@ export default function RentingGuide() {
 
 <section className="why-rent">
 
-  <div className="container">
+  <div className="renting-guide-container">
 
     <div className="section-heading">
 
@@ -236,7 +236,7 @@ export default function RentingGuide() {
 
 <section className="renting-process">
 
-  <div className="container">
+  <div className="renting-guide-container">
 
     <div className="section-heading">
 
@@ -362,7 +362,7 @@ export default function RentingGuide() {
 
 <section className="rent-documents">
 
-  <div className="container">
+  <div className="renting-guide-container">
 
     <div className="section-heading">
 
@@ -477,7 +477,7 @@ export default function RentingGuide() {
 
 <section className="tenant-rights">
 
-  <div className="container">
+  <div className="renting-guide-container">
 
     <div className="section-heading">
 
@@ -588,7 +588,7 @@ export default function RentingGuide() {
 
 <section className="rental-scams">
 
-  <div className="container">
+  <div className="renting-guide-container">
 
     <div className="section-heading">
 
@@ -727,7 +727,7 @@ export default function RentingGuide() {
 
 <section className="move-checklist">
 
-  <div className="container">
+  <div className="renting-guide-container">
 
     <div className="section-heading">
 
@@ -837,7 +837,7 @@ export default function RentingGuide() {
 
 <section className="renting-faq">
 
-  <div className="container">
+  <div className="renting-guide-container">
 
     <div className="section-heading">
 

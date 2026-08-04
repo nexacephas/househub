@@ -22,27 +22,27 @@ export default function Messages() {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
+    async function loadConversations() {
+      try {
+        setLoading(true);
+
+        const { data } =
+          await messageService.getConversations();
+
+        setConversations(data.conversations || []);
+
+        if (data.conversations?.length) {
+          openConversation(data.conversations[0]);
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
     loadConversations();
   }, []);
-
-  async function loadConversations() {
-    try {
-      setLoading(true);
-
-      const { data } =
-        await messageService.getConversations();
-
-      setConversations(data.conversations || []);
-
-      if (data.conversations?.length) {
-        openConversation(data.conversations[0]);
-      }
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  }
 
   async function openConversation(conversation) {
     setSelectedConversation(conversation);

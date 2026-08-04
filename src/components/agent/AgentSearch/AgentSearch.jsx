@@ -12,7 +12,7 @@ export default function AgentSearch() {
   return (
     <section className="agent-search">
 
-      <div className="container">
+      <div className="agent-search-container">
 
         <div className="agent-search-box">
 

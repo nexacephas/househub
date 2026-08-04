@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import BookingStats from "../../../components/admin/BookingStats/BookingStats";
 import BookingFilters from "../../../components/admin/BookingFilters/BookingFilters";
@@ -28,29 +28,28 @@ function Bookings() {
     paymentStatus: "",
   });
 
-  useEffect(() => {
-    loadBookings();
-  }, []);
+  const loadBookings = useCallback(
+    async (filterValues) => {
+      try {
+        setLoading(true);
+
+        const { data } =
+          await bookingService.getBookings(filterValues);
+
+        setBookings(data.bookings || []);
+      } catch (error) {
+        console.error(error);
+        setBookings([]);
+      } finally {
+        setLoading(false);
+      }
+    },
+    []
+  );
 
   useEffect(() => {
-    loadBookings();
-  }, [filters]);
-
-  async function loadBookings() {
-    try {
-      setLoading(true);
-
-      const { data } =
-        await bookingService.getBookings(filters);
-
-      setBookings(data.bookings || []);
-    } catch (error) {
-      console.error(error);
-      setBookings([]);
-    } finally {
-      setLoading(false);
-    }
-  }
+    loadBookings(filters);
+  }, [filters, loadBookings]);
 
   async function handleDelete(booking) {
     try {
@@ -61,7 +60,7 @@ function Bookings() {
       setShowDelete(false);
       setSelectedBooking(null);
 
-      loadBookings();
+      loadBookings(filters);
     } catch (error) {
       console.error(error);
     }

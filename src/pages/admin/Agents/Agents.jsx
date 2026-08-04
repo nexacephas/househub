@@ -30,24 +30,23 @@ function Agents() {
   });
 
   useEffect(() => {
+    async function loadAgents() {
+      try {
+        setLoading(true);
+
+        const { data } = await agentService.getAgents();
+
+        setAgents(data.agents || []);
+      } catch (error) {
+        console.error(error);
+        setAgents([]);
+      } finally {
+        setLoading(false);
+      }
+    }
+
     loadAgents();
   }, []);
-
-  async function loadAgents() {
-    try {
-      setLoading(true);
-
-      const { data } =
-        await agentService.getAgents();
-
-      setAgents(data.agents || []);
-    } catch (error) {
-      console.error(error);
-      setAgents([]);
-    } finally {
-      setLoading(false);
-    }
-  }
 
   return (
     <div className="admin-agents-page">

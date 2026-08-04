@@ -14,7 +14,7 @@ export default function Contact() {
 
       <section className="contact-hero">
 
-        <div className="container">
+        <div className="contact-page-container">
 
           <div className="breadcrumb">
 
@@ -49,7 +49,7 @@ export default function Contact() {
 
       <section className="contact-info">
 
-        <div className="container">
+        <div className="contact-page-container">
 
           <div className="contact-grid">
 
@@ -111,7 +111,7 @@ export default function Contact() {
 
      <section className="contact-form-section">
 
-  <div className="container">
+  <div className="contact-page-container">
 
     <div className="contact-wrapper">
 
@@ -258,7 +258,7 @@ export default function Contact() {
 
 <section className="contact-reasons">
 
-  <div className="container">
+  <div className="contact-page-container">
 
     <span className="section-tag">
       WHY CONTACT US
@@ -316,7 +316,7 @@ export default function Contact() {
 
 <section className="office-hours">
 
-  <div className="container">
+  <div className="contact-page-container">
 
     <span className="section-tag">
       BUSINESS HOURS
@@ -361,7 +361,7 @@ export default function Contact() {
 
 <section className="contact-cta">
 
-  <div className="container">
+  <div className="contact-page-container">
 
     <h2>
       Ready to Experience Smarter Property Discovery?

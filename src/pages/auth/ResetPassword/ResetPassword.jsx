@@ -4,15 +4,50 @@ import { Lock, Eye, EyeOff } from "lucide-react";
 
 import { useState } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import toast from "react-hot-toast";
+import { resetPassword } from "../../../services/auth.service";
 
 export default function ResetPassword(){
+
+const navigate=useNavigate();
+
+const[searchParams]=useSearchParams();
 
 const[show,setShow]=useState(false);
 
 const[password,setPassword]=useState("");
 
 const[confirm,setConfirm]=useState("");
+
+const[loading,setLoading]=useState(false);
+
+async function handleReset(){
+const token=searchParams.get("token");
+
+if(!token){
+return toast.error("Reset token is missing.");
+}
+
+if(password.length<8){
+return toast.error("Password must be at least 8 characters.");
+}
+
+if(password!==confirm){
+return toast.error("Passwords do not match.");
+}
+
+try{
+setLoading(true);
+await resetPassword({token,password});
+toast.success("Password reset successfully.");
+navigate("/login");
+}catch(error){
+toast.error(error.response?.data?.message||"Unable to reset password.");
+}finally{
+setLoading(false);
+}
+}
 
 return(
 
@@ -76,9 +111,14 @@ onChange={(e)=>setConfirm(e.target.value)}
 
 </div>
 
-<button className="login-btn">
+<button
+className="login-btn"
+type="button"
+onClick={handleReset}
+disabled={loading}
+>
 
-Reset Password
+{loading?"Resetting...":"Reset Password"}
 
 </button>
 

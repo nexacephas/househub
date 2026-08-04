@@ -54,7 +54,7 @@ export default function AgentCard({ agent }) {
           </span>
         </div>
 
-        <div className="stats">
+        <div className="agent-card-stats">
           <div>
             <strong>{agent.listings}</strong>
             <small>Listings</small>

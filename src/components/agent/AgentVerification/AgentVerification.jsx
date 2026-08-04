@@ -39,7 +39,7 @@ const verifications = [
 export default function AgentVerification() {
   return (
     <section className="agent-verification">
-      <div className="container">
+      <div className="agent-verification-container">
 
         <div className="section-header">
 

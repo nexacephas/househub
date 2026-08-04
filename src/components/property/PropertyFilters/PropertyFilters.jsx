@@ -18,18 +18,28 @@ import {
   MdVerified,
 } from "react-icons/md";
 
-export default function PropertyFilters() {
+export default function PropertyFilters({ filters = {}, setFilters = () => {}, onApply = () => {} }) {
 
   const [verified, setVerified] = useState(false);
   const [furnished, setFurnished] = useState(false);
   const [parking, setParking] = useState(false);
   const [pets, setPets] = useState(false);
 
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFilters((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleNumberChange = (event) => {
+    const { name, value } = event.target;
+    setFilters((prev) => ({ ...prev, [name]: value }));
+  };
+
   return (
 
     <section className="property-filters">
 
-      <div className="container">
+      <div className="property-filters-container">
 
         <div className="filter-card">
 
@@ -59,14 +69,15 @@ export default function PropertyFilters() {
 
               </label>
 
-              <select>
+              <select name="propertyType" value={filters.propertyType || ""} onChange={handleChange}>
 
-                <option>Any</option>
-                <option>Apartment</option>
-                <option>Duplex</option>
-                <option>Detached House</option>
-                <option>Office</option>
-                <option>Land</option>
+                <option value="">Any</option>
+                <option value="apartment">Apartment</option>
+                <option value="duplex">Duplex</option>
+                <option value="house">House</option>
+                <option value="bungalow">Bungalow</option>
+                <option value="office">Office</option>
+                <option value="land">Land</option>
 
               </select>
 
@@ -84,14 +95,14 @@ export default function PropertyFilters() {
 
               </label>
 
-              <select>
+              <select name="state" value={filters.state || ""} onChange={handleChange}>
 
-                <option>All States</option>
-                <option>Abuja</option>
-                <option>Lagos</option>
-                <option>Oyo</option>
-                <option>Rivers</option>
-                <option>Kaduna</option>
+                <option value="">All States</option>
+                <option value="Abuja">Abuja</option>
+                <option value="Lagos">Lagos</option>
+                <option value="Oyo">Oyo</option>
+                <option value="Rivers">Rivers</option>
+                <option value="Kaduna">Kaduna</option>
 
               </select>
 
@@ -109,13 +120,13 @@ export default function PropertyFilters() {
 
               </label>
 
-              <select>
+              <select name="bedrooms" value={filters.bedrooms || ""} onChange={handleChange}>
 
-                <option>Any</option>
-                <option>1+</option>
-                <option>2+</option>
-                <option>3+</option>
-                <option>4+</option>
+                <option value="">Any</option>
+                <option value="1">1+</option>
+                <option value="2">2+</option>
+                <option value="3">3+</option>
+                <option value="4">4+</option>
 
               </select>
 
@@ -133,12 +144,12 @@ export default function PropertyFilters() {
 
               </label>
 
-              <select>
+              <select name="bathrooms" value={filters.bathrooms || ""} onChange={handleChange}>
 
-                <option>Any</option>
-                <option>1+</option>
-                <option>2+</option>
-                <option>3+</option>
+                <option value="">Any</option>
+                <option value="1">1+</option>
+                <option value="2">2+</option>
+                <option value="3">3+</option>
 
               </select>
 
@@ -152,7 +163,10 @@ export default function PropertyFilters() {
 
               <input
                 type="number"
+                name="minPrice"
+                value={filters.minPrice || ""}
                 placeholder="₦ 500,000"
+                onChange={handleNumberChange}
               />
 
             </div>
@@ -163,7 +177,10 @@ export default function PropertyFilters() {
 
               <input
                 type="number"
+                name="maxPrice"
+                value={filters.maxPrice || ""}
                 placeholder="₦ 10,000,000"
+                onChange={handleNumberChange}
               />
 
             </div>
@@ -210,7 +227,7 @@ export default function PropertyFilters() {
 
           <div className="filter-actions">
 
-            <button className="reset-btn">
+            <button className="reset-btn" type="button" onClick={() => setFilters((prev) => ({ ...prev, state: "", propertyType: "", bedrooms: "", bathrooms: "", minPrice: "", maxPrice: "" }))}>
 
               <RotateCcw size={18} />
 
@@ -218,7 +235,7 @@ export default function PropertyFilters() {
 
             </button>
 
-            <button className="apply-btn">
+            <button className="apply-btn" type="button" onClick={onApply}>
 
               Apply Filters
 

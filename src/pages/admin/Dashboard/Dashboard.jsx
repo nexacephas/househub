@@ -14,12 +14,12 @@ export default function Dashboard() {
     <DashboardLayout role="admin">
       <StatsSection />
 
-      <div className="dashboard-row">
+      <div className="dashboard-grid">
         <AnalyticsSection />
         <ProfileSection />
       </div>
 
-      <div className="dashboard-row-two">
+      <div className="dashboard-grid dashboard-grid--stacked">
         <ActivitySection />
         <NotificationSection />
       </div>

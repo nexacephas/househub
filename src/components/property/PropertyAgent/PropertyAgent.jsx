@@ -64,7 +64,7 @@ export default function PropertyAgent({ property }) {
   return (
     <section className="property-agent">
 
-      <div className="container">
+      <div className="property-agent-container">
 
         <div className="agent-layout">
 

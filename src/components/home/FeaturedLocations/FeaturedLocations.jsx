@@ -45,7 +45,7 @@ export default function FeaturedLocations() {
   return (
     <section className="featured-locations">
 
-      <div className="container">
+      <div className="featured-locations-container">
 
         <div className="section-header">
 

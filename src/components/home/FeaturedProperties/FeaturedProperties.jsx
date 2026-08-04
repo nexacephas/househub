@@ -16,7 +16,7 @@ import {
 export default function FeaturedProperties() {
   return (
     <section className="featured-properties">
-      <div className="container">
+      <div className="featured-properties-container">
 
         <div className="section-header">
 

@@ -35,26 +35,23 @@ function Verification() {
   });
 
   useEffect(() => {
+    async function loadVerifications() {
+      try {
+        setLoading(true);
+
+        const { data } = await verificationService.getVerifications();
+
+        setVerifications(data.verifications || []);
+      } catch (error) {
+        console.error(error);
+        setVerifications([]);
+      } finally {
+        setLoading(false);
+      }
+    }
+
     loadVerifications();
   }, []);
-
-  async function loadVerifications() {
-    try {
-      setLoading(true);
-
-      const { data } =
-        await verificationService.getVerifications();
-
-      setVerifications(
-        data.verifications || []
-      );
-    } catch (error) {
-      console.error(error);
-      setVerifications([]);
-    } finally {
-      setLoading(false);
-    }
-  }
 
   return (
     <div className="admin-verification-page">

@@ -39,77 +39,60 @@ const { id } = useParams();
   });
 
   useEffect(() => {
+    async function loadProperties() {
+      try {
+        const { data } =
+          await propertyService.getMyProperties();
+
+        setProperties(data.properties || []);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
     loadProperties();
   }, []);
-useEffect(() => {
-    if (editing) {
-        loadTenant();
+
+  useEffect(() => {
+    if (!editing) {
+      return;
     }
-}, [editing]);
 
-async function loadTenant() {
-    try {
-
+    async function loadTenant() {
+      try {
         const { data } =
-            await tenantService.getTenant(id);
+          await tenantService.getTenant(id);
 
         const tenant = data.tenant;
 
         setFormData({
-            fullName: tenant.fullName || "",
-            email: tenant.email || "",
-            phone: tenant.phone || "",
-            gender: tenant.gender || "Male",
-            occupation: tenant.occupation || "",
-
-            property:
-                tenant.property?._id || "",
-
-            rentAmount:
-                tenant.rentAmount || "",
-
-            securityDeposit:
-                tenant.securityDeposit || "",
-
-            leaseStart:
-                tenant.leaseStart
-                    ?.substring(0, 10) || "",
-
-            leaseEnd:
-                tenant.leaseEnd
-                    ?.substring(0, 10) || "",
-
-            emergencyName:
-                tenant.emergencyContact?.name || "",
-
-            emergencyPhone:
-                tenant.emergencyContact?.phone || "",
-
-            emergencyRelationship:
-                tenant.emergencyContact?.relationship ||
-                "",
-
-            notes:
-                tenant.notes || "",
+          fullName: tenant.fullName || "",
+          email: tenant.email || "",
+          phone: tenant.phone || "",
+          gender: tenant.gender || "Male",
+          occupation: tenant.occupation || "",
+          property: tenant.property?._id || "",
+          rentAmount: tenant.rentAmount || "",
+          securityDeposit: tenant.securityDeposit || "",
+          leaseStart:
+            tenant.leaseStart?.substring(0, 10) || "",
+          leaseEnd:
+            tenant.leaseEnd?.substring(0, 10) || "",
+          emergencyName:
+            tenant.emergencyContact?.name || "",
+          emergencyPhone:
+            tenant.emergencyContact?.phone || "",
+          emergencyRelationship:
+            tenant.emergencyContact?.relationship || "",
+          notes: tenant.notes || "",
         });
-
-    } catch (error) {
-        toast.error(
-            "Failed to load tenant."
-        );
+      } catch {
+        toast.error("Failed to load tenant.");
+      }
     }
-}
 
-  async function loadProperties() {
-    try {
-      const { data } =
-        await propertyService.getMyProperties();
-
-      setProperties(data.properties || []);
-    } catch (error) {
-      console.error(error);
-    }
-  }
+    loadTenant();
+  }, [editing, id]);
 
   function handleChange(e) {
     const { name, value } = e.target;

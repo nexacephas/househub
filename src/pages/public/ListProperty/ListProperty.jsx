@@ -27,7 +27,7 @@ export default function ListProperty() {
 {/*       <Navbar /> */}
 <section className="list-hero">
 
-  <div className="container">
+  <div className="list-property-container">
 
     <div className="hero-content">
 
@@ -108,7 +108,7 @@ export default function ListProperty() {
 </section>
 <section className="why-list">
 
-  <div className="container">
+  <div className="list-property-container">
 
     <span className="section-tag">
       WHY HOUSEHUB
@@ -193,7 +193,7 @@ export default function ListProperty() {
 
 <section className="listing-benefits">
 
-  <div className="container">
+  <div className="list-property-container">
 
     <span className="section-tag">
       BENEFITS
@@ -296,7 +296,7 @@ export default function ListProperty() {
 </section>
 <section className="listing-process">
 
-  <div className="container">
+  <div className="list-property-container">
 
     <span className="section-tag">
       HOW IT WORKS
@@ -389,7 +389,7 @@ export default function ListProperty() {
 
 <section className="verification-section">
 
-  <div className="container">
+  <div className="list-property-container">
 
     <span className="section-tag">
       VERIFICATION
@@ -467,7 +467,7 @@ export default function ListProperty() {
 
 <section className="verification-banner">
 
-  <div className="container">
+  <div className="list-property-container">
 
     <h2>
       Every Verified Listing Builds Trust
@@ -486,7 +486,7 @@ export default function ListProperty() {
 
 <section className="listing-cta">
 
-  <div className="container">
+  <div className="list-property-container">
 
     <div className="listing-cta-content">
 
@@ -533,9 +533,9 @@ export default function ListProperty() {
 
 <section className="listing-stats">
 
-  <div className="container">
+  <div className="list-property-container">
 
-    <div className="stats-grid">
+    <div className="list-property-stats-grid">
 
       <div className="stat-card">
 

@@ -19,7 +19,7 @@ const iconMap = {
 export default function StatsSection() {
   return (
     <section className="stats-section">
-      <div className="stats-grid">
+      <div className="landlord-dashboard-stats-grid">
         {stats.map((item) => (
           <StatsCard
             key={item.id}

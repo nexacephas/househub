@@ -25,10 +25,10 @@ export default function QuickActionsSection() {
   };
 
   const routeMap = {
-    "Add Listing": "/agent/listings/new",
+    "Add Listing": "/agent/listings",
     "My Listings": "/agent/listings",
     Leads: "/agent/leads",
-    Appointments: "/agent/appointments",
+    Appointments: "/agent/clients",
     Messages: "/agent/messages",
     Reports: "/agent/reports",
   };

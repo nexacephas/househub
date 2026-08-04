@@ -13,37 +13,41 @@ export default function SimilarProperties({ property }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!property) return;
+    if (!property) {
+      setProperties([]);
+      setLoading(false);
+      return;
+    }
+
+    async function loadSimilarProperties() {
+      try {
+        setLoading(true);
+
+        const { data } = await propertyService.getProperties({
+          city: property.city,
+          propertyType: property.propertyType,
+          limit: 3,
+        });
+
+        const filtered = data.properties.filter(
+          (item) => item._id !== property._id
+        );
+
+        setProperties(filtered.slice(0, 3));
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    }
 
     loadSimilarProperties();
   }, [property]);
 
-  async function loadSimilarProperties() {
-    try {
-      setLoading(true);
-
-      const { data } = await propertyService.getProperties({
-        city: property.city,
-        propertyType: property.propertyType,
-        limit: 3,
-      });
-
-      const filtered = data.properties.filter(
-        (item) => item._id !== property._id
-      );
-
-      setProperties(filtered.slice(0, 3));
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  }
-
   if (loading) {
     return (
       <section className="similar-properties">
-        <div className="container">
+        <div className="similar-properties-container">
           <h2>Loading similar properties...</h2>
         </div>
       </section>
@@ -57,7 +61,7 @@ export default function SimilarProperties({ property }) {
   return (
     <section className="similar-properties">
 
-      <div className="container">
+      <div className="similar-properties-container">
 
         <div className="section-header">
 

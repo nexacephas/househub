@@ -32,10 +32,6 @@ function Landlords() {
     propertyCount: "",
   });
 
-  useEffect(() => {
-    loadLandlords();
-  }, []);
-
   async function loadLandlords() {
     try {
       setLoading(true);
@@ -51,6 +47,10 @@ function Landlords() {
       setLoading(false);
     }
   }
+
+  useEffect(() => {
+    loadLandlords();
+  }, [filters]);
 
   return (
     <div className="admin-landlords-page">
