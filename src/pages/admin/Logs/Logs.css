@@ -1,0 +1,16 @@
+.admin-logs-page{
+padding:30px;
+}
+
+.logs-content{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:25px;
+margin-top:25px;
+}
+
+@media(max-width:1200px){
+.logs-content{
+grid-template-columns:1fr;
+}
+}
