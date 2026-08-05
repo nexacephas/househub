@@ -1,13 +1,29 @@
 import axios from "axios";
 
+const DEFAULT_API_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? "/api/v1" : "http://localhost:5000/api/v1");
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "/api/v1",
+  baseURL: DEFAULT_API_URL,
   withCredentials: true,
+  timeout: 30000,
+  headers: {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+  },
 });
 
-api.interceptors.request.use((config) => {
-  const token = localStorage.getItem("househub_token");
+const getAuthToken = () => localStorage.getItem("househub_token");
+const getRefreshToken = () => localStorage.getItem("househub_refresh_token");
+const clearAuthStorage = () => {
+  localStorage.removeItem("househub_token");
+  localStorage.removeItem("househub_refresh_token");
+  localStorage.removeItem("househub_user");
+};
 
+api.interceptors.request.use((config) => {
+  config.headers = config.headers || {};
+
+  const token = getAuthToken();
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -18,6 +34,7 @@ api.interceptors.request.use((config) => {
     config.headers["Content-Type"] = "application/json";
   }
 
+  config.headers.Accept = "application/json";
   return config;
 });
 
@@ -25,49 +42,85 @@ api.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
+    const status = error.response?.status;
 
     if (
-      error.response?.status !== 401 ||
-      originalRequest?._retry ||
-      originalRequest?.url?.includes("/auth/refresh")
+      status === 401 &&
+      originalRequest &&
+      !originalRequest._retry &&
+      !originalRequest?.url?.includes("/auth/refresh")
     ) {
-      return Promise.reject(error);
-    }
+      const refreshToken = getRefreshToken();
+      if (refreshToken) {
+        originalRequest._retry = true;
+        try {
+          const { data } = await api.post("/auth/refresh", {
+            refreshToken,
+          });
 
-    const refreshToken =
-      localStorage.getItem("househub_refresh_token");
-
-    if (!refreshToken) {
-      return Promise.reject(error);
-    }
-
-    originalRequest._retry = true;
-
-    try {
-      const { data } = await api.post("/auth/refresh", {
-        refreshToken,
-      });
-
-      localStorage.setItem("househub_token", data.accessToken);
-
-      if (data.refreshToken) {
-        localStorage.setItem(
-          "househub_refresh_token",
-          data.refreshToken
-        );
+          localStorage.setItem("househub_token", data.accessToken);
+          if (data.refreshToken) {
+            localStorage.setItem("househub_refresh_token", data.refreshToken);
+          }
+          originalRequest.headers.Authorization = `Bearer ${data.accessToken}`;
+          return api(originalRequest);
+        } catch (refreshError) {
+          clearAuthStorage();
+          return Promise.reject(formatError(refreshError));
+        }
       }
-
-      originalRequest.headers.Authorization = `Bearer ${data.accessToken}`;
-
-      return api(originalRequest);
-    } catch (refreshError) {
-      localStorage.removeItem("househub_token");
-      localStorage.removeItem("househub_refresh_token");
-      localStorage.removeItem("househub_user");
-
-      return Promise.reject(refreshError);
     }
+
+    if (status) {
+      if ([401, 403, 404, 422, 429, 500].includes(status)) {
+        return Promise.reject(formatError(error));
+      }
+    }
+
+    if (error.code === "ECONNABORTED") {
+      return Promise.reject({
+        message: "The request timed out. Please try again.",
+        status: 408,
+        original: error,
+      });
+    }
+
+    if (!error.response) {
+      return Promise.reject({
+        message: "Network error. Please check your internet connection.",
+        original: error,
+      });
+    }
+
+    return Promise.reject(formatError(error));
   }
 );
+
+function formatError(error) {
+  const status = error.response?.status;
+  const serverMessage = error.response?.data?.message;
+  let message = serverMessage || error.message || "An unexpected error occurred.";
+
+  if (status === 401) {
+    message = serverMessage || "Unauthorized. Please log in again.";
+  } else if (status === 403) {
+    message = serverMessage || "Forbidden. You do not have access to this resource.";
+  } else if (status === 404) {
+    message = serverMessage || "Resource not found.";
+  } else if (status === 422) {
+    message = serverMessage || "Validation failed. Please check your input.";
+  } else if (status === 429) {
+    message = serverMessage || "Too many requests. Please wait and try again.";
+  } else if (status === 500) {
+    message = serverMessage || "Server error. Please try again later.";
+  }
+
+  return {
+    message,
+    status,
+    errors: error.response?.data?.errors || null,
+    original: error,
+  };
+}
 
 export default api;

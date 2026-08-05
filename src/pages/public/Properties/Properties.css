@@ -1,8 +1,12 @@
 /* Properties Page Styles */
-.properties-page{
+.properties-page {
+  background: var(--background);
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding-top: calc(84px + var(--space-lg));
+}
 
-    background:var(--background);
-
-    min-height:100vh;
-
+.properties-page > * {
+  max-width: 1280px;
+  margin: 0 auto;
 }

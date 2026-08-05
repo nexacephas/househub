@@ -51,7 +51,7 @@ export default function LogTable({
               </td>
 
               <td>
-                {log.user?.fullName || "-"}
+                {log.actor?.fullName || "-"}
               </td>
 
               <td>{log.action}</td>

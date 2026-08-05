@@ -18,12 +18,17 @@ export default function LogDetails({ log }) {
 
       <div className="detail">
         <label>User</label>
-        <span>{log.user?.fullName}</span>
+        <span>{log.actor?.fullName || "-"}</span>
       </div>
 
       <div className="detail">
         <label>Action</label>
         <span>{log.action}</span>
+      </div>
+
+      <div className="detail">
+        <label>User Email</label>
+        <span>{log.actor?.email || "-"}</span>
       </div>
 
       <div className="detail">

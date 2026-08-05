@@ -5,7 +5,8 @@
 }
 
 .property-reviews .property-reviews-container{
-    width:min(1400px,92%);
+    width:min(92%, var(--container));
+    max-width: 1280px;
     margin:auto;
 }
 

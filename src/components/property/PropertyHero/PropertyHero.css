@@ -31,16 +31,11 @@
     pointer-events: none;
 }
 
-.property-hero .property-hero-container{
-
-    width:min(1400px,92%);
-
-    margin:auto;
-
-    position:relative;
-
-    z-index:2;
-
+.property-hero .property-hero-container {
+  width: min(92%, var(--container));
+  margin: auto;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-content{

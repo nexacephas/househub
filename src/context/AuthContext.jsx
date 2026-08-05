@@ -21,18 +21,17 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(() => readStoredUser());
   const [loading, setLoading] = useState(true);
 
+  const clearStoredAuth = () => {
+    localStorage.removeItem("househub_token");
+    localStorage.removeItem("househub_refresh_token");
+    localStorage.removeItem("househub_user");
+  };
+
   const syncUser = async (nextUser = null) => {
     if (nextUser) {
       setUser(nextUser);
       localStorage.setItem("househub_user", JSON.stringify(nextUser));
       return nextUser;
-    }
-
-    const token = localStorage.getItem("househub_token");
-    if (!token) {
-      setUser(null);
-      localStorage.removeItem("househub_user");
-      return null;
     }
 
     try {
@@ -42,8 +41,7 @@ export function AuthProvider({ children }) {
       localStorage.setItem("househub_user", JSON.stringify(currentUser));
       return currentUser;
     } catch {
-      localStorage.removeItem("househub_token");
-      localStorage.removeItem("househub_user");
+      clearStoredAuth();
       setUser(null);
       return null;
     }
@@ -83,17 +81,13 @@ export function AuthProvider({ children }) {
     const refreshToken =
       localStorage.getItem("househub_refresh_token");
 
-    if (refreshToken) {
-      try {
-        await logoutService(refreshToken);
-      } catch {
-        // Local cleanup must still happen if the server session is gone.
-      }
+    try {
+      await logoutService(refreshToken);
+    } catch {
+      // Local cleanup must still happen if the server session is gone.
     }
 
-    localStorage.removeItem("househub_token");
-    localStorage.removeItem("househub_refresh_token");
-    localStorage.removeItem("househub_user");
+    clearStoredAuth();
     setUser(null);
   };
 

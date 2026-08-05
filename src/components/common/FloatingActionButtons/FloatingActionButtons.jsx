@@ -10,8 +10,6 @@ export default function FloatingActionButtons() {
   const location = useLocation();
   const [isChatOpen, setIsChatOpen] = useState(false);
 
-  if (location.pathname === "/") return null;
-
   return (
     <>
       {isChatOpen && <AIChat onClose={() => setIsChatOpen(false)} />}

@@ -6,29 +6,38 @@ import {
   Activity,
 } from "lucide-react";
 
-export default function LogStats() {
-  const stats = [
+export default function LogStats({ stats, loading }) {
+  const defaultStats = {
+    total: "—",
+    errors: "—",
+    warnings: "—",
+    security: "—",
+  };
+
+  const values = stats || defaultStats;
+
+  const statsConfig = [
     {
       title: "Total Logs",
-      value: "18,452",
+      value: loading ? "Loading…" : values.total ?? "0",
       icon: <FileText size={22} />,
       color: "blue",
     },
     {
       title: "Errors",
-      value: "126",
+      value: loading ? "Loading…" : values.errors ?? "0",
       icon: <AlertTriangle size={22} />,
       color: "red",
     },
     {
       title: "Warnings",
-      value: "412",
+      value: loading ? "Loading…" : values.warnings ?? "0",
       icon: <ShieldAlert size={22} />,
       color: "orange",
     },
     {
-      title: "Today",
-      value: "1,294",
+      title: "Security",
+      value: loading ? "Loading…" : values.security ?? "0",
       icon: <Activity size={22} />,
       color: "green",
     },
@@ -36,7 +45,7 @@ export default function LogStats() {
 
   return (
     <div className="log-stats">
-      {stats.map((stat, index) => (
+      {statsConfig.map((stat, index) => (
         <div className="log-stat-card" key={index}>
           <div className={`stat-icon ${stat.color}`}>
             {stat.icon}
