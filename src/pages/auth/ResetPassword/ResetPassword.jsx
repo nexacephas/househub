@@ -1,141 +1,135 @@
 import "./ResetPassword.css";
 
 import { Lock, Eye, EyeOff } from "lucide-react";
-
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import { resetPassword } from "../../../services/auth.service";
+import useDebounce from "../../../hooks/useDebounce";
+import { validateResetPasswordData } from "../../../utils/validators";
 
-export default function ResetPassword(){
+export default function ResetPassword() {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const [show, setShow] = useState(false);
+  const [password, setPassword] = useState("");
+  const [confirm, setConfirm] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
 
-const navigate=useNavigate();
+  const debouncedForm = useDebounce(
+    { password, confirmPassword: confirm },
+    300
+  );
 
-const[searchParams]=useSearchParams();
+  useEffect(() => {
+    setErrors(validateResetPasswordData({
+      password: debouncedForm.password,
+      confirmPassword: debouncedForm.confirmPassword,
+    }));
+  }, [debouncedForm]);
 
-const[show,setShow]=useState(false);
+  async function handleReset() {
+    const token = searchParams.get("token");
 
-const[password,setPassword]=useState("");
+    if (!token) {
+      toast.error("Reset token is missing.");
+      return;
+    }
 
-const[confirm,setConfirm]=useState("");
+    const validationErrors = validateResetPasswordData({
+      password,
+      confirmPassword: confirm,
+    });
 
-const[loading,setLoading]=useState(false);
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      toast.error(Object.values(validationErrors)[0]);
+      return;
+    }
 
-async function handleReset(){
-const token=searchParams.get("token");
+    try {
+      setLoading(true);
+      await resetPassword({ token, password });
+      toast.success("Password reset successfully.");
+      navigate("/login");
+    } catch (error) {
+      toast.error(
+        error.response?.data?.message || "Unable to reset password."
+      );
+    } finally {
+      setLoading(false);
+    }
+  }
 
-if(!token){
-return toast.error("Reset token is missing.");
-}
+  return (
+    <div className="forgot-card">
+      <h2>Create New Password</h2>
+      <p>Your new password must be different from your previous one.</p>
 
-if(password.length<8){
-return toast.error("Password must be at least 8 characters.");
-}
+      <div className={`input-wrapper ${errors.password ? "input-invalid" : ""}`}>
+        <Lock size={20} />
+        <input
+          type={show ? "text" : "password"}
+          placeholder="New Password"
+          value={password}
+          onChange={(e) => {
+            setPassword(e.target.value);
+            if (errors.password) {
+              setErrors((prev) => ({ ...prev, password: undefined }));
+            }
+          }}
+          aria-invalid={!!errors.password}
+          aria-describedby={errors.password ? "reset-password-error" : undefined}
+        />
+        <button
+          className="password-toggle"
+          type="button"
+          onClick={() => setShow(!show)}
+        >
+          {show ? <EyeOff size={18} /> : <Eye size={18} />}
+        </button>
+      </div>
+      {errors.password && (
+        <p id="reset-password-error" className="input-error">
+          {errors.password}
+        </p>
+      )}
 
-if(password!==confirm){
-return toast.error("Passwords do not match.");
-}
+      <div className={`input-wrapper ${errors.confirmPassword ? "input-invalid" : ""}`}>
+        <Lock size={20} />
+        <input
+          type="password"
+          placeholder="Confirm Password"
+          value={confirm}
+          onChange={(e) => {
+            setConfirm(e.target.value);
+            if (errors.confirmPassword) {
+              setErrors((prev) => ({ ...prev, confirmPassword: undefined }));
+            }
+          }}
+          aria-invalid={!!errors.confirmPassword}
+          aria-describedby={errors.confirmPassword ? "reset-confirm-error" : undefined}
+        />
+      </div>
+      {errors.confirmPassword && (
+        <p id="reset-confirm-error" className="input-error">
+          {errors.confirmPassword}
+        </p>
+      )}
 
-try{
-setLoading(true);
-await resetPassword({token,password});
-toast.success("Password reset successfully.");
-navigate("/login");
-}catch(error){
-toast.error(error.response?.data?.message||"Unable to reset password.");
-}finally{
-setLoading(false);
-}
-}
+      <button
+        className="login-btn"
+        type="button"
+        onClick={handleReset}
+        disabled={loading || Object.keys(errors).length > 0}
+      >
+        {loading ? "Resetting..." : "Reset Password"}
+      </button>
 
-return(
-
-<div className="forgot-card">
-
-<h2>Create New Password</h2>
-
-<p>
-
-Your new password must be different from your previous one.
-
-</p>
-
-<div className="input-wrapper">
-
-<Lock size={20}/>
-
-<input
-
-type={show?"text":"password"}
-
-placeholder="New Password"
-
-value={password}
-
-onChange={(e)=>setPassword(e.target.value)}
-
-/>
-
-<button
-
-className="password-toggle"
-
-type="button"
-
-onClick={()=>setShow(!show)}
-
->
-
-{show?<EyeOff size={18}/>:<Eye size={18}/>}
-
-</button>
-
-</div>
-
-<div className="input-wrapper">
-
-<Lock size={20}/>
-
-<input
-
-type="password"
-
-placeholder="Confirm Password"
-
-value={confirm}
-
-onChange={(e)=>setConfirm(e.target.value)}
-
-/>
-
-</div>
-
-<button
-className="login-btn"
-type="button"
-onClick={handleReset}
-disabled={loading}
->
-
-{loading?"Resetting...":"Reset Password"}
-
-</button>
-
-<Link
-
-to="/login"
-
-className="back-link"
-
->
-
-Back to Login
-
-</Link>
-
-</div>
-
-);
-
+      <Link to="/login" className="back-link">
+        Back to Login
+      </Link>
+    </div>
+  );
 }

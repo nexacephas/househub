@@ -34,6 +34,31 @@
   transform: translateY(-2px);
 }
 
+.input-invalid input,
+.input-invalid textarea,
+.input-invalid .input-wrapper {
+  border-color: var(--danger);
+}
+
+.input-error {
+  margin-top: 0.5rem;
+  color: var(--danger);
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
+.input-status {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--gray-500);
+}
+
+.password-strength-text {
+  color: var(--gray-600);
+}
+
 .btn-primary {
   background: var(--primary);
   color: var(--white);

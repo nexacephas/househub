@@ -1,6 +1,6 @@
 import "./Register.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
@@ -15,23 +15,24 @@ import {
 } from "lucide-react";
 
 import { register } from "../../../services/auth.service";
+import useDebounce from "../../../hooks/useDebounce";
+import {
+  getPasswordStrength,
+  getPasswordStrengthLabel,
+  splitFullName,
+  validateRegisterStep2,
+  validateRegisterStep3,
+} from "../../../utils/validators";
 
 export default function Register() {
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
-
   const [showPassword, setShowPassword] = useState(false);
-
-  const [showConfirmPassword, setShowConfirmPassword] =
-    useState(false);
-
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [acceptTerms, setAcceptTerms] = useState(false);
-
   const [step, setStep] = useState(1);
-
   const [role, setRole] = useState("");
-
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -39,6 +40,39 @@ export default function Register() {
     password: "",
     confirmPassword: "",
   });
+  const [errors, setErrors] = useState({});
+
+  const debouncedStep2 = useDebounce(
+    {
+      fullName: formData.fullName,
+      email: formData.email,
+      phone: formData.phone,
+    },
+    300
+  );
+
+  const debouncedStep3 = useDebounce(
+    {
+      password: formData.password,
+      confirmPassword: formData.confirmPassword,
+      acceptTerms,
+    },
+    300
+  );
+
+  useEffect(() => {
+    if (step === 2) {
+      setErrors(validateRegisterStep2(formData));
+    } else if (step === 3) {
+      setErrors(
+        validateRegisterStep3({
+          password: formData.password,
+          confirmPassword: formData.confirmPassword,
+          acceptTerms,
+        })
+      );
+    }
+  }, [debouncedStep2, debouncedStep3, step, acceptTerms]);
 
   const roles = [
     {
@@ -69,38 +103,18 @@ export default function Register() {
       return toast.error("Please select your role.");
     }
 
-    if (!formData.fullName.trim()) {
-      return toast.error("Full name is required.");
+    const step3Errors = validateRegisterStep3({
+      password: formData.password,
+      confirmPassword: formData.confirmPassword,
+      acceptTerms,
+    });
+
+    if (Object.keys(step3Errors).length > 0) {
+      setErrors(step3Errors);
+      return toast.error(Object.values(step3Errors)[0]);
     }
 
-    if (!formData.email.trim()) {
-      return toast.error("Email is required.");
-    }
-
-    if (!formData.phone.trim()) {
-      return toast.error("Phone number is required.");
-    }
-
-    if (formData.password.length < 8) {
-      return toast.error(
-        "Password must be at least 8 characters."
-      );
-    }
-
-    if (
-      formData.password !==
-      formData.confirmPassword
-    ) {
-      return toast.error("Passwords do not match.");
-    }
-
-    const names = formData.fullName
-      .trim()
-      .split(" ");
-
-    const firstName = names.shift();
-
-    const lastName = names.join(" ") || "-";
+    const { firstName, lastName } = splitFullName(formData.fullName);
 
     try {
       setLoading(true);
@@ -115,17 +129,50 @@ export default function Register() {
       });
 
       toast.success("Account created successfully!");
-
       setStep(4);
     } catch (error) {
       toast.error(
-        error.response?.data?.message ||
-          "Registration failed."
+        error.response?.data?.message || "Registration failed."
       );
     } finally {
       setLoading(false);
     }
   };
+
+  const handleFieldChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    if (errors[name]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: undefined,
+      }));
+    }
+  };
+
+  const handleContinue = () => {
+    const step2Errors = validateRegisterStep2(formData);
+    if (Object.keys(step2Errors).length > 0) {
+      setErrors(step2Errors);
+      return;
+    }
+    setStep(3);
+  };
+
+  const step2Errors = validateRegisterStep2(formData);
+  const step3Errors = validateRegisterStep3({
+    password: formData.password,
+    confirmPassword: formData.confirmPassword,
+    acceptTerms,
+  });
+
+  const canContinue = Object.keys(step2Errors).length === 0;
+  const canSubmit = Object.keys(step3Errors).length === 0;
+  const passwordStrength = getPasswordStrength(formData.password);
 
   return (
     <div className="register-card">
@@ -193,52 +240,61 @@ export default function Register() {
           </div>
 
           <form>
-            <div className="input-group">
-              <label>Full Name</label>
-
+            <div className={`input-group ${errors.fullName ? "input-invalid" : ""}`}>
+              <label htmlFor="fullName">Full Name</label>
               <input
+                id="fullName"
+                name="fullName"
                 type="text"
                 placeholder="John Doe"
                 value={formData.fullName}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    fullName: e.target.value,
-                  })
-                }
+                onChange={handleFieldChange}
+                aria-invalid={!!errors.fullName}
+                aria-describedby={errors.fullName ? "fullName-error" : undefined}
               />
+              {errors.fullName && (
+                <p id="fullName-error" className="input-error">
+                  {errors.fullName}
+                </p>
+              )}
             </div>
 
-            <div className="input-group">
-              <label>Email Address</label>
-
+            <div className={`input-group ${errors.email ? "input-invalid" : ""}`}>
+              <label htmlFor="email">Email Address</label>
               <input
+                id="email"
+                name="email"
                 type="email"
                 placeholder="john@example.com"
                 value={formData.email}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    email: e.target.value,
-                  })
-                }
+                onChange={handleFieldChange}
+                aria-invalid={!!errors.email}
+                aria-describedby={errors.email ? "email-error" : undefined}
               />
+              {errors.email && (
+                <p id="email-error" className="input-error">
+                  {errors.email}
+                </p>
+              )}
             </div>
 
-            <div className="input-group">
-              <label>Phone Number</label>
-
+            <div className={`input-group ${errors.phone ? "input-invalid" : ""}`}>
+              <label htmlFor="phone">Phone Number</label>
               <input
+                id="phone"
+                name="phone"
                 type="tel"
                 placeholder="+234..."
                 value={formData.phone}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    phone: e.target.value,
-                  })
-                }
+                onChange={handleFieldChange}
+                aria-invalid={!!errors.phone}
+                aria-describedby={errors.phone ? "phone-error" : undefined}
               />
+              {errors.phone && (
+                <p id="phone-error" className="input-error">
+                  {errors.phone}
+                </p>
+              )}
             </div>
 
             <div className="button-group">
@@ -253,7 +309,8 @@ export default function Register() {
               <button
                 type="button"
                 className="continue-btn"
-                onClick={() => setStep(3)}
+                disabled={!canContinue}
+                onClick={handleContinue}
               >
                 Continue
               </button>
@@ -276,113 +333,96 @@ export default function Register() {
           </div>
 
           <form>
-            <div className="input-group">
-              <label>Password</label>
-
+            <div className={`input-group ${errors.password ? "input-invalid" : ""}`}>
+              <label htmlFor="password">Password</label>
               <div className="input-wrapper">
                 <Lock size={20} />
-
                 <input
-                  type={
-                    showPassword
-                      ? "text"
-                      : "password"
-                  }
+                  id="password"
+                  name="password"
+                  type={showPassword ? "text" : "password"}
                   placeholder="Password"
                   value={formData.password}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      password: e.target.value,
-                    })
-                  }
+                  onChange={handleFieldChange}
+                  aria-invalid={!!errors.password}
+                  aria-describedby={errors.password ? "password-error" : "password-strength"}
                 />
-
                 <button
                   type="button"
                   className="password-toggle"
-                  onClick={() =>
-                    setShowPassword(
-                      !showPassword
-                    )
-                  }
+                  onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPassword ? (
-                    <EyeOff size={18} />
-                  ) : (
-                    <Eye size={18} />
-                  )}
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
               </div>
+              <div className="strength-bar">
+                <div className={`strength-fill ${passwordStrength}`} />
+              </div>
+              <div className="input-status">
+                <span id="password-strength" className="password-strength-text">
+                  {getPasswordStrengthLabel(passwordStrength)}
+                </span>
+                <span>{formData.password.length} characters</span>
+              </div>
+              {errors.password && (
+                <p id="password-error" className="input-error">
+                  {errors.password}
+                </p>
+              )}
             </div>
 
-            <div className="strength-bar">
-              <div
-                className={
-                  formData.password.length >= 8
-                    ? "strength-fill strong"
-                    : "strength-fill"
-                }
-              />
-            </div>
-
-            <div className="input-group">
-              <label>Confirm Password</label>
-
+            <div className={`input-group ${errors.confirmPassword ? "input-invalid" : ""}`}>
+              <label htmlFor="confirmPassword">Confirm Password</label>
               <div className="input-wrapper">
                 <Lock size={20} />
-
                 <input
-                  type={
-                    showConfirmPassword
-                      ? "text"
-                      : "password"
-                  }
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  type={showConfirmPassword ? "text" : "password"}
                   placeholder="Confirm Password"
-                  value={
-                    formData.confirmPassword
-                  }
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      confirmPassword:
-                        e.target.value,
-                    })
-                  }
+                  value={formData.confirmPassword}
+                  onChange={handleFieldChange}
+                  aria-invalid={!!errors.confirmPassword}
+                  aria-describedby={errors.confirmPassword ? "confirmPassword-error" : undefined}
                 />
-
                 <button
                   type="button"
                   className="password-toggle"
-                  onClick={() =>
-                    setShowConfirmPassword(
-                      !showConfirmPassword
-                    )
-                  }
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 >
-                  {showConfirmPassword ? (
-                    <EyeOff size={18} />
-                  ) : (
-                    <Eye size={18} />
-                  )}
+                  {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
               </div>
+              {errors.confirmPassword && (
+                <p id="confirmPassword-error" className="input-error">
+                  {errors.confirmPassword}
+                </p>
+              )}
             </div>
 
-            <label className="terms">
+            <label className={`terms ${errors.acceptTerms ? "input-invalid" : ""}`}>
               <input
                 type="checkbox"
                 checked={acceptTerms}
-                onChange={(e) =>
-                  setAcceptTerms(
-                    e.target.checked
-                  )
-                }
+                onChange={(e) => {
+                  setAcceptTerms(e.target.checked);
+                  if (errors.acceptTerms) {
+                    setErrors((prev) => ({
+                      ...prev,
+                      acceptTerms: undefined,
+                    }));
+                  }
+                }}
+                aria-invalid={!!errors.acceptTerms}
+                aria-describedby={errors.acceptTerms ? "terms-error" : undefined}
               />
-
-              I agree to the Terms &
-              Conditions.
+              I agree to the Terms & Conditions.
             </label>
+            {errors.acceptTerms && (
+              <p id="terms-error" className="input-error">
+                {errors.acceptTerms}
+              </p>
+            )}
 
             <div className="button-group">
               <button
@@ -396,15 +436,10 @@ export default function Register() {
               <button
                 type="button"
                 className="continue-btn"
-                disabled={
-                  loading ||
-                  !acceptTerms
-                }
+                disabled={loading || !canSubmit}
                 onClick={handleRegister}
               >
-                {loading
-                  ? "Creating..."
-                  : "Create Account"}
+                {loading ? "Creating..." : "Create Account"}
               </button>
             </div>
           </form>
