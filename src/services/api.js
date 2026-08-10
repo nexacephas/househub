@@ -117,7 +117,9 @@ function formatError(error) {
   return {
     message,
     status,
+    data: error.response?.data || null,
     errors: error.response?.data?.errors || null,
+    response: error.response,
     original: error,
   };
 }

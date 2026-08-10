@@ -1,12 +1,54 @@
 import api from "./api";
 
+const statusMap = {
+  Pending: "pending",
+  Successful: "paid",
+  Paid: "paid",
+  Failed: "failed",
+  Refunded: "refunded",
+  Overdue: "overdue",
+};
+
+const normalizePaymentParams = (params = {}) => {
+  const normalized = { ...params };
+
+  if (normalized.status) {
+    normalized.status = statusMap[normalized.status] || normalized.status.toLowerCase?.() || normalized.status;
+  }
+
+  if (typeof normalized.method === "string") {
+    normalized.method = normalized.method.toLowerCase().replace(/\s+/g, "_");
+  }
+
+  delete normalized.search;
+  delete normalized.date;
+
+  return Object.fromEntries(
+    Object.entries(normalized).filter(([, value]) => value !== "" && value !== null && value !== undefined)
+  );
+};
+
+const normalizePaymentPayload = (data = {}) => {
+  const normalized = { ...data };
+
+  if (normalized.status) {
+    normalized.status = statusMap[normalized.status] || normalized.status.toLowerCase?.() || normalized.status;
+  }
+
+  if (typeof normalized.method === "string") {
+    normalized.method = normalized.method.toLowerCase().replace(/\s+/g, "_");
+  }
+
+  return normalized;
+};
+
 const paymentService = {
   // ==========================
   // Payments
   // ==========================
 
   getPayments(params = {}) {
-    return api.get("/payments", { params });
+    return api.get("/payments", { params: normalizePaymentParams(params) });
   },
 
   getPayment(id) {
@@ -14,11 +56,15 @@ const paymentService = {
   },
 
   createPayment(data) {
-    return api.post("/payments", data);
+    return api.post("/payments", normalizePaymentPayload(data));
   },
 
   updatePayment(id, data) {
-    return api.put(`/payments/${id}`, data);
+    return api.put(`/payments/${id}`, normalizePaymentPayload(data));
+  },
+
+  refundPayment(id, reason = "") {
+    return api.patch(`/payments/${id}/refund`, { reason });
   },
 
   deletePayment(id) {
