@@ -1,6 +1,6 @@
 import "./PropertyFilters.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   SlidersHorizontal,
@@ -12,18 +12,36 @@ import {
   PawPrint,
   Check,
   RotateCcw,
+  X,
 } from "lucide-react";
 
 import {
   MdVerified,
 } from "react-icons/md";
 
-export default function PropertyFilters({ filters = {}, setFilters = () => {}, onApply = () => {} }) {
+export default function PropertyFilters({
+  filters = {},
+  setFilters = () => {},
+  open = false,
+  onClose = () => {},
+  onApply = () => {},
+}) {
 
   const [verified, setVerified] = useState(false);
   const [furnished, setFurnished] = useState(false);
   const [parking, setParking] = useState(false);
   const [pets, setPets] = useState(false);
+
+  useEffect(() => {
+    if (!open) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") onClose();
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [open, onClose]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -37,11 +55,23 @@ export default function PropertyFilters({ filters = {}, setFilters = () => {}, o
 
   return (
 
-    <section className="property-filters">
+    <section className={`property-filters${open ? " open" : ""}`}>
+
+      <button
+        className="filter-backdrop"
+        type="button"
+        aria-label="Close filters"
+        onClick={onClose}
+      />
 
       <div className="property-filters-container">
 
-        <div className="filter-card">
+        <div
+          className="filter-card"
+          role={open ? "dialog" : undefined}
+          aria-modal={open ? "true" : undefined}
+          aria-label="Property filters"
+        >
 
           <div className="filter-header">
 
@@ -52,6 +82,15 @@ export default function PropertyFilters({ filters = {}, setFilters = () => {}, o
               Advanced Filters
 
             </h3>
+
+            <button
+              className="filter-close"
+              type="button"
+              aria-label="Close filters"
+              onClick={onClose}
+            >
+              <X size={20} />
+            </button>
 
           </div>
 

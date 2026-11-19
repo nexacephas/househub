@@ -3,7 +3,7 @@
     width:100%;
     max-width:560px;
 
-    background:#fff;
+    background:var(--surface-strong);
 
     border-radius:28px;
 
@@ -47,7 +47,7 @@
 
     padding:25px;
 
-    border:2px solid #e2e8f0;
+    border:2px solid var(--gray-200);
 
     border-radius:20px;
 
@@ -55,7 +55,7 @@
 
     cursor:pointer;
 
-    background:white;
+    background:var(--surface-strong);
 
     transition:.3s;
 
@@ -73,7 +73,7 @@
 
     border-color:#2563eb;
 
-    background:#eff6ff;
+    background:var(--surface-muted);
 
 }
 

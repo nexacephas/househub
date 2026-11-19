@@ -1,7 +1,7 @@
 import "./Properties.css";
 
 import { useEffect, useMemo, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 
 import PropertyHero from "../../../components/property/PropertyHero";
 import PropertySearch from "../../../components/property/PropertySearch";
@@ -10,7 +10,6 @@ import PropertySort from "../../../components/property/PropertySort";
 import PropertyGrid from "../../../components/property/PropertyGrid";
 import Pagination from "../../../components/ui/Pagination";
 import CTASection from "../../../components/home/CTASection";
-import Navbar from "../../../components/layout/Navbar/Navbar";
 import { normalizePropertyFilters } from "../../../utils/propertyFilters";
 
 function createInitialFilters(category = "") {
@@ -30,16 +29,39 @@ function createInitialFilters(category = "") {
 
 export default function Properties() {
   const { category } = useParams();
+  const [searchParams] = useSearchParams();
+  const initialSearch = searchParams.get("search") || "";
+  const initialCity = searchParams.get("city") || "";
+  const initialState = searchParams.get("state") || "";
+  const initialPropertyType = searchParams.get("propertyType") || "";
+  const initialBedrooms = searchParams.get("bedrooms") || "";
+  const initialBathrooms = searchParams.get("bathrooms") || "";
+  const initialMinPrice = searchParams.get("minPrice") || "";
+  const initialMaxPrice = searchParams.get("maxPrice") || "";
   const [filters, setFilters] = useState(() => createInitialFilters(category));
   const [activeFilters, setActiveFilters] = useState(() => createInitialFilters(category));
   const [page, setPage] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const [view, setView] = useState("grid");
 
   useEffect(() => {
-    setFilters((prev) => ({ ...prev, purpose: category || "" }));
-    setActiveFilters((prev) => ({ ...prev, purpose: category || "" }));
+    const urlFilters = {
+      search: initialSearch,
+      city: initialCity,
+      state: initialState,
+      propertyType: initialPropertyType,
+      bedrooms: initialBedrooms,
+      bathrooms: initialBathrooms,
+      purpose: category || "",
+      minPrice: initialMinPrice,
+      maxPrice: initialMaxPrice,
+      sort: "-createdAt",
+    };
+    setFilters(urlFilters);
+    setActiveFilters(urlFilters);
     setPage(1);
-  }, [category]);
+  }, [category, initialSearch, initialCity, initialState, initialPropertyType, initialBedrooms, initialBathrooms, initialMinPrice, initialMaxPrice]);
 
   const normalizedFilters = useMemo(
     () => normalizePropertyFilters(activeFilters, category),
@@ -60,14 +82,36 @@ export default function Properties() {
 
   return (
     <>
-      <Navbar />
-
       <main className="properties-page">
         <PropertyHero />
-        <PropertySearch filters={filters} setFilters={setFilters} />
-        <PropertyFilters filters={filters} setFilters={setFilters} onApply={handleApplyFilters} />
-        <PropertySort count={totalResults} filters={activeFilters} onSortChange={handleSortChange} />
-        <PropertyGrid filters={{ ...normalizedFilters, page, limit: 12 }} onResultsChange={setTotalResults} />
+        <PropertySearch
+          filters={filters}
+          setFilters={setFilters}
+          filtersOpen={filtersOpen}
+          onToggleFilters={() => setFiltersOpen((open) => !open)}
+        />
+        <PropertyFilters
+          filters={filters}
+          setFilters={setFilters}
+          open={filtersOpen}
+          onClose={() => setFiltersOpen(false)}
+          onApply={() => {
+            handleApplyFilters();
+            setFiltersOpen(false);
+          }}
+        />
+        <PropertySort
+          count={totalResults}
+          filters={activeFilters}
+          view={view}
+          onViewChange={setView}
+          onSortChange={handleSortChange}
+        />
+        <PropertyGrid
+          filters={{ ...normalizedFilters, page, limit: 12 }}
+          view={view}
+          onResultsChange={setTotalResults}
+        />
         <Pagination currentPage={page} totalPages={totalPages} onPageChange={setPage} />
         <CTASection />
       </main>

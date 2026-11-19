@@ -6,7 +6,7 @@
 
     grid-template-columns:1fr 550px;
 
-    background:#f8fafc;
+    background:var(--background);
 
 }
 
@@ -60,7 +60,7 @@
 
 }
 
-.logo{
+.auth-content .logo{
 
     display:flex;
 
@@ -132,7 +132,7 @@
 
     padding:60px;
 
-    background:white;
+    background:var(--surface-strong);
 
 }
 

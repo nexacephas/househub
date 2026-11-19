@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Search,
   MapPin,
@@ -20,6 +20,12 @@ const heroImages = [
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);
+  const navigate = useNavigate();
+  const [search, setSearch] = useState({
+    location: "",
+    propertyType: "",
+    budget: "",
+  });
 
   useEffect(() => {
     const slider = setInterval(() => {
@@ -28,6 +34,18 @@ export default function Hero() {
 
     return () => clearInterval(slider);
   }, []);
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+    const params = new URLSearchParams();
+
+    if (search.location.trim()) params.set("city", search.location.trim());
+    if (search.propertyType) params.set("propertyType", search.propertyType);
+    if (search.budget) params.set("maxPrice", search.budget);
+
+    const query = params.toString();
+    navigate(query ? `/properties?${query}` : "/properties");
+  };
 
   return (
     <section className="hero">
@@ -67,7 +85,7 @@ export default function Hero() {
             and safe.
           </p>
 
-          <div className="hero-buttons">
+          <div className="hero-actions">
             <Link to="/properties" className="btn btn-primary">
               Explore Properties
               <ArrowRight size={18} />
@@ -80,42 +98,69 @@ export default function Hero() {
         </div>
 
         {/* Search Card */}
-        <div className="hero-search-card">
-          <div className="search-field">
-            <MapPin size={20} />
-            <input
-              type="text"
-              placeholder="Enter Location"
-            />
-          </div>
+        <form className="hero-search-card" onSubmit={handleSearch}>
+          <label className="search-field">
+            <MapPin size={20} aria-hidden="true" />
+            <span>
+              <small>Location</small>
+              <input
+                type="text"
+                name="location"
+                value={search.location}
+                onChange={(event) =>
+                  setSearch((prev) => ({ ...prev, location: event.target.value }))
+                }
+                placeholder="City or area"
+              />
+            </span>
+          </label>
 
-          <div className="search-field">
-            <Building2 size={20} />
+          <label className="search-field">
+            <Building2 size={20} aria-hidden="true" />
+            <span>
+              <small>Property type</small>
+              <select
+                name="propertyType"
+                value={search.propertyType}
+                onChange={(event) =>
+                  setSearch((prev) => ({ ...prev, propertyType: event.target.value }))
+                }
+              >
+                <option value="">Any property</option>
+                <option value="apartment">Apartment</option>
+                <option value="duplex">Duplex</option>
+                <option value="house">House</option>
+                <option value="land">Land</option>
+                <option value="commercial">Commercial</option>
+              </select>
+            </span>
+          </label>
 
-            <select>
-              <option>Property Type</option>
-              <option>Apartment</option>
-              <option>Duplex</option>
-              <option>Land</option>
-              <option>Commercial</option>
-            </select>
-          </div>
+          <label className="search-field">
+            <span className="search-field-currency" aria-hidden="true">₦</span>
+            <span>
+              <small>Maximum budget</small>
+              <select
+                name="budget"
+                value={search.budget}
+                onChange={(event) =>
+                  setSearch((prev) => ({ ...prev, budget: event.target.value }))
+                }
+              >
+                <option value="">No limit</option>
+                <option value="5000000">Under ₦5M</option>
+                <option value="20000000">Up to ₦20M</option>
+                <option value="50000000">Up to ₦50M</option>
+                <option value="100000000">Up to ₦100M</option>
+              </select>
+            </span>
+          </label>
 
-          <div className="search-field">
-           <select>
-    <option>Budget</option>
-    <option>Under ₦5M</option>
-    <option>₦5M - ₦20M</option>
-    <option>₦20M - ₦50M</option>
-    <option>₦50M+</option>
-</select>
-          </div>
-
-          <button className="search-btn">
+          <button className="search-btn" type="submit">
             <Search size={20} />
-            Search
+            Search properties
           </button>
-        </div>
+        </form>
 
         {/* Statistics */}
         <div className="hero-stats">

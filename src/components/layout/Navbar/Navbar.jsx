@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 
-import { Menu, X, ChevronDown, LayoutDashboard, Settings, LogOut, UserCircle } from "lucide-react";
-import logo from "../../../assets/logos/logo.jpeg";
+import { ChevronDown, LayoutDashboard, Settings, LogOut, UserCircle, Moon, Sun } from "lucide-react";
+import logo from "../../../assets/logos/new logo.png";
 import { navLinks } from "../../../constants/navigation";
 import { useAuth } from "../../../context/AuthContext";
 
@@ -10,11 +10,21 @@ import "./Navbar.css";
 
 export default function Navbar() {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const { user, logout } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const [profileOpen, setProfileOpen] = useState(false);
+  const [theme, setTheme] = useState(() => document.documentElement.dataset.theme || "light");
+
+  const toggleTheme = () => {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = nextTheme;
+    document.documentElement.style.colorScheme = nextTheme;
+    localStorage.setItem("househub-theme", nextTheme);
+    setTheme(nextTheme);
+  };
 
   const toggleDropdown = (name) => {
     setOpenDropdown(openDropdown === name ? null : name);
@@ -36,15 +46,22 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const overlaysHero = pathname === "/";
+
   return (
-    <header className={scrolled ? "navbar scrolled" : "navbar"}>
+    <header
+      className={[
+        "navbar",
+        overlaysHero ? "navbar-over-hero" : "",
+        scrolled ? "scrolled" : "",
+      ].filter(Boolean).join(" ")}
+    >
       <div className="container navbar-container">
 
         {/* Logo */}
 
                 <Link to="/" className="logo">
-            <img src={logo} alt="HouseHub Logo" />
-            <span>HouseHub</span>
+            <img src={logo} alt="HouseHub — Trusted homes, stronger communities" />
             </Link>
         {/* Desktop Navigation */}
 
@@ -76,6 +93,15 @@ export default function Navbar() {
         {/* Buttons */}
 
         <div className="nav-buttons">
+          <button
+            className="theme-toggle"
+            type="button"
+            onClick={toggleTheme}
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
+            title={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
+          >
+            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
           {user ? (
             <div className="profile-dropdown-wrapper">
               <button className="profile-dropdown-trigger" onClick={() => setProfileOpen((prev) => !prev)}>
@@ -121,17 +147,39 @@ export default function Navbar() {
         {/* Mobile Toggle */}
 
         <button
-          className="menu-btn"
-          onClick={() => setMenuOpen(!menuOpen)}
+          className={`menu-btn${menuOpen ? " is-open" : ""}`}
+          type="button"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
         >
-          {menuOpen ? <X size={28} /> : <Menu size={28} />}
+          <span className="menu-btn-lines" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </span>
         </button>
 
       </div>
 
       {/* Mobile Menu */}
 
-<div className={menuOpen ? "mobile-menu active" : "mobile-menu"}>
+<nav
+  id="mobile-navigation"
+  className={menuOpen ? "mobile-menu active" : "mobile-menu"}
+  aria-label="Mobile navigation"
+  aria-hidden={!menuOpen}
+  inert={!menuOpen}
+>
+  <button
+    className="mobile-theme-toggle"
+    type="button"
+    onClick={toggleTheme}
+  >
+    {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+    <span>{theme === "dark" ? "Light theme" : "Dark theme"}</span>
+  </button>
 
   {navLinks.map((item) => (
 
@@ -216,7 +264,7 @@ export default function Navbar() {
     </>
   )}
 
-</div>
+</nav>
     </header>
   );
 }

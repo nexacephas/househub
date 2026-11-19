@@ -5,7 +5,12 @@
 
 .featured-properties {
   padding: 120px 0;
-  background: #f8fafc;
+  background: var(--surface);
+}
+
+.featured-properties-container {
+  width: min(92%, var(--container));
+  margin: 0 auto;
 }
 
 /* ==========================================
@@ -38,9 +43,10 @@
 
 .view-all-btn {
   display: inline-flex;
+  flex: 0 0 auto;
   align-items: center;
   gap: 10px;
-
+  white-space: nowrap;
   padding: 16px 28px;
 
   border-radius: 50px;
@@ -74,7 +80,7 @@
 ========================================== */
 
 .property-card {
-  background: #fff;
+  background: var(--surface-strong);
   border-radius: 28px;
   overflow: hidden;
   transition: .4s ease;
@@ -91,15 +97,18 @@
    PROPERTY IMAGE
 ========================================== */
 
-.property-image {
+.featured-properties .property-image {
     position: relative;
+    width: 100%;
     height: 280px;
+    border-radius: 0;
     overflow: hidden;
 }
 
-.property-image img {
+.featured-properties .property-image img {
     width: 100%;
     height: 100%;
+    max-width: none;
     object-fit: cover;
 
     transition: transform .7s ease;
@@ -302,7 +311,7 @@
 
 .property-content h4 {
     font-size: 1.3rem;
-    color: var(--secondary);
+    color: var(--text);
     margin-bottom: 18px;
     line-height: 1.4;
     transition: color .3s ease;
@@ -321,7 +330,7 @@
     align-items: center;
     gap: 10px;
 
-    color: #666;
+    color: var(--text-muted);
 
     margin-bottom: 25px;
 
@@ -381,7 +390,7 @@
 
     border-radius: 14px;
 
-    background: #f8f9fa;
+    background: var(--surface-muted);
 
     color: var(--secondary);
 
@@ -458,7 +467,7 @@
         padding:90px 0;
     }
 
-    .property-image{
+    .featured-properties .property-image{
         height:240px;
     }
 

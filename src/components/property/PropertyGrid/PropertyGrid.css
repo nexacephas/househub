@@ -14,6 +14,20 @@
   gap: 24px;
 }
 
+.grid.list-view {
+  grid-template-columns: 1fr;
+}
+
+.grid.list-view .property-card {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.38fr) 1fr;
+}
+
+.grid.list-view .property-image {
+  height: 100%;
+  min-height: 280px;
+}
+
 @media (max-width: 768px) {
   .property-grid {
     padding-bottom: 56px;
@@ -22,5 +36,14 @@
   .grid {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+
+  .grid.list-view .property-card {
+    display: block;
+  }
+
+  .grid.list-view .property-image {
+    height: 220px;
+    min-height: 0;
   }
 }

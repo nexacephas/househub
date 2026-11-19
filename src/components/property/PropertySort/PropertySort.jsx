@@ -1,6 +1,5 @@
 import "./PropertySort.css";
 
-import { useState } from "react";
 
 import {
   ArrowUpDown,
@@ -9,9 +8,13 @@ import {
   Heart,
 } from "lucide-react";
 
-export default function PropertySort({ count = 0, filters = {}, onSortChange = () => {} }) {
-
-  const [view, setView] = useState("grid");
+export default function PropertySort({
+  count = 0,
+  filters = {},
+  view = "grid",
+  onViewChange = () => {},
+  onSortChange = () => {},
+}) {
 
   return (
 
@@ -71,7 +74,9 @@ export default function PropertySort({ count = 0, filters = {}, onSortChange = (
 
                 className={view === "grid" ? "active" : ""}
 
-                onClick={() => setView("grid")}
+                onClick={() => onViewChange("grid")}
+                aria-label="Grid view"
+                aria-pressed={view === "grid"}
 
               >
 
@@ -83,7 +88,9 @@ export default function PropertySort({ count = 0, filters = {}, onSortChange = (
 
                 className={view === "list" ? "active" : ""}
 
-                onClick={() => setView("list")}
+                onClick={() => onViewChange("list")}
+                aria-label="List view"
+                aria-pressed={view === "list"}
 
               >
 

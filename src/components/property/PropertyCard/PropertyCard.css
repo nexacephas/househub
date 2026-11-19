@@ -1,7 +1,6 @@
 /* PropertyCard Styles */
 .property-card{
-
-    background:var(--surface);
+    background:var(--surface-strong);
 
     border-radius:var(--radius-lg);
 

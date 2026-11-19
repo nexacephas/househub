@@ -10,6 +10,11 @@
 
 }
 
+.trusted-partners-container {
+    width:min(92%, var(--container));
+    margin:0 auto;
+}
+
 .section-tag{
 
     display:inline-block;
@@ -156,8 +161,30 @@ font-size:2.2rem;
 
 .trusted-grid{
 
-grid-template-columns:1fr;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:12px;
 
 }
 
+.trusted-card {
+    min-width:0;
+    padding:20px 12px;
+    border-radius:18px;
+}
+
+.trusted-icon {
+    width:58px;
+    height:58px;
+    margin-bottom:14px;
+}
+
+.trusted-icon svg {
+    width:26px;
+    height:26px;
+}
+
+.trusted-card h3 {
+    font-size:.9rem;
+    line-height:1.35;
+}
 }

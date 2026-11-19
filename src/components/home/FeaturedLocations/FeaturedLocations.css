@@ -7,6 +7,11 @@
     background: #ffffff;
 }
 
+.featured-locations-container {
+    width:min(92%, var(--container));
+    margin:0 auto;
+}
+
 /* ==========================================
    GRID
 ========================================== */
@@ -285,13 +290,32 @@
     }
 
     .location-card{
-        height:270px;
+        height:220px;
+        border-radius:20px;
+        min-width:0;
+    }
+
+    .locations-grid {
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:12px;
+    }
+
+    .location-content{
+        left:10px;
+        right:10px;
+        bottom:10px;
+        align-items:flex-end;
+        gap:6px;
+    }
+
+    .location-content > div{
+        padding:10px;
+        border-radius:14px;
+        min-width:0;
     }
 
     .location-content > svg{
-        width:50px;
-        height:50px;
-        padding:14px;
+        display:none;
     }
 
     .city{
@@ -299,7 +323,7 @@
     }
 
     .location-content h3{
-        font-size:1.5rem;
+        font-size:1.25rem;
     }
 
     .location-content p{

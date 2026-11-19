@@ -8,7 +8,12 @@ import {
   SlidersHorizontal,
 } from "lucide-react";
 
-export default function PropertySearch({ filters = {}, setFilters = () => {} }) {
+export default function PropertySearch({
+  filters = {},
+  setFilters = () => {},
+  filtersOpen = false,
+  onToggleFilters = () => {},
+}) {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFilters((prev) => ({ ...prev, [name]: value }));
@@ -74,7 +79,12 @@ export default function PropertySearch({ filters = {}, setFilters = () => {} }) 
             </select>
           </div>
 
-          <button className="filter-btn" type="button">
+          <button
+            className="filter-btn"
+            type="button"
+            aria-expanded={filtersOpen}
+            onClick={onToggleFilters}
+          >
             <SlidersHorizontal size={18} />
             Filters
           </button>

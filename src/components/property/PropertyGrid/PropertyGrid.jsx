@@ -6,7 +6,11 @@ import toast from "react-hot-toast";
 import PropertyCard from "../PropertyCard";
 import propertyService from "../../../services/property.service";
 
-export default function PropertyGrid({ filters = {}, onResultsChange = () => {} }) {
+export default function PropertyGrid({
+  filters = {},
+  view = "grid",
+  onResultsChange = () => {},
+}) {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -82,7 +86,7 @@ export default function PropertyGrid({ filters = {}, onResultsChange = () => {} 
     return (
       <section className="property-grid">
         <div className="property-grid-container">
-          <div className="grid">
+          <div className={`grid ${view === "list" ? "list-view" : ""}`}>
             {properties.map((property) => (
               <PropertyCard key={property._id} property={property} />
             ))}

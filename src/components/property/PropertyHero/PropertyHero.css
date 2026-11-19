@@ -14,7 +14,8 @@
             var(--gray-900),
             var(--gray-700)
         );
- min-height: 80vh; /* instead of 65vh */
+ min-height: 300px;
+ padding: 48px 0;
 }
 
 .hero-overlay {
@@ -161,25 +162,18 @@
 }
 
 @media(max-width:900px){
-
-.hero-search-preview{
-
-    flex-direction:column;
-
-    align-items:stretch;
-
+.property-hero {
+    min-height: 230px;
+    padding: 36px 0;
 }
-
-.divider{
-
-    display:none;
-
+.hero-content h1 {
+    font-size: 2.35rem;
 }
-
-.hero-search-preview button{
-
-    width:100%;
-
+.hero-content p {
+    margin-bottom: 24px;
+    line-height: 1.65;
 }
-
+.hero-actions {
+    gap: 12px;
+}
 }

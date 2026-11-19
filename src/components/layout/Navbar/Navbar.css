@@ -6,16 +6,54 @@
 .navbar {
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
   z-index: 999;
-  transition: all 0.35s ease;
+  background: var(--surface-strong);
+  border-bottom: 1px solid var(--surface-border);
+  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .navbar.scrolled {
-  background: rgba(255, 255, 255, 0.98);
+  background: var(--surface-strong);
+  border-bottom-color: var(--surface-border);
   backdrop-filter: blur(18px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar.navbar-over-hero:not(.scrolled) {
+  background: transparent;
+  border-bottom-color: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.navbar.navbar-over-hero:not(.scrolled) .logo,
+.navbar.navbar-over-hero:not(.scrolled) .logo span,
+.navbar.navbar-over-hero:not(.scrolled) .nav-links a,
+.navbar.navbar-over-hero:not(.scrolled) .dropdown-btn,
+.navbar.navbar-over-hero:not(.scrolled) .login-btn-1,
+.navbar.navbar-over-hero:not(.scrolled) .menu-btn {
+  color: #fff;
+}
+
+.navbar.navbar-over-hero:not(.scrolled) .theme-toggle {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.navbar.navbar-over-hero:not(.scrolled) .nav-links a:hover,
+.navbar.navbar-over-hero:not(.scrolled) .nav-links a.active-link,
+.navbar.navbar-over-hero:not(.scrolled) .dropdown-btn:hover {
+  color: #fff;
+}
+
+.navbar.navbar-over-hero:not(.scrolled) .nav-links a.active-link {
+  color: #fff !important;
+}
+
+.navbar.navbar-over-hero:not(.scrolled) .nav-links a::after {
+  background: #fff;
 }
 
 /* ===========================
@@ -34,26 +72,20 @@
    LOGO
 =========================== */
 
-.logo {
+.navbar .logo {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
-
-    font-family: "Outfit", sans-serif;
-    font-size: 1.7rem;
-    font-weight: 700;
-
-    color: var(--secondary);
+    color: var(--gray-900);
 }
 
-.logo img {
-    width: 48px;
-    height: 48px;
+.navbar .logo img {
+    width: 120px;
+    height: 80px;
     object-fit: contain;
 }
 
-.logo span {
-    color: var(--secondary);
+.navbar .logo span {
+    color: var(--gray-900);
 }
 
 /* ===========================
@@ -69,7 +101,7 @@
 .nav-links a {
   position: relative;
 
-  color: var(--gray-300);
+  color: var(--gray-700);
 
   font-weight: 500;
 
@@ -113,7 +145,7 @@
   align-items: center;
   gap: 6px;
   font-weight: 500;
-  color: var(--gray-300);
+  color: var(--gray-700);
   background: transparent;
   cursor: pointer;
 }
@@ -186,6 +218,29 @@ top: calc(100% + 18px);
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+.theme-toggle {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 42px;
+  border: 1px solid var(--gray-200);
+  border-radius: 50%;
+  background: var(--surface-strong);
+  color: var(--gray-700);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.theme-toggle:active {
+  transform: scale(0.94);
 }
 
 .login-btn-1 {
@@ -290,10 +345,59 @@ top: calc(100% + 18px);
 
 .menu-btn {
   display: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--gray-800);
+}
 
-  color: var(--secondary);
+.menu-btn-lines {
+  position: relative;
+  display: block;
+  width: 24px;
+  height: 18px;
+}
 
-  font-size: 1.8rem;
+.menu-btn-lines span {
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transform-origin: center;
+  transition: transform 0.24s ease, top 0.24s ease, opacity 0.16s ease;
+}
+
+.menu-btn-lines span:nth-child(1) {
+  top: 1px;
+}
+
+.menu-btn-lines span:nth-child(2) {
+  top: 8px;
+}
+
+.menu-btn-lines span:nth-child(3) {
+  top: 15px;
+}
+
+.menu-btn.is-open .menu-btn-lines span:nth-child(1) {
+  top: 8px;
+  transform: rotate(45deg);
+}
+
+.menu-btn.is-open .menu-btn-lines span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0.35);
+}
+
+.menu-btn.is-open .menu-btn-lines span:nth-child(3) {
+  top: 8px;
+  transform: rotate(-45deg);
 }
 
 /* ===========================
@@ -302,27 +406,42 @@ top: calc(100% + 18px);
 
 .mobile-menu {
   position: fixed;
-
   top: 85px;
-  left: -100%;
-
+  right: 0;
   width: 100%;
   height: calc(100vh - 85px);
-
-  background: white;
-
+  height: calc(100dvh - 85px);
+  background: var(--surface-strong);
   display: flex;
   flex-direction: column;
-
   padding: 2rem;
-
   gap: 2rem;
-
-  transition: .4s ease;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  box-shadow: var(--shadow-lg);
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.32s;
+  will-change: transform;
 }
 
 .mobile-menu.active {
-  left: 0;
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.mobile-theme-toggle {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  border: 1px solid var(--gray-200);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--gray-800);
+  font-weight: 700;
 }
 
 .mobile-menu a {
@@ -349,7 +468,7 @@ top: calc(100% + 18px);
    RESPONSIVE
 =========================== */
 
-@media(max-width:992px){
+@media(max-width:1180px){
 
     .nav-links,
     .nav-buttons{
@@ -359,7 +478,11 @@ top: calc(100% + 18px);
 
     .menu-btn{
 
-        display:block;
+        display:flex;
+    }
+
+    .mobile-theme-toggle {
+        display: flex;
     }
 
 }
@@ -377,13 +500,21 @@ top: calc(100% + 18px);
         height:75px;
     }
 
-      .logo img {
-        width: 40px;
-        height: 40px;
+    .mobile-menu {
+        top: 75px;
+        height: calc(100vh - 75px);
+        height: calc(100dvh - 75px);
+        padding: 1.5rem;
+        gap: 1.5rem;
     }
 
-    .logo {
-        font-size: 1.4rem;
+      .navbar .logo img {
+        width: 105px;
+        height: 70px;
+    }
+
+    .navbar .logo {
+        flex: 0 0 auto;
     }
     }
 

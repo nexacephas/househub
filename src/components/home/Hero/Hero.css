@@ -5,12 +5,11 @@
 .hero {
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    min-height: 760px;
     display: flex;
     align-items: center;
-    justify-content: center;
     overflow: hidden;
-    padding: var(--space-6xl) 0 calc(var(--space-5xl) + var(--space-2xl));
+    padding: 128px 0 80px;
 }
 
 /* ======================================================
@@ -58,12 +57,12 @@
 .hero-overlay {
     position: absolute;
     inset: 0;
-/* 
     background: linear-gradient(
-        rgba(7, 18, 45, 0.75) 0%,
-        rgba(7, 18, 45, 0.82) 50%,
-        rgba(7, 18, 45, 0.90) 100%
-    ); */
+        90deg,
+        rgba(7, 18, 45, 0.84) 0%,
+        rgba(7, 18, 45, 0.72) 48%,
+        rgba(7, 18, 45, 0.38) 100%
+    );
 
     z-index: 3;
     pointer-events: none;
@@ -75,15 +74,13 @@
 .hero-content-wrapper {
     position: relative;
     z-index: 10;
-
     width: 100%;
 }
 
 .hero-content {
-    max-width: 780px;
-    margin: auto;
-    text-align: center;
-    padding: 0 var(--space-md);
+    max-width: 720px;
+    margin: 0;
+    text-align: left;
 }
 
 /* ======================================================
@@ -129,11 +126,11 @@
 ====================================================== */
 
 .hero-content h1 {
-    font-size: clamp(3rem, 6vw, 5.2rem);
+    font-size: clamp(3.25rem, 6vw, 5.25rem);
     line-height: 1.05;
     color: var(--white);
     font-weight: 800;
-    margin-bottom: var(--space-4xl);
+    margin-bottom: var(--space-xl);
 }
 
 .hero-content h1 span {
@@ -147,8 +144,8 @@
 ====================================================== */
 
 .hero-content p {
-    max-width: 700px;
-    margin: 0 auto var(--space-5xl);
+    max-width: 650px;
+    margin: 0 0 var(--space-xl);
     color: var(--white-86);
     font-size: var(--text-lg);
     line-height: 1.8;
@@ -158,16 +155,14 @@
    BUTTONS
 ====================================================== */
 
-.hero-buttons {
-
+.hero-actions {
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: var(--space-lg);
     flex-wrap: wrap;
 }
 
-.hero-buttons .btn {
+.hero-actions .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -224,11 +219,8 @@
 ====================================================== */
 
 .hero-search-card {
-    position: absolute;
-    left: 50%;
-    bottom: -72px;
-    transform: translateX(-50%);
-    width: min(1180px, 92%);
+    width: 100%;
+    margin-top: var(--space-3xl);
     display: grid;
     grid-template-columns: 2fr 1.35fr 1.2fr auto;
     gap: var(--space-sm);
@@ -253,25 +245,39 @@
 ====================================================== */
 
 .search-field{
-
     display:flex;
-
     align-items:center;
-
     gap: var(--space-sm);
-
-    height: 68px;
-
-    padding:0 var(--space-md);
-
+    height: 72px;
+    padding: 0 var(--space-md);
     background: var(--white);
-
     border:1px solid var(--gray-200);
-
-    border-radius: var(--radius-lg);
-
+    border-radius: var(--radius-md);
     transition: var(--transition);
+}
 
+.search-field > span:not(.search-field-currency) {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.search-field small {
+    color: var(--gray-500);
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.search-field-currency {
+    width: 20px;
+    color: var(--primary);
+    font-size: 1.15rem;
+    font-weight: 800;
+    text-align: center;
 }
 
 .search-field:hover{
@@ -292,29 +298,18 @@
 
 .search-field input,
 .search-field select{
-
     width:100%;
-
-    height:100%;
-
+    height: 34px;
     border:none;
-
     outline:none;
-
     background:none;
-
     font-size:var(--text-base);
-
-    color:var(--secondary);
-
+    color: var(--gray-800);
     cursor:pointer;
-
 }
 
 .search-field input::placeholder{
-
-    color:var(--black);
-
+    color: var(--gray-500);
 }
 
 /* Remove default select arrow */
@@ -334,33 +329,19 @@
 ====================================================== */
 
 .search-btn{
-
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
     gap: var(--space-xs);
-
     border:none;
-
-    border-radius: var(--radius-lg);
-
+    border-radius: var(--radius-md);
     background:var(--primary);
-
     color:var(--white);
-
     font-weight:600;
-
     font-size:var(--text-base);
-
     cursor:pointer;
-
     transition:var(--transition);
-
     padding:0 var(--space-3xl);
-
 }
 
 .search-btn:hover{
@@ -376,15 +357,11 @@
 ====================================================== */
 
 .hero-stats{
-
-    margin-top:180px;
-
+    margin-top: var(--space-3xl);
     display:grid;
-
     grid-template-columns:repeat(4,1fr);
-
-    gap:var(--space-5xl);
-
+    gap: var(--space-lg);
+    max-width: 720px;
 }
 
 .stat{
@@ -469,52 +446,18 @@
    GLASS EFFECT
 ====================================================== */
 
-.hero-search-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    border-radius:var(--radius-lg);
-
-    background:linear-gradient(
-
-        rgba(255,255,255,.4),
-
-        rgba(255,255,255,.05)
-
-    );
-
-    pointer-events:none;
-
-}
-
-
-
 /* ======================================================
    RESPONSIVE - LARGE TABLETS
 ====================================================== */
 
 @media (max-width: 1200px) {
-
+    .hero {
+        min-height: 720px;
+    }
     .hero-search-card {
-
         grid-template-columns: 1fr 1fr;
-
-        row-gap: var(--space-xl);
-
-        bottom: -120px;
-
+        row-gap: var(--space-sm);
     }
-
-    .hero-stats {
-
-        margin-top: 230px;
-
-    }
-
 }
 
 /* ======================================================
@@ -522,136 +465,74 @@
 ====================================================== */
 
 @media (max-width: 992px) {
-
     .hero {
-
-        padding-top: 120px;
-        padding-bottom: 280px;
-
+        min-height: 760px;
+        padding: 112px 0 56px;
     }
-
+    .hero-overlay {
+        background: rgba(7, 18, 45, 0.68);
+    }
     .hero-content h1 {
-
-        font-size: var(--text-6xl);
-
+        font-size: clamp(3rem, 8vw, 4.5rem);
     }
-
-    .hero-content p {
-
-        font-size: 1.05rem;
-
-    }
-
     .hero-search-card {
-
-        width: 94%;
-
         grid-template-columns: 1fr;
-
-        bottom: -170px;
-
     }
-
     .search-btn {
-
         height: 65px;
-
     }
-
     .hero-stats {
-
         grid-template-columns: repeat(2,1fr);
-
-        margin-top: 300px;
-
-        gap: 2rem;
-
+        margin-top: var(--space-xl);
+        max-width: none;
     }
-
 }
 
 /* ======================================================
    MOBILE
 ====================================================== */
 @media (max-width:768px){
-
     .hero{
-
-        padding-top:110px;
-        padding-bottom:360px;
-
+        min-height: auto;
+        padding: 104px 0 48px;
     }
-
     .hero-content{
-
-        text-align:center;
-
+        text-align: left;
     }
-
     .hero-content h1{
-
         font-size:3rem;
-
         line-height:1.15;
-
     }
-
     .hero-content p{
-
         font-size:1rem;
-
         line-height:1.7;
-
     }
-
-    .hero-buttons{
-
-        flex-direction:column;
-
+    .hero-actions{
         width:100%;
-
     }
-
-    .hero-buttons .btn{
-
-        width:100%;
-
+    .hero-actions .btn{
+        flex: 1;
     }
-
     .hero-search-card{
-
-        width:94%;
-
         padding:var(--space-md);
-
         grid-template-columns:1fr;
-
-        bottom:-230px;
-
+        background: var(--white);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
     }
-
     .search-field{
-
         height:60px;
-
     }
-
     .search-btn{
-
         height:60px;
-
         width:100%;
-
     }
-
     .hero-stats{
-
-        margin-top:380px;
-
         grid-template-columns:1fr 1fr;
-
     }
-
+    .hero-dots {
+        display: none;
+    }
 }
 
 /* ======================================================
@@ -659,56 +540,38 @@
 ====================================================== */
 
 @media(max-width:480px){
-
     .hero{
-
-        padding-top:100px;
-        padding-bottom:430px;
-
+        padding: 96px 0 40px;
     }
-
     .hero-content h1{
-
         font-size:2.35rem;
-
     }
-
     .hero-badge{
-
         font-size:var(--text-xs);
-
         padding:var(--space-xs) var(--space-lg);
-
     }
-
     .hero-content p{
-
         font-size:.95rem;
-
     }
-
-    .hero-search-card{
-
-        bottom:-290px;
-
+    .hero-actions {
+        flex-direction: column;
     }
-
+    .hero-actions .btn {
+        width: 100%;
+    }
     .hero-stats{
-
-        grid-template-columns:1fr;
-
-        margin-top:470px;
-
-        gap:1.8rem;
-
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+        gap:1.25rem 0.75rem;
+        margin-top:var(--space-xl);
     }
-
     .stat h2{
-
-        font-size:2.2rem;
-
+        font-size:clamp(1.75rem, 8vw, 2.2rem);
+        margin-bottom:0.25rem;
     }
-
+    .stat p {
+        font-size:var(--text-sm);
+        line-height:1.4;
+    }
 }
 
 /* ======================================================
@@ -756,21 +619,13 @@
 @keyframes heroSearch{
 
     from{
-
         opacity:0;
-
-        transform:translate(-50%,60px);
-
+        transform:translateY(24px);
     }
-
     to{
-
         opacity:1;
-
-        transform:translate(-50%,0);
-
+        transform:translateY(0);
     }
-
 }
 
 /* ======================================================
